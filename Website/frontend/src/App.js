@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
         <header className="row">
-          <div><a className="brand" href="/">Amazona</a></div>
+          <div><a className="brand" href="/">Classy Jewelry</a></div>
           
           <div>
             <a href="/cart">Cart</a>
