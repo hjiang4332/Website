@@ -28,11 +28,7 @@ export default function ProductScreen(props) {
                 <div className="col-1">
                     <div className="card card-body">
                         <ul>
-                            <li>
-                                <div className="row">
-                                    <div className="price">Price: ${product.price}</div>
-                                </div>
-                            </li>
+                            <li><div className="row"><div className="price">Price: ${product.price}</div></div></li>
 
                             <li>
                                 <div className="row">
@@ -41,7 +37,7 @@ export default function ProductScreen(props) {
                                         {product.countInStock > 0 ? (
                                         <span className="success">In Stock</span>
                                         ) : (
-                                        <span className="error">Unavailable</span>
+                                        <span className="danger">Unavailable</span>
                                         )}
                                     </div>
                                 </div>
@@ -50,6 +46,7 @@ export default function ProductScreen(props) {
                             <li><button className="primary block">Add to Cart</button></li>
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
