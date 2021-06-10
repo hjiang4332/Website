@@ -43,40 +43,33 @@ export default function CartScreen(props) {
                         <ul>
                             {cartItems.map(item => (
                                 <li key={item.product}>
-                                    <div className  ="row">
-                                        <div><img src={item.image} alt={ item.name } className="small" /></div>
-                                    </div>
+                                    <div className="row">
+                                        <div>
+                                            <img src={item.image} alt={item.name} className="small" />
+                                        </div>
 
-                                    <div className="min-30">
-                                        <Link to={`/product/${item.product}`}>
-                                            { item.name }
-                                        </Link>
-                                    </div>
+                                        <div className="min-30">
+                                            <Link to={`/product/${item.product}`}>{item.name}</Link>
+                                        </div>
 
-                                    <div>
-                                        <select value={item.qty} onChange={ e => dispatch(addToCart(item.product, Number(e.target.value)))}>
-                                        {
-                                            [...Array(item.countInStock).keys()].map(x => (
+                                        <div>
+                                            <select value={item.qty} onChange={(e) =>
+                                                dispatch(addToCart(item.product, Number(e.target.value)))
+                                            }
+                                            >
+                                            {[...Array(item.countInStock).keys()].map((x) => (
                                                 <option key={x + 1} value={x + 1}>
-                                                    { x + 1 }
+                                                    {x + 1}
                                                 </option>
-                                            ))
-                                        }
-                                        </select>
-                                    </div>
-                            
-                                    <div>   
-                                        ${item.price} ea.
-                                    </div>
+                                            ))}
+                                            </select>
+                                        </div>
 
-                                    <div>
-                                        Total cost: ${item.price * item.qty}
-                                    </div>
+                                        <div>${item.price} ea.</div>
 
-                                    <div>
-                                        <button type="button" onClick={() => removeFromCartHandler(item.product)}>
-                                            Delete Item
-                                        </button>
+                                        <div>Total price: ${item.price * item.qty}</div>
+
+                                        <div><button type="button" onClick={() => removeFromCartHandler(item.product)}>Delete Item</button></div>
                                     </div>
                                 </li>
                             ))}
