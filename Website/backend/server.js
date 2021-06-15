@@ -1,11 +1,19 @@
 /* Entry point of backend application */
 import express from "express"
 import mongoose from "mongoose"
+import dotenv from 'dotenv'
 // import data from "./data.js"
 import productRouter from "./routers/productRouter.js";
 import userRouter from "./routers/userRouter.js"
 
+dotenv.config()
+
 const app = express();
+
+//avoids no email error from postman
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/classyjewelry', {
     useNewUrlParser: true, //get rid of warnings
     useUnifiedTopology: true,
