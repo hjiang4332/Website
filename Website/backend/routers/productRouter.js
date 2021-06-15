@@ -23,7 +23,7 @@ productRouter.get('/:id', expressAsyncHandler(async (req,res) =>{
     }
     else{
         res.status(404).send({ message: 'Product Not Found'})
-    }
+    }   
 }))
 
 export default productRouter
