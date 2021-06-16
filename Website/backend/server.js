@@ -32,7 +32,7 @@ app.get('/', (req, res) => {
 	res.send('Server is ready')
 })
 
-//errors
+//error messages
 app.use((err, req, res, next) => {
 	res.status(500).send({ message: err.message })
 })
