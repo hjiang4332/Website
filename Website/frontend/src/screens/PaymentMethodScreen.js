@@ -1,12 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { savePaymentMethod } from '../actions/cartActions'
+import CheckoutSteps from '../components/CheckoutSteps'
 
-export default function PaymentMethodScreen() {
+export default function PaymentMethodScreen(props) {
+    //need shipping address saved before you can go to payment screen
+	const cart = useSelector((state) => state.cart)
+	const { shippingAddress } = cart
+	if (!shippingAddress.address) {
+		props.history.push('/shipping')
+	}
+
+	const [paymentMethod, setPaymentMethod] = useState('PayPal')
+	const dispatch = useDispatch()
+	const submitHandler = (e) => {
+		e.preventDefault()
+		dispatch(savePaymentMethod(paymentMethod))
+		props.history.push('/placeorder')
+	}
+
 	return (
 		<div>
 			<CheckoutSteps step1 step2 step3></CheckoutSteps>
 			<form className='form' onSubmit={submitHandler}>
 				<div>
-					<h1>Payment</h1>
+					<h1>Payment Method</h1>
 				</div>
 
 				<div>
@@ -32,7 +50,6 @@ export default function PaymentMethodScreen() {
 							value='Stripe'
 							name='paymentMethod'
 							required
-							checked
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
 						<label htmlFor='stripe'>Stripe</label>
