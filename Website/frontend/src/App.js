@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { signout } from './actions/userActions'
 
+//screens
 import CartScreen from './screens/CartScreen'
 import HomeScreen from './screens/HomeScreen'
 import PaymentMethodScreen from './screens/PaymentMethodScreen'
