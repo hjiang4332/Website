@@ -2,13 +2,10 @@ import { compose, applyMiddleware, createStore, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
 
 //reducers
-import {
-	productDetailsReducer,
-	productListReducer,
-} from './reducers/productReducers'
+import {productDetailsReducer, productListReducer,} from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducers'
-import { orderCreateReducer } from './reducers/orderReducers'
+import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducers/orderReducers'
 
 //load previous items from cache / save stuff into local storage
 const initialState = {
@@ -36,6 +33,8 @@ const reducer = combineReducers({
 	userSignin: userSigninReducer,
 	userRegister: userRegisterReducer,
 	orderCreate: orderCreateReducer,
+	orderDetails: orderDetailsReducer,
+	orderPay: orderPayReducer,
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
