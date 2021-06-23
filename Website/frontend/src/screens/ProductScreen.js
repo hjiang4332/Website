@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import Rating from '../components/Rating'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { detailsProduct } from '../actions/productActions'
+
+import Rating from '../components/Rating'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
-import { detailsProduct } from '../actions/productActions'
 
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
 	const productId = props.match.params.id
 
 	const [qty, setQty] = useState(1)
-
 	const productDetails = useSelector((state) => state.productDetails)
+
 	const { loading, error, product } = productDetails
 
 	useEffect(() => {
 		dispatch(detailsProduct(productId))
 	}, [dispatch, productId])
-
 	const addToCartHandler = () => {
 		props.history.push(`/cart/${productId}?qty=${qty}`)
 	}
@@ -45,13 +45,16 @@ export default function ProductScreen(props) {
 								<li>
 									<h1>{product.name}</h1>
 								</li>
+
 								<li>
 									<Rating
 										rating={product.rating}
 										numReviews={product.numReviews}
-									/>
+									></Rating>
 								</li>
-								<li>Price: ${product.price}</li>
+
+								<li>Price ${product.price}</li>
+								
 								<li>
 									<p>Description: {product.description}</p>
 								</li>
@@ -63,8 +66,9 @@ export default function ProductScreen(props) {
 								<ul>
 									<li>
 										<div className='row'>
+											<div>Price</div>
 											<div className='price'>
-												Price: ${product.price}
+												${product.price}
 											</div>
 										</div>
 									</li>
@@ -90,7 +94,7 @@ export default function ProductScreen(props) {
 										<>
 											<li>
 												<div className='row'>
-													<div>Quantity:</div>
+													<div>Quantity</div>
 													<div>
 														<select
 															value={qty}
@@ -119,17 +123,17 @@ export default function ProductScreen(props) {
 													</div>
 												</div>
 											</li>
+
+											<li>
+												<button
+													onClick={addToCartHandler}
+													className='primary block'
+												>
+													Add to Cart
+												</button>
+											</li>
 										</>
 									)}
-
-									<li>
-										<button
-											onClick={addToCartHandler}
-											className='primary block'
-										>
-											Add to Cart
-										</button>
-									</li>
 								</ul>
 							</div>
 						</div>

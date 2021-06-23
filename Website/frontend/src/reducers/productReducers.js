@@ -7,10 +7,7 @@ import {
 	PRODUCT_LIST_SUCCESS,
 } from '../constants/productConstants'
 
-export const productListReducer = (
-	state = { loading: true, products: [] },
-	action
-) => {
+export const productListReducer = ( state = { loading: true, products: [] }, action ) => {
 	switch (action.type) {
 		case PRODUCT_LIST_REQUEST:
 			return { loading: true }
@@ -23,10 +20,7 @@ export const productListReducer = (
 	}
 }
 
-export const productDetailsReducer = (
-	state = { product: {}, loading: true },
-	action
-) => {
+export const productDetailsReducer = ( state = { product: {}, loading: true }, action) => {
 	switch (action.type) {
 		case PRODUCT_DETAILS_REQUEST:
 			return { loading: true }

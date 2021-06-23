@@ -201,6 +201,10 @@ img.large {
 	color: #a02020;
 	background-color: #ffe0e0;
 }
+.alert-success {
+  color: #20a020;
+  background-color: #eeffe0;
+}
 
 /* forms */
 .form {
@@ -216,7 +220,6 @@ img.large {
 
 .form label {
 	margin: 1rem 0;
-	display: block;
 }
 
 /* Dropdown */
@@ -240,4 +243,18 @@ img.large {
 
 .dropdown:hover .dropdown-content {
 	display: block;
+}
+
+/* Checkout Steps */
+.checkout-steps > div {
+	border-top: 0.3rem #c0c0c0 solid;
+	color: #c0c0c0;
+	flex: 1;
+	padding: 1rem;
+	font-weight: bold;
+}
+
+.checkout-steps > div.active {
+	border-top-color: #f08000;
+	color: #f08000;
 }

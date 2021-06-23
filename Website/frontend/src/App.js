@@ -3,10 +3,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { signout } from './actions/userActions'
 
+//screens
 import CartScreen from './screens/CartScreen'
 import HomeScreen from './screens/HomeScreen'
+import OrderScreen from './screens/OrderScreen'
+import PaymentMethodScreen from './screens/PaymentMethodScreen'
+import PlaceOrderScreen from './screens/PlaceOrderScreen'
 import ProductScreen from './screens/ProductScreen'
 import RegisterScreen from './screens/RegisterScreen'
+import ShippingAddressScreen from './screens/ShippingAddressScreen'
 import SigninScreen from './screens/SigninScreen'
 
 function App() {
@@ -65,6 +70,10 @@ function App() {
 					<Route path='/product/:id' component={ProductScreen} />
 					<Route path='/signin' component={SigninScreen} />
 					<Route path='/register' component={RegisterScreen} />
+					<Route path='/shipping' component={ShippingAddressScreen} />
+					<Route path='/payment' component={PaymentMethodScreen} />
+					<Route path='/placeorder' component={PlaceOrderScreen} />
+					<Route path='/order/:id' component={OrderScreen} />
 					<Route path='/' component={HomeScreen} exact />
 				</main>
 
