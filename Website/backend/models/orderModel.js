@@ -1,4 +1,3 @@
-import { createHashHistory } from 'history'
 import mongoose from 'mongoose'
 
 const orderSchema = new mongoose.Schema(
@@ -30,18 +29,21 @@ const orderSchema = new mongoose.Schema(
 		shippingPrice: { type: Number, required: true },
 		taxPrice: { type: Number, required: true },
 		totalPrice: { type: Number, required: true },
-
-		use: {
+		
+		user: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: 'User',
 			required: true,
 		},
+
 		isPaid: { type: Boolean, default: false },
 		paidDate: { type: Date },
 		isDelivered: { type: Boolean, default: false },
 		deliveredDate: { type: Date },
 	},
 	{
-		timeStamps: true,
+		timestamps: true,
 	}
 )
+const Order = mongoose.model('Order', orderSchema)
+export default Order
