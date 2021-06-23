@@ -21,7 +21,7 @@ orderRouter.post(
 				shippingPrice: req.body.shippingPrice,
 				taxPrice: req.body.taxPrice,
 				totalPrice: req.body.totalPrice,
-				user: req.user.id,
+				user: req.user._id,
 			})
 
 			const createdOrder = await order.save()

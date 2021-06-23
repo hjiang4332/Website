@@ -26,9 +26,6 @@ export default function OrderScreen(props) {
 	} = orderPay
 
 	const dispatch = useDispatch()
-	/*useEffect(() => {
-		dispatch(getOrderDetails(orderId))
-	}, [dispatch, orderId])*/
 
 	useEffect(() => {
 		//create the element with JS

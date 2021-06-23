@@ -7,9 +7,9 @@ import {
 	ORDER_DETAILS_FAIL,
 	ORDER_DETAILS_REQUEST,
 	ORDER_DETAILS_SUCCESS,
-    ORDER_PAY_FAIL,
-    ORDER_PAY_REQUEST,
-    ORDER_PAY_SUCCESS,
+	ORDER_PAY_FAIL,
+	ORDER_PAY_REQUEST,
+	ORDER_PAY_SUCCESS,
 } from '../constants/orderConstants'
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -18,13 +18,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
 		const {
 			userSignin: { userInfo },
 		} = getState()
-
 		const { data } = await Axios.post('/api/orders', order, {
 			headers: {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		})
-
 		dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order })
 		dispatch({ type: EMPTY_CART })
 		localStorage.removeItem('cartItems')
@@ -59,13 +57,16 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
 }
 
 //Order Screen: pay order handler
-export const payOrder = (order, paymentResult) => async (dispatch, getState) => {
+export const payOrder =
+	(order, paymentResult) => async (dispatch, getState) => {
 		dispatch({ type: ORDER_PAY_REQUEST, payload: { order, paymentResult } })
 		const {
 			userSignin: { userInfo },
 		} = getState()
 		try {
-			const { data } = Axios.put(`/api/orders/${order._id}/pay`, paymentResult,
+			const { data } = Axios.put(
+				`/api/orders/${order._id}/pay`,
+				paymentResult,
 				{
 					headers: { Authorization: `Bearer ${userInfo.token}` },
 				}
