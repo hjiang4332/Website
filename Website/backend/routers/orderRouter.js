@@ -47,7 +47,7 @@ orderRouter.get(
 	})
 )
 
-//OrderScreen: 
+//OrderScreen:
 orderRouter.put(
 	'/:id/pay',
 	isAuth,
@@ -55,7 +55,7 @@ orderRouter.put(
 		const order = await Order.findById(req.params.id)
 		if (order) {
 			order.isPaid = true
-			order.paidAt = Date.now()
+			order.paidDate = Date.now()
 			order.paymentResult = {
 				id: req.body.id,
 				status: req.body.status,
@@ -69,8 +69,5 @@ orderRouter.put(
 		}
 	})
 )
-
-
-
 
 export default orderRouter
