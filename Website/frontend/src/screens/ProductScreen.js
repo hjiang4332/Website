@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { detailsProduct } from '../actions/productActions'
-
-import Rating from '../components/Rating'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+import Rating from '../components/Rating'
 
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
@@ -19,9 +18,11 @@ export default function ProductScreen(props) {
 	useEffect(() => {
 		dispatch(detailsProduct(productId))
 	}, [dispatch, productId])
+
 	const addToCartHandler = () => {
 		props.history.push(`/cart/${productId}?qty=${qty}`)
 	}
+
 	return (
 		<div>
 			{loading ? (
@@ -53,10 +54,11 @@ export default function ProductScreen(props) {
 									></Rating>
 								</li>
 
-								<li>Price ${product.price}</li>
-								
+								<li>Price : ${product.price}</li>
+
 								<li>
-									<p>Description: {product.description}</p>
+									Description:
+									<p>{product.description}</p>
 								</li>
 							</ul>
 						</div>

@@ -1,13 +1,18 @@
-import { compose, applyMiddleware, createStore, combineReducers } from 'redux'
+import { createStore, compose, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-
-//reducers
-import {productDetailsReducer, productListReducer,} from './reducers/productReducers'
 import { cartReducer } from './reducers/cartReducers'
+import {
+	orderCreateReducer,
+	orderDetailsReducer,
+	orderHistoryReducer,
+	orderPayReducer,
+} from './reducers/orderReducers'
+import {
+	productDetailsReducer,
+	productListReducer,
+} from './reducers/productReducers'
 import { userRegisterReducer, userSigninReducer } from './reducers/userReducers'
-import { orderCreateReducer, orderDetailsReducer, orderPayReducer } from './reducers/orderReducers'
 
-//load previous items from cache / save stuff into local storage
 const initialState = {
 	userSignin: {
 		userInfo: localStorage.getItem('userInfo')
@@ -24,8 +29,6 @@ const initialState = {
 		paymentMethod: 'PayPal',
 	},
 }
-
-//reducers
 const reducer = combineReducers({
 	productList: productListReducer,
 	productDetails: productDetailsReducer,
@@ -35,8 +38,8 @@ const reducer = combineReducers({
 	orderCreate: orderCreateReducer,
 	orderDetails: orderDetailsReducer,
 	orderPay: orderPayReducer,
+	orderHistoryList: orderHistoryReducer,
 })
-
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(
 	reducer,

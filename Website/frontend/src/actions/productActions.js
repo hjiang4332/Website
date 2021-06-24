@@ -13,7 +13,7 @@ export const listProducts = () => async (dispatch) => {
 		type: PRODUCT_LIST_REQUEST,
 	})
 	try {
-		const { data } = await Axios.get('api/products')
+		const { data } = await Axios.get('/api/products')
 		dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
 	} catch (error) {
 		dispatch({ type: PRODUCT_LIST_FAIL, payload: error.message })

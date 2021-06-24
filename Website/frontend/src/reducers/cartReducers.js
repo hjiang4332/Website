@@ -10,21 +10,18 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 	switch (action.type) {
 		case CART_ADD_ITEM:
 			const item = action.payload
-			const existingItem = state.cartItems.find(
+			const itemExists = state.cartItems.find(
 				(x) => x.product === item.product
 			)
-			if (existingItem) {
+			if (itemExists) {
 				return {
 					...state,
 					cartItems: state.cartItems.map((x) =>
-						x.product === existingItem.product ? item : x
+						x.product === itemExists.product ? item : x
 					),
 				}
 			} else {
-				return {
-					...state,
-					cartItems: [...state.cartItems, item], //adds item to the end of cartItems
-				}
+				return { ...state, cartItems: [...state.cartItems, item] }
 			}
 		case CART_REMOVE_ITEM:
 			return {
@@ -33,19 +30,10 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 					(x) => x.product !== action.payload
 				),
 			}
-
 		case CART_SAVE_SHIPPING_ADDRESS:
-			return {
-				...state,
-				shippingAddress: action.payload,
-			}
-
+			return { ...state, shippingAddress: action.payload }
 		case CART_SAVE_PAYMENT_METHOD:
-			return {
-				...state,
-				paymentMethod: action.payload,
-			}
-
+			return { ...state, paymentMethod: action.payload }
 		case EMPTY_CART:
 			return { ...state, cartItems: [] }
 		default:

@@ -5,7 +5,16 @@ import { isAuth } from '../utils.js'
 
 const orderRouter = express.Router()
 
-//OrderActions/placeOrderScreen: create an order
+// OrderActions - > placeOrderScreen: create an order
+orderRouter.get(
+	'/mine',
+	isAuth,
+	expressAsyncHandler(async (req, res) => {
+		const orders = await Order.find({ user: req.user._id })
+		res.send(orders)
+	})
+)
+
 orderRouter.post(
 	'/',
 	isAuth,
@@ -21,9 +30,8 @@ orderRouter.post(
 				shippingPrice: req.body.shippingPrice,
 				taxPrice: req.body.taxPrice,
 				totalPrice: req.body.totalPrice,
-				user: req.user.id,
+				user: req.user._id,
 			})
-
 			const createdOrder = await order.save()
 			res.status(201).send({
 				message: 'New Order Created',
@@ -64,6 +72,7 @@ orderRouter.put(
 			}
 			const updatedOrder = await order.save()
 			res.send({ message: 'Order Paid', order: updatedOrder })
+			// await Order.remove({})
 		} else {
 			res.status(404).send({ message: 'Order Not Found' })
 		}

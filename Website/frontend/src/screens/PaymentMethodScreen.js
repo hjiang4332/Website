@@ -4,7 +4,7 @@ import { savePaymentMethod } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
 
 export default function PaymentMethodScreen(props) {
-    //need shipping address saved before you can go to payment screen
+	//need shipping address saved before you can go to payment screen
 	const cart = useSelector((state) => state.cart)
 	const { shippingAddress } = cart
 	if (!shippingAddress.address) {
@@ -12,6 +12,7 @@ export default function PaymentMethodScreen(props) {
 	}
 
 	const [paymentMethod, setPaymentMethod] = useState('PayPal')
+
 	const dispatch = useDispatch()
 	const submitHandler = (e) => {
 		e.preventDefault()
@@ -57,6 +58,7 @@ export default function PaymentMethodScreen(props) {
 				</div>
 
 				<div>
+					<label />
 					<button className='primary' type='submit'>
 						Continue
 					</button>
