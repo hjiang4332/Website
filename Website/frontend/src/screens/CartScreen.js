@@ -1,19 +1,16 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToCart, removeFromCart } from '../actions/cartActions'
-
-import MessageBox from '../components/MessageBox'
 import { Link } from 'react-router-dom'
+import { addToCart, removeFromCart } from '../actions/cartActions'
+import MessageBox from '../components/MessageBox'
 
 export default function CartScreen(props) {
 	const productId = props.match.params.id
 	const qty = props.location.search
 		? Number(props.location.search.split('=')[1])
 		: 1
-
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
-
 	const dispatch = useDispatch()
 	useEffect(() => {
 		if (productId) {
@@ -22,6 +19,7 @@ export default function CartScreen(props) {
 	}, [dispatch, productId, qty])
 
 	const removeFromCartHandler = (id) => {
+		// delete action
 		dispatch(removeFromCart(id))
 	}
 
@@ -34,9 +32,7 @@ export default function CartScreen(props) {
 				<h1>Shopping Cart</h1>
 				{cartItems.length === 0 ? (
 					<MessageBox>
-						Your cart is empty.
-						<br />
-						<Link to='/'>Go To Homepage</Link>
+						Your cart is empty. <Link to='/'>Go Shopping</Link>
 					</MessageBox>
 				) : (
 					<ul>
@@ -99,7 +95,7 @@ export default function CartScreen(props) {
 												)
 											}
 										>
-											Delete Item
+											Delete
 										</button>
 									</div>
 								</div>
@@ -108,8 +104,7 @@ export default function CartScreen(props) {
 					</ul>
 				)}
 			</div>
-
-			<div className='col 1'>
+			<div className='col-1'>
 				<div className='card card-body'>
 					<ul>
 						<li>

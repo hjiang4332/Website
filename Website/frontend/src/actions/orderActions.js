@@ -7,9 +7,12 @@ import {
 	ORDER_DETAILS_FAIL,
 	ORDER_DETAILS_REQUEST,
 	ORDER_DETAILS_SUCCESS,
-    ORDER_PAY_FAIL,
-    ORDER_PAY_REQUEST,
-    ORDER_PAY_SUCCESS,
+	ORDER_PAY_REQUEST,
+	ORDER_PAY_FAIL,
+	ORDER_PAY_SUCCESS,
+	ORDER_HISTORY_REQUEST,
+	ORDER_HISTORY_FAIL,
+	ORDER_HISTORY_SUCCESS,
 } from '../constants/orderConstants'
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -18,13 +21,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
 		const {
 			userSignin: { userInfo },
 		} = getState()
-
 		const { data } = await Axios.post('/api/orders', order, {
 			headers: {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		})
-
 		dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order })
 		dispatch({ type: EMPTY_CART })
 		localStorage.removeItem('cartItems')
@@ -59,13 +60,16 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
 }
 
 //Order Screen: pay order handler
-export const payOrder = (order, paymentResult) => async (dispatch, getState) => {
+export const payOrder =
+	(order, paymentResult) => async (dispatch, getState) => {
 		dispatch({ type: ORDER_PAY_REQUEST, payload: { order, paymentResult } })
 		const {
 			userSignin: { userInfo },
 		} = getState()
 		try {
-			const { data } = Axios.put(`/api/orders/${order._id}/pay`, paymentResult,
+			const { data } = Axios.put(
+				`/api/orders/${order._id}/pay`,
+				paymentResult,
 				{
 					headers: { Authorization: `Bearer ${userInfo.token}` },
 				}
@@ -79,3 +83,24 @@ export const payOrder = (order, paymentResult) => async (dispatch, getState) => 
 			dispatch({ type: ORDER_PAY_FAIL, payload: message })
 		}
 	}
+
+export const listMyOrder = () => async (dispatch, getState) => {
+	dispatch({ type: ORDER_HISTORY_REQUEST })
+	const {
+		userSignin: { userInfo },
+	} = getState()
+	try {
+		const { data } = await Axios.get('/api/orders/mine', {
+			headers: {
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		})
+		dispatch({ type: ORDER_HISTORY_SUCCESS, payload: data })
+	} catch (error) {
+		const message =
+			error.response && error.response.data.message
+				? error.response.data.message
+				: error.message
+		dispatch({ type: ORDER_HISTORY_FAIL, payload: message })
+	}
+}

@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import CheckoutSteps from '../components/CheckoutSteps'
 import { Link } from 'react-router-dom'
 import { createOrder } from '../actions/orderActions'
+import CheckoutSteps from '../components/CheckoutSteps'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
 export default function PlaceOrderScreen(props) {
+	//Must select payment option before placing order
 	const cart = useSelector((state) => state.cart)
 	if (!cart.paymentMethod) {
 		props.history.push('/payment')
 	}
 
-  	const orderCreate = useSelector((state) => state.orderCreate)
-  	const { loading, success, error, order } = orderCreate
+	const orderCreate = useSelector((state) => state.orderCreate)
+	const { loading, success, error, order } = orderCreate
 
 	//calculate prices
 	const toPrice = (num) => Number(num.toFixed(2))
@@ -50,10 +51,10 @@ export default function PlaceOrderScreen(props) {
 								<p>
 									<strong>Name:</strong>{' '}
 									{cart.shippingAddress.fullName} <br />
-									<strong>Address:</strong>{' '}
+									<strong>Address: </strong>{' '}
 									{cart.shippingAddress.address},
 									{cart.shippingAddress.city},{' '}
-									{cart.shippingAddress.postalCode},{' '}
+									{cart.shippingAddress.postalCode},
 									{cart.shippingAddress.country}
 								</p>
 							</div>
@@ -61,8 +62,11 @@ export default function PlaceOrderScreen(props) {
 
 						<li>
 							<div className='card card-body'>
-								<h2>Payment Method:</h2> {cart.paymentMethod}
-								<br />
+								<h2>Payment</h2>
+								<p>
+									<strong>Method:</strong>{' '}
+									{cart.paymentMethod}
+								</p>
 							</div>
 						</li>
 
@@ -78,9 +82,8 @@ export default function PlaceOrderScreen(props) {
 														src={item.image}
 														alt={item.name}
 														className='small'
-													/>
+													></img>
 												</div>
-
 												<div className='min-30'>
 													<Link
 														to={`/product/${item.product}`}
@@ -133,7 +136,7 @@ export default function PlaceOrderScreen(props) {
 							<li>
 								<div className='row'>
 									<div>
-										<strong>Total</strong>
+										<strong> Order Total</strong>
 									</div>
 									<div>
 										<strong>
@@ -150,7 +153,7 @@ export default function PlaceOrderScreen(props) {
 									className='primary block'
 									disabled={cart.cartItems.length === 0}
 								>
-									Place your order
+									Place Order
 								</button>
 							</li>
 

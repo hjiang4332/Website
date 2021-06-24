@@ -1,4 +1,3 @@
-/* Main */
 html {
 	font-size: 62.5%; /* 16px x 62.5 = 10px = 1rem */
 	box-sizing: border-box;
@@ -39,7 +38,6 @@ footer {
 	background-color: #203040;
 	color: #ffffff;
 }
-
 /* Common */
 h1 {
 	font-size: 1.8rem;
@@ -64,7 +62,6 @@ ul {
 li {
 	margin-top: 1rem;
 }
-
 input,
 select,
 textarea,
@@ -77,12 +74,10 @@ button {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
 button {
 	background-color: #f8f8f8;
 	cursor: pointer;
 }
-
 input:hover,
 select:hover,
 textarea:hover,
@@ -95,7 +90,9 @@ button.primary {
 button.block {
 	width: 100%;
 }
-
+button.small {
+	font-size: 1.2rem;
+}
 /* Header */
 header a {
 	color: #ffffff;
@@ -168,7 +165,6 @@ img.large {
 .price {
 	font-size: 2rem;
 }
-
 /* Rating */
 .rating span {
 	color: #f0c040;
@@ -177,7 +173,6 @@ img.large {
 .rating span:last-child {
 	color: #404040;
 }
-
 /* Alert */
 .loading {
 	display: block !important;
@@ -202,32 +197,27 @@ img.large {
 	background-color: #ffe0e0;
 }
 .alert-success {
-  color: #20a020;
-  background-color: #eeffe0;
+	color: #20a020;
+	background-color: #eeffe0;
 }
-
-/* forms */
+/* Form */
 .form {
 	max-width: 60rem;
 	margin: 0 auto;
 }
-
 .form > div {
 	display: flex;
 	flex-direction: column;
 	margin: 1rem;
 }
-
 .form label {
 	margin: 1rem 0;
 }
-
 /* Dropdown */
 .dropdown {
 	display: inline-block;
 	position: relative;
 }
-
 .dropdown-content {
 	position: absolute;
 	display: none;
@@ -240,11 +230,9 @@ img.large {
 	margin-top: 0.4rem;
 	border-radius: 0.5rem;
 }
-
 .dropdown:hover .dropdown-content {
 	display: block;
 }
-
 /* Checkout Steps */
 .checkout-steps > div {
 	border-top: 0.3rem #c0c0c0 solid;
@@ -253,8 +241,24 @@ img.large {
 	padding: 1rem;
 	font-weight: bold;
 }
-
 .checkout-steps > div.active {
 	border-top-color: #f08000;
 	color: #f08000;
+}
+/* Table */
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.table tbody tr:nth-of-type(odd) {
+	background-color: #f4f4f4;
+}
+.table td,
+.table th {
+	text-align: left;
+	border: 0.1rem solid #e4e4e4;
+	padding: 0.5rem;
+}
+.table button {
+	margin: 0 0.2rem;
 }

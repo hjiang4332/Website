@@ -1,4 +1,3 @@
-/* Entry point of backend application */
 import express from 'express'
 import mongoose from 'mongoose'
 import dotenv from 'dotenv'
@@ -19,7 +18,7 @@ app.use(express.urlencoded({ extended: true }))
 mongoose.connect(
 	process.env.MONGODB_URL || 'mongodb://localhost/classyjewelry',
 	{
-		useNewUrlParser: true, //get rid of warnings
+		useNewUrlParser: true,
 		useUnifiedTopology: true,
 		useCreateIndex: true,
 	}

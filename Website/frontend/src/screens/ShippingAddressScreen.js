@@ -36,6 +36,7 @@ export default function ShippingAddressScreen(props) {
 		)
 		props.history.push('/payment')
 	}
+
 	return (
 		<div>
 			<CheckoutSteps step1 step2></CheckoutSteps>
