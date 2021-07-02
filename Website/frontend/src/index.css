@@ -38,6 +38,7 @@ footer {
 	background-color: #203040;
 	color: #ffffff;
 }
+
 /* Common */
 h1 {
 	font-size: 1.8rem;
@@ -93,6 +94,7 @@ button.block {
 button.small {
 	font-size: 1.2rem;
 }
+
 /* Header */
 header a {
 	color: #ffffff;
@@ -127,6 +129,7 @@ a.brand {
 	flex: 1 1 25rem;
 }
 .col-2 {
+	/*item image*/
 	flex: 2 1 50rem;
 }
 .min-30 {

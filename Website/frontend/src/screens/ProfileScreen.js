@@ -85,6 +85,7 @@ export default function ProfileScreen() {
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</div>
+
 						<div>
 							<label htmlFor='email'>Email</label>
 							<input
@@ -93,10 +94,12 @@ export default function ProfileScreen() {
 								placeholder='Enter email'
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}
+								disabled
 							/>
 						</div>
+
 						<div>
-							<label htmlFor='password'>Password</label>
+							<label htmlFor='password'>New Password</label>
 							<input
 								id='password'
 								type='password'
@@ -104,9 +107,10 @@ export default function ProfileScreen() {
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
+
 						<div>
 							<label htmlFor='confirmPassword'>
-								confirm Password
+								Confirm New Password
 							</label>
 							<input
 								id='confirmPassword'
@@ -117,6 +121,7 @@ export default function ProfileScreen() {
 								}
 							/>
 						</div>
+
 						<div>
 							<label />
 							<button className='primary' type='submit'>
