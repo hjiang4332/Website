@@ -18,6 +18,7 @@ import ProfileScreen from './screens/ProfileScreen'
 import RegisterScreen from './screens/RegisterScreen'
 import ShippingAddressScreen from './screens/ShippingAddressScreen'
 import SigninScreen from './screens/SigninScreen'
+import ProductEditScreen from './screens/ProductEditScreen'
 
 function App() {
 	//get card data from redux
@@ -108,7 +109,16 @@ function App() {
 				</header>
 				<main>
 					<Route path='/cart/:id?' component={CartScreen} />
-					<Route path='/product/:id' component={ProductScreen} />
+					<Route
+						path='/product/:id'
+						component={ProductScreen}
+						exact
+					/>
+					<Route
+						path='/product/:id/edit'
+						component={ProductEditScreen}
+						exact
+					/>
 					<Route path='/signin' component={SigninScreen} />
 					<Route path='/register' component={RegisterScreen} />
 					<Route path='/shipping' component={ShippingAddressScreen} />
