@@ -223,6 +223,12 @@ function App() {
 						exact
 					/>
 
+					<Route
+						path='/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order'
+						component={SearchScreen}
+						exact
+					></Route>
+
 					<PrivateRoute
 						path='/profile'
 						component={ProfileScreen}
