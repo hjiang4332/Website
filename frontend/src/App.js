@@ -54,6 +54,7 @@ function App() {
 		categories,
 	} = productCategoryList
 
+	//get Categories
 	useEffect(() => {
 		dispatch(listProductCategories())
 	}, [dispatch])
@@ -62,15 +63,14 @@ function App() {
 		<BrowserRouter>
 			<div className='grid-container'>
 				<header className='row'>
-					<button
-						type='button'
-						className='open-sidebar'
-						onClick={() => setSidebarIsOpen(true)}
-					>
-						<i className='fa fa-bars'></i>
-					</button>
-
 					<div>
+						<button
+							type='button'
+							className='open-sidebar'
+							onClick={() => setSidebarIsOpen(true)}
+						>
+							<i className='fa fa-bars'></i>
+						</button>
 						<Link className='brand' to='/'>
 							Classy Jewelry
 						</Link>

@@ -36,6 +36,7 @@ export const listProducts =
 		}
 	}
 
+//get categories from product
 export const listProductCategories = () => async (dispatch) => {
 	dispatch({
 		type: PRODUCT_CATEGORY_LIST_REQUEST,

@@ -38,7 +38,6 @@ footer {
 	background-color: #203040;
 	color: #ffffff;
 }
-
 /* Common */
 h1 {
 	font-size: 1.8rem;
@@ -94,7 +93,6 @@ button.block {
 button.small {
 	font-size: 1.2rem;
 }
-
 /* Header */
 header a {
 	color: #ffffff;
@@ -125,17 +123,24 @@ a.brand {
 .row.top {
 	align-items: flex-start;
 }
+.row.start {
+	justify-content: flex-start;
+}
 .col-1 {
 	flex: 1 1 25rem;
 }
 .col-2 {
-	/*item image*/
 	flex: 2 1 50rem;
+}
+.col-3 {
+	flex: 32 1 75rem;
 }
 .min-30 {
 	min-width: 30rem;
 }
-
+.p-1 {
+	padding: 1rem;
+}
 /* Aside */
 aside {
 	position: fixed;
@@ -302,8 +307,12 @@ img.large {
 .table button {
 	margin: 0 0.2rem;
 }
+/* Carousel */
+.carousel .slide img {
+	max-width: 30rem;
+}
 
-/* Search box */
+/* Search */
 .search button {
 	border-radius: 0 0.5rem 0.5rem 0;
 	border-right: none;

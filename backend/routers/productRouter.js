@@ -24,7 +24,7 @@ productRouter.get(
 	})
 )
 
-//categories for search ^
+//get distinct categories from products
 productRouter.get(
 	'/categories',
 	expressAsyncHandler(async (req, res) => {

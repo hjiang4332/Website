@@ -34,6 +34,7 @@ export default function SearchScreen(props) {
 		)
 	}, [category, dispatch, name])
 
+	//filter for correct link with category
 	const getFilterUrl = (filter) => {
 		const filterCategory = filter.category || category
 		const filterName = filter.name || name
