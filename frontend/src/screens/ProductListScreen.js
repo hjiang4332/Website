@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import {
 	createProduct,
 	deleteProduct,
@@ -13,9 +14,12 @@ import {
 } from '../constants/productConstants'
 
 export default function ProductListScreen(props) {
+	//pagination
+	const { pageNumber = 1 } = useParams()
+
 	//get productList from redux store - display products
 	const productList = useSelector((state) => state.productList)
-	const { loading, error, products } = productList
+	const { loading, error, products, page, pages } = productList
 
 	//get productCreate from redux store - create products
 	const productCreate = useSelector((state) => state.productCreate)
@@ -43,8 +47,15 @@ export default function ProductListScreen(props) {
 		if (successDelete) {
 			dispatch({ type: PRODUCT_DELETE_RESET })
 		}
-		dispatch(listProducts({}))
-	}, [createdProduct, dispatch, props.history, successCreate, successDelete])
+		dispatch(listProducts({ pageNumber }))
+	}, [
+		createdProduct,
+		dispatch,
+		props.history,
+		successCreate,
+		successDelete,
+		pageNumber,
+	])
 
 	const deleteHandler = (product) => {
 		if (window.confirm('Are you sure you want to delete?')) {
