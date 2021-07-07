@@ -19,6 +19,7 @@ import RegisterScreen from './screens/RegisterScreen'
 import ShippingAddressScreen from './screens/ShippingAddressScreen'
 import SigninScreen from './screens/SigninScreen'
 import ProductEditScreen from './screens/ProductEditScreen'
+import OrderListScreen from './screens/OrderListScreen'
 
 function App() {
 	//get card data from redux
@@ -138,6 +139,7 @@ function App() {
 						path='/productlist'
 						component={ProductListScreen}
 					/>
+					<AdminRoute path='/orderlist' component={OrderListScreen} />
 					<Route path='/' component={HomeScreen} exact />
 				</main>
 				<footer className='row center'>All right reserved</footer>
