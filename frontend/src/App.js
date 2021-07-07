@@ -4,6 +4,8 @@ import { BrowserRouter, Link, Route } from 'react-router-dom'
 import { signout } from './actions/userActions'
 import PrivateRoute from './components/PrivateRoute'
 import AdminRoute from './components/AdminRoute'
+import SearchBox from './components/SearchBox'
+import SearchScreen from './screens/SearchScreen'
 
 //screens
 import CartScreen from './screens/CartScreen'
@@ -46,6 +48,15 @@ function App() {
 							Classy Jewelry
 						</Link>
 					</div>
+
+					<div>
+						<Route
+							render={({ history }) => (
+								<SearchBox history={history}></SearchBox>
+							)}
+						></Route>
+					</div>
+
 					<div>
 						<Link to='/cart'>
 							Cart
@@ -132,6 +143,11 @@ function App() {
 						path='/orderhistory'
 						component={OrderHistoryScreen}
 					/>
+					<Route
+						path='/search/name/:name?'
+						component={SearchScreen}
+						exact
+					></Route>
 					<PrivateRoute
 						path='/profile'
 						component={ProfileScreen}
