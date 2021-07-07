@@ -30,6 +30,8 @@ orderRouter.post(
 	'/',
 	isAuth,
 	expressAsyncHandler(async (req, res) => {
+		//await Order.remove({})
+
 		if (req.body.orderItems.length === 0) {
 			res.status(400).send({ message: 'Cart is empty' })
 		} else {
@@ -66,7 +68,7 @@ orderRouter.get(
 	})
 )
 
-//OrderScreen:
+//OrderScreen: pay order
 orderRouter.put(
 	'/:id/pay',
 	isAuth,
@@ -84,6 +86,41 @@ orderRouter.put(
 			const updatedOrder = await order.save()
 			res.send({ message: 'Order Paid', order: updatedOrder })
 			// await Order.remove({})
+		} else {
+			res.status(404).send({ message: 'Order Not Found' })
+		}
+	})
+)
+
+//delete order
+orderRouter.delete(
+	'/:id',
+	isAuth,
+	isAdmin,
+	expressAsyncHandler(async (req, res) => {
+		const order = await Order.findById(req.params.id)
+		if (order) {
+			const deleteOrder = await order.remove()
+			res.send({ message: 'Order Deleted', order: deleteOrder })
+		} else {
+			res.status(404).send({ message: 'Order Not Found' })
+		}
+	})
+)
+
+//deliver order
+orderRouter.put(
+	'/:id/deliver',
+	isAuth,
+	isAdmin,
+	expressAsyncHandler(async (req, res) => {
+		const order = await Order.findById(req.params.id)
+		if (order) {
+			order.isDelivered = true
+			order.deliveredAt = Date.now()
+
+			const updatedOrder = await order.save()
+			res.send({ message: 'Order Delivered', order: updatedOrder })
 		} else {
 			res.status(404).send({ message: 'Order Not Found' })
 		}
