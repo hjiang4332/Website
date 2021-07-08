@@ -10,6 +10,9 @@ const productRouter = express.Router()
 productRouter.get(
 	'/',
 	expressAsyncHandler(async (req, res) => {
+		const pageSize = 5
+		const page = Number(req.query.pageNumber) || 1
+
 		const name = req.query.name || ''
 		const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {}
 
@@ -42,14 +45,24 @@ productRouter.get(
 				? { rating: -1 }
 				: { _id: -1 }
 
+		const count = await Product.count({
+			...nameFilter,
+			...categoryFilter,
+			...priceFilter,
+			...ratingFilter,
+		})
+
 		const products = await Product.find({
 			...nameFilter,
 			...categoryFilter,
 			...priceFilter,
 			...ratingFilter,
-		}).sort(sortOrder)
+		})
+			.sort(sortOrder)
+			.skip(pageSize * (page - 1))
+			.limit(pageSize)
 
-		res.send(products)
+		res.send({ products, page, pages: Math.ceil(count / pageSize) })
 	})
 )
 
