@@ -5,7 +5,6 @@ import { listProducts } from '../actions/productActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import Product from '../components/Product'
-import { PRODUCT_LIST_SUCCESS } from '../constants/productConstants'
 import Rating from '../components/Rating'
 import { prices, ratings } from '../utils'
 
