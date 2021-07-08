@@ -16,6 +16,7 @@ productRouter.get(
 		const category = req.query.category || ''
 		const categoryFilter = category ? { category } : {}
 
+		const order = req.query.order || ''
 		const min =
 			req.query.min && Number(req.query.min) !== 0
 				? Number(req.query.min)
@@ -24,16 +25,14 @@ productRouter.get(
 			req.query.max && Number(req.query.max) !== 0
 				? Number(req.query.max)
 				: 0
-		const priceFilter =
-			min && max ? { price: { $gte: min, $lte: max } } : {}
-
 		const rating =
 			req.query.rating && Number(req.query.rating) !== 0
 				? Number(req.query.rating)
 				: 0
-		const ratingFilter = rating ? { rating: { $gte: rating } } : {}
 
-		const order = req.query.order || ''
+		const priceFilter =
+			min && max ? { price: { $gte: min, $lte: max } } : {}
+		const ratingFilter = rating ? { rating: { $gte: rating } } : {}
 		const sortOrder =
 			order === 'lowest'
 				? { price: 1 }
@@ -43,27 +42,14 @@ productRouter.get(
 				? { rating: -1 }
 				: { _id: -1 }
 
-		const pageSize = 3
-		const page = Number(req.query.pageNumber) || 1
-		const count = await Product.count({
-			...sellerFilter,
-			...nameFilter,
-			...categoryFilter,
-			...priceFilter,
-			...ratingFilter,
-		})
-
 		const products = await Product.find({
 			...nameFilter,
 			...categoryFilter,
 			...priceFilter,
 			...ratingFilter,
-		})
-			.sort(sortOrder)
-			.skip(pageSize * (page - 1))
-			.limit(pageSize)
+		}).sort(sortOrder)
 
-		res.send({ products, page, pages: Math.ceil(count / pageSize) })
+		res.send(products)
 	})
 )
 
