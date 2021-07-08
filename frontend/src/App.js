@@ -252,6 +252,12 @@ function App() {
 						component={UserEditScreen}
 					></AdminRoute>
 					<Route path='/' component={HomeScreen} exact />
+
+					<Route
+						path='/pageNumber/:pageNumber'
+						component={HomeScreen}
+						exact
+					></Route>
 				</main>
 				<footer className='row center'>All right reserved</footer>
 			</div>

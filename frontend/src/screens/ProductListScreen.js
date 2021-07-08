@@ -108,6 +108,7 @@ export default function ProductListScreen(props) {
 								<th>ACTIONS</th>
 							</tr>
 						</thead>
+
 						<tbody>
 							{products.map((product) => (
 								<tr key={product._id}>
@@ -145,6 +146,7 @@ export default function ProductListScreen(props) {
 							))}
 						</tbody>
 					</table>
+
 					<div className='row center pagination'>
 						{[...Array(pages).keys()].map((x) => (
 							<Link
