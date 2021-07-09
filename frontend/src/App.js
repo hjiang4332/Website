@@ -237,6 +237,7 @@ function App() {
 					<AdminRoute
 						path='/productlist'
 						component={ProductListScreen}
+						exact
 					/>
 
 					<AdminRoute
