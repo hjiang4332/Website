@@ -27,6 +27,7 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
+import DashboardScreen from './screens/DashboardScreen'
 
 function App() {
 	//get card data from redux
@@ -252,8 +253,13 @@ function App() {
 						path='/user/:id/edit'
 						component={UserEditScreen}
 					></AdminRoute>
-					<Route path='/' component={HomeScreen} exact />
 
+					<AdminRoute
+						path='/dashboard'
+						component={DashboardScreen}
+					></AdminRoute>
+
+					<Route path='/' component={HomeScreen} exact />
 					<Route
 						path='/pageNumber/:pageNumber'
 						component={HomeScreen}
