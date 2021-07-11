@@ -136,6 +136,16 @@ orderRouter.put(
 				email_address: req.body.email_address,
 			}
 			const updatedOrder = await order.save()
+
+			//subtract count in stock by amount paid for
+			for (const index in updatedOrder.orderItems) {
+				const item = updatedOrder.orderItems[index]
+				const product = await Product.findById(item.product)
+				product.countInStock -= item.qty
+				product.sold += item.qty
+				await product.save()
+			}
+
 			res.send({ message: 'Order Paid', order: updatedOrder })
 			// await Order.remove({})
 		} else {
