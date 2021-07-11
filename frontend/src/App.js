@@ -28,6 +28,8 @@ import OrderListScreen from './screens/OrderListScreen'
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
 import DashboardScreen from './screens/DashboardScreen'
+import SupportScreen from './screens/SupportScreen'
+import ChatBox from './components/ChatBox'
 
 function App() {
 	//get card data from redux
@@ -136,14 +138,21 @@ function App() {
 									<li>
 										<Link to='/dashboard'>Dashboard</Link>
 									</li>
+
 									<li>
 										<Link to='/productlist'>Products</Link>
 									</li>
+
 									<li>
 										<Link to='/orderlist'>Orders</Link>
 									</li>
+
 									<li>
 										<Link to='/userlist'>Users</Link>
+									</li>
+
+									<li>
+										<Link to='/support'>Support</Link>
 									</li>
 								</ul>
 							</div>
@@ -197,22 +206,24 @@ function App() {
 						component={ProductEditScreen}
 						exact
 					/>
+
 					<Route path='/signin' component={SigninScreen} />
 					<Route path='/register' component={RegisterScreen} />
 					<Route path='/shipping' component={ShippingAddressScreen} />
 					<Route path='/payment' component={PaymentMethodScreen} />
 					<Route path='/placeorder' component={PlaceOrderScreen} />
 					<Route path='/order/:id' component={OrderScreen} />
+
 					<Route
 						path='/orderhistory'
 						component={OrderHistoryScreen}
 					/>
+
 					<Route
 						path='/search/name/:name?'
 						component={SearchScreen}
 						exact
 					/>
-
 					<Route
 						path='/search/category/:category'
 						component={SearchScreen}
@@ -223,12 +234,11 @@ function App() {
 						component={SearchScreen}
 						exact
 					/>
-
 					<Route
 						path='/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber'
 						component={SearchScreen}
 						exact
-					></Route>
+					/>
 
 					<PrivateRoute
 						path='/profile'
@@ -245,28 +255,32 @@ function App() {
 						path='/productlist/pageNumber/:pageNumber'
 						component={ProductListScreen}
 						exact
-					></AdminRoute>
+					/>
 
 					<AdminRoute path='/orderlist' component={OrderListScreen} />
 					<AdminRoute path='/userlist' component={UserListScreen} />
 					<AdminRoute
 						path='/user/:id/edit'
 						component={UserEditScreen}
-					></AdminRoute>
+					/>
 
-					<AdminRoute
-						path='/dashboard'
-						component={DashboardScreen}
-					></AdminRoute>
+					<AdminRoute path='/dashboard' component={DashboardScreen} />
+					<AdminRoute path='/support' component={SupportScreen} />
 
 					<Route path='/' component={HomeScreen} exact />
 					<Route
 						path='/pageNumber/:pageNumber'
 						component={HomeScreen}
 						exact
-					></Route>
+					/>
 				</main>
-				<footer className='row center'>All right reserved</footer>
+
+				<footer className='row center'>
+					{userInfo && !userInfo.isAdmin && (
+						<ChatBox userInfo={userInfo} />
+					)}
+					<div>All rights reserved</div>{' '}
+				</footer>
 			</div>
 		</BrowserRouter>
 	)
