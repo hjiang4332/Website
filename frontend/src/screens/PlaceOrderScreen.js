@@ -153,7 +153,7 @@ export default function PlaceOrderScreen(props) {
 									className='primary block'
 									disabled={cart.cartItems.length === 0}
 								>
-									Place Order
+									Save Order and Go To Payment
 								</button>
 							</li>
 

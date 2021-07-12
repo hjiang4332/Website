@@ -56,6 +56,9 @@ export default function UserListScreen(props) {
 							<th>NAME</th>
 							<th>EMAIL</th>
 							<th>TYPE</th>
+							<th>TOTALSPENT</th>
+							<th>NUMORDERS</th>
+							<th>AVG</th>
 							<th>IS ADMIN</th>
 							<th>ACTIONS</th>
 						</tr>
@@ -67,6 +70,13 @@ export default function UserListScreen(props) {
 								<td>{user.name}</td>
 								<td>{user.email}</td>
 								<td>{user.type}</td>
+								<td>{user.totalSpent}</td>
+								<td>{user.numOrders}</td>
+								<td>
+									{user.totalSpent / user.numOrders > 0
+										? user.totalSpent / user.numOrders
+										: 0}
+								</td>
 								<td>{user.isAdmin ? 'YES' : 'NO'}</td>
 								<td>
 									<button

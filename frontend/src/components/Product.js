@@ -19,15 +19,16 @@ export default function Product(props) {
 					<h2>{product.name}</h2>
 				</Link>
 
+				<Rating
+					rating={product.rating}
+					numReviews={product.numReviews}
+				/>
+
 				<div className='quality'>Quality: {product.quality}</div>
 				<div className='price'>Price: ${product.price}</div>
 				<div className='wsPrice'>
 					Wholesale Price: ${product.wsPrice}
 				</div>
-				<Rating
-					rating={product.rating}
-					numReviews={product.numReviews}
-				/>
 			</div>
 		</div>
 	)

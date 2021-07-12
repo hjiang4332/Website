@@ -74,7 +74,7 @@ userRouter.get(
 	})
 )
 
-//profile screen - prevent 404 error - put updates path profile
+//profile screen - user updates own info - prevent 404 error - put updates path profile
 userRouter.put(
 	'/profile',
 	isAuth,

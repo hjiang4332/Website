@@ -83,7 +83,7 @@ export default function CartScreen(props) {
 									<div>${item.price} ea.</div>
 
 									<div>
-										Total price: ${item.price * item.qty}
+										Total cost: ${item.price * item.qty}
 									</div>
 
 									<div>
@@ -95,7 +95,7 @@ export default function CartScreen(props) {
 												)
 											}
 										>
-											Delete
+											Remove item
 										</button>
 									</div>
 								</div>

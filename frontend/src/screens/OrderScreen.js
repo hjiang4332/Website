@@ -91,7 +91,7 @@ export default function OrderScreen(props) {
 		<MessageBox variant='danger'>{error}</MessageBox>
 	) : (
 		<div>
-			<h1>Order {order._id}</h1>
+			<h1>Order {order._id} has been saved</h1>
 			<div className='row top'>
 				<div className='col-2'>
 					<ul>

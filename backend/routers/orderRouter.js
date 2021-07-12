@@ -146,6 +146,10 @@ orderRouter.put(
 				await product.save()
 			}
 
+			//update user payment totals n stuff
+			user: req.user._id
+			const user = await User.findById(req.params.id)
+
 			res.send({ message: 'Order Paid', order: updatedOrder })
 			// await Order.remove({})
 		} else {
