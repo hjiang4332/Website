@@ -136,7 +136,6 @@ orderRouter.put(
 				email_address: req.body.email_address,
 			}
 			const updatedOrder = await order.save()
-
 			//subtract count in stock by amount paid for
 			for (const index in updatedOrder.orderItems) {
 				const item = updatedOrder.orderItems[index]
@@ -147,11 +146,13 @@ orderRouter.put(
 			}
 
 			//update user payment totals n stuff
-			user: req.user._id
-			const user = await User.findById(req.params.id)
+			//user: req.user._id
+			/*const user = await User.findById(req.params.id)
+            if (user) {
+                user.totalSpent += 
+            }*/
 
 			res.send({ message: 'Order Paid', order: updatedOrder })
-			// await Order.remove({})
 		} else {
 			res.status(404).send({ message: 'Order Not Found' })
 		}

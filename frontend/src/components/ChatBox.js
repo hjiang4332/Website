@@ -37,7 +37,14 @@ export default function ChatBox(props) {
 				setMessages([...messages, { body: data.body, name: data.name }])
 			})
 		}
-	}, [messages, isOpen, socket])
+	}, [
+		messages,
+		isOpen,
+		socket,
+		userInfo._id,
+		userInfo.name,
+		userInfo.isAdmin,
+	])
 
 	//click icon handler
 	const supportHandler = () => {
@@ -99,7 +106,7 @@ export default function ChatBox(props) {
 							</li>
 						))}
 					</ul>
-                    
+
 					<div>
 						<form onSubmit={submitHandler} className='row'>
 							<input

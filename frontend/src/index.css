@@ -14,10 +14,6 @@ body {
 	height: 100%;
 }
 
-a {
-	text-decoration: none;
-}
-
 /* Layout */
 .grid-container {
 	display: grid;
@@ -50,6 +46,7 @@ footer {
 	background-color: #203040;
 	color: #ffffff;
 }
+
 /* Common */
 h1 {
 	font-size: 1.8rem;
@@ -140,7 +137,7 @@ a.brand {
 	justify-content: flex-start;
 }
 .col-1 {
-	flex: 1 1 25rem;
+	flex: 1 1 20rem;
 }
 .col-2 {
 	flex: 2 1 50rem;
@@ -154,14 +151,19 @@ a.brand {
 .p-1 {
 	padding: 1rem;
 }
+
+header row {
+	max-height: 6rem;
+}
+
 /* Aside */
 aside {
 	position: fixed;
-	width: 30rem;
+	width: 20rem;
 	height: 100%;
 	background-color: #efefef;
 	z-index: 1000;
-	transform: translateX(-30rem);
+	transform: translateX(-20rem);
 	transition: all 0.5s;
 }
 aside.open {
@@ -204,6 +206,8 @@ img.medium {
 	width: 100%;
 }
 img.large {
+	max-width: 50rem;
+	/*max-height: 50rem;*/
 	width: 100%;
 }
 
