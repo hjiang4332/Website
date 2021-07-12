@@ -79,7 +79,7 @@ productRouter.get(
 productRouter.get(
 	'/seed',
 	expressAsyncHandler(async (req, res) => {
-		//await Product.remove({})
+		await Product.remove({})
 		const createdProducts = await Product.insertMany(data.products)
 		res.send({ createdProducts })
 	})
@@ -106,6 +106,7 @@ productRouter.post(
 	expressAsyncHandler(async (req, res) => {
 		const product = new Product({
 			name: 'sample name ' + Date.now(),
+			quality: 'Gold Filled',
 			category: 'sample category',
 			image: '/images/p1.jpg',
 			price: 0,
@@ -133,6 +134,7 @@ productRouter.put(
 
 		if (product) {
 			product.name = req.body.name
+			product.quality = req.body.quality
 			product.category = req.body.category
 			product.image = req.body.image
 			product.price = req.body.price

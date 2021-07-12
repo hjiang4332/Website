@@ -47,11 +47,14 @@ userRouter.post(
 			email: req.body.email,
 			password: bcrypt.hashSync(req.body.password, 8),
 		})
+
 		const createdUser = await user.save()
 		res.send({
 			_id: createdUser._id,
 			name: createdUser.name,
 			email: createdUser.email,
+			numOrders: 0,
+			totalSpent: 0,
 			isAdmin: createdUser.isAdmin,
 			token: generateToken(createdUser),
 		})

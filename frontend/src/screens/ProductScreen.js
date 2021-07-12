@@ -91,7 +91,10 @@ export default function ProductScreen(props) {
 									></Rating>
 								</li>
 
+								<li>Quality : {product.quality}</li>
+
 								<li>Price : ${product.price}</li>
+								<li>Wholesale Price : ${product.wsPrice}</li>
 
 								<li>
 									Description:

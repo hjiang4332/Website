@@ -10,6 +10,7 @@ export default function ProductEditScreen(props) {
 	const productId = props.match.params.id
 
 	const [name, setName] = useState('')
+	const [quality, setQuality] = useState('')
 	const [category, setCategory] = useState('')
 	const [image, setImage] = useState('')
 	const [price, setPrice] = useState('')
@@ -43,6 +44,7 @@ export default function ProductEditScreen(props) {
 		} else {
 			//set fields with data from products
 			setName(product.name)
+			setQuality(product.quality)
 			setCategory(product.category)
 			setImage(product.image)
 			setPrice(product.price)
@@ -61,6 +63,7 @@ export default function ProductEditScreen(props) {
 			updateProduct({
 				_id: productId,
 				name,
+				quality,
 				category,
 				image,
 				price,
@@ -123,6 +126,17 @@ export default function ProductEditScreen(props) {
 								type='text'
 								placeholder='Enter name'
 								value={name}
+								onChange={(e) => setName(e.target.value)}
+							/>
+						</div>
+
+						<div>
+							<label htmlFor='quality'>Quality</label>
+							<input
+								id='quality'
+								type='text'
+								placeholder='Enter quality'
+								value={quality}
 								onChange={(e) => setName(e.target.value)}
 							/>
 						</div>
