@@ -28,35 +28,26 @@ productRouter.get(
 			req.query.max && Number(req.query.max) !== 0
 				? Number(req.query.max)
 				: 0
-		const rating =
-			req.query.rating && Number(req.query.rating) !== 0
-				? Number(req.query.rating)
-				: 0
 
 		const priceFilter =
 			min && max ? { price: { $gte: min, $lte: max } } : {}
-		const ratingFilter = rating ? { rating: { $gte: rating } } : {}
 		const sortOrder =
 			order === 'lowest'
 				? { price: 1 }
 				: order === 'highest'
 				? { price: -1 }
-				: order === 'toprated'
-				? { rating: -1 }
 				: { _id: -1 }
 
 		const count = await Product.count({
 			...nameFilter,
 			...categoryFilter,
 			...priceFilter,
-			...ratingFilter,
 		})
 
 		const products = await Product.find({
 			...nameFilter,
 			...categoryFilter,
 			...priceFilter,
-			...ratingFilter,
 		})
 			.sort(sortOrder)
 			.skip(pageSize * (page - 1))
@@ -113,8 +104,6 @@ productRouter.post(
 			wsPrice: 0,
 			wzPrice: 0,
 			countInStock: 0,
-			rating: 0,
-			numReviews: 0,
 			description: 'sample description',
 		})
 
@@ -161,42 +150,6 @@ productRouter.delete(
 		if (product) {
 			const deleteProduct = await product.remove()
 			res.send({ message: 'Product Deleted', product: deleteProduct })
-		} else {
-			res.status(404).send({ message: 'Product Not Found' })
-		}
-	})
-)
-
-//Product Screen - user reviews
-productRouter.post(
-	'/:id/reviews',
-	isAuth,
-	expressAsyncHandler(async (req, res) => {
-		const productId = req.params.id
-		const product = await Product.findById(productId)
-		if (product) {
-			if (product.reviews.find((x) => x.name === req.user.name)) {
-				return res
-					.status(400)
-					.send({ message: 'You already submitted a review' })
-			}
-			const review = {
-				name: req.user.name,
-				rating: Number(req.body.rating),
-				comment: req.body.comment,
-			}
-			product.reviews.push(review)
-			product.numReviews = product.reviews.length
-			product.rating =
-				product.reviews.reduce((a, c) => c.rating + a, 0) /
-				product.reviews.length
-			const updatedProduct = await product.save()
-			res.status(201).send({
-				message: 'Review Created',
-				review: updatedProduct.reviews[
-					updatedProduct.reviews.length - 1
-				],
-			})
 		} else {
 			res.status(404).send({ message: 'Product Not Found' })
 		}

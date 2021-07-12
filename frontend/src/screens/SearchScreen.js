@@ -5,8 +5,7 @@ import { listProducts } from '../actions/productActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import Product from '../components/Product'
-import Rating from '../components/Rating'
-import { prices, ratings } from '../utils'
+import { prices } from '../utils'
 
 export default function SearchScreen(props) {
 	//use all if theres no name
@@ -15,7 +14,6 @@ export default function SearchScreen(props) {
 		category = 'all',
 		min = 0,
 		max = 0,
-		rating = 0,
 		order = 'newest',
 		pageNumber = 1,
 	} = useParams()
@@ -43,22 +41,20 @@ export default function SearchScreen(props) {
 				category: category !== 'all' ? category : '',
 				min,
 				max,
-				rating,
 				order,
 			})
 		)
-	}, [category, dispatch, max, min, name, order, rating, pageNumber])
+	}, [category, dispatch, max, min, name, order, pageNumber])
 
 	//filter for correct link with category
 	const getFilterUrl = (filter) => {
 		const filterPage = filter.page || pageNumber
 		const filterCategory = filter.category || category
 		const filterName = filter.name || name
-		const filterRating = filter.rating || rating
 		const sortOrder = filter.order || order
 		const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min
 		const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max
-		return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/rating/${filterRating}/order/${sortOrder}/pageNumber/${filterPage}`
+		return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/order/${sortOrder}/pageNumber/${filterPage}`
 	}
 
 	return (
@@ -85,7 +81,6 @@ export default function SearchScreen(props) {
 						<option value='newest'>Newest Arrivals</option>
 						<option value='lowest'>Price: Low to High</option>
 						<option value='highest'>Price: High to Low</option>
-						<option value='toprated'>Avg. Customer Reviews</option>
 					</select>
 				</div>
 			</div>
@@ -146,29 +141,6 @@ export default function SearchScreen(props) {
 										}
 									>
 										{p.name}
-									</Link>
-								</li>
-							))}
-						</ul>
-					</div>
-
-					<div>
-						<h3>Avg. Customer Review</h3>
-						<ul>
-							{ratings.map((r) => (
-								<li key={r.name}>
-									<Link
-										to={getFilterUrl({ rating: r.rating })}
-										className={
-											`${r.rating}` === `${rating}`
-												? 'active'
-												: ''
-										}
-									>
-										<Rating
-											caption={' & up'}
-											rating={r.rating}
-										></Rating>
 									</Link>
 								</li>
 							))}

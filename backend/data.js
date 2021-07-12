@@ -30,8 +30,6 @@ const data = {
 			wsPrice: 2.5,
 			wzPrice: 2,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -43,8 +41,6 @@ const data = {
 			wsPrice: 2.5,
 			wzPrice: 2,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -56,8 +52,6 @@ const data = {
 			wsPrice: 2.5,
 			wzPrice: 2,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -69,8 +63,6 @@ const data = {
 			wsPrice: 6,
 			wzPrice: 6,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -82,8 +74,6 @@ const data = {
 			wsPrice: 6,
 			wzPrice: 6,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -95,8 +85,6 @@ const data = {
 			wsPrice: 2.5,
 			wzPrice: 2,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -108,8 +96,6 @@ const data = {
 			wsPrice: 2.5,
 			wzPrice: 2,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -121,8 +107,6 @@ const data = {
 			wsPrice: 4,
 			wzPrice: 4,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -134,8 +118,6 @@ const data = {
 			wsPrice: 10,
 			wzPrice: 10,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -147,8 +129,6 @@ const data = {
 			wsPrice: 6,
 			wzPrice: 6,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 		{
@@ -160,8 +140,6 @@ const data = {
 			wsPrice: 6,
 			wzPrice: 6,
 			countInStock: 100,
-			rating: 4.5,
-			numReviews: 10,
 			description: 'high quality product',
 		},
 	],

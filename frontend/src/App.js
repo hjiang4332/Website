@@ -235,7 +235,7 @@ function App() {
 						exact
 					/>
 					<Route
-						path='/search/category/:category/name/:name/min/:min/max/:max/rating/:rating/order/:order/pageNumber/:pageNumber'
+						path='/search/category/:category/name/:name/min/:min/max/:max/order/:order/pageNumber/:pageNumber'
 						component={SearchScreen}
 						exact
 					/>
