@@ -32,7 +32,7 @@ import SupportScreen from './screens/SupportScreen'
 import ChatBox from './components/ChatBox'
 
 function App() {
-	//get card data from redux
+	//get cart data from redux
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
 

@@ -202,12 +202,13 @@ img.small {
 	width: 100%;
 }
 img.medium {
-	max-width: 29rem;
+	max-width: 30rem;
 	width: 100%;
+	max-height: 30rem;
+	overflow: hidden;
 }
 img.large {
 	max-width: 50rem;
-	/*max-height: 50rem;*/
 	width: 100%;
 }
 
@@ -227,6 +228,7 @@ img.large {
 .price {
 	font-size: 2rem;
 }
+
 /* Rating */
 .rating span {
 	color: #f0c040;
