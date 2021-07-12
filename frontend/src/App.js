@@ -7,6 +7,7 @@ import AdminRoute from './components/AdminRoute'
 import SearchBox from './components/SearchBox'
 import SearchScreen from './screens/SearchScreen'
 import { listProductCategories } from './actions/productActions'
+import { listProductQualities } from './actions/productActions'
 import LoadingBox from './components/LoadingBox'
 import MessageBox from './components/MessageBox'
 
@@ -48,6 +49,7 @@ function App() {
 		dispatch(signout())
 	}
 
+	//list of categories
 	const productCategoryList = useSelector(
 		(state) => state.productCategoryList
 	)
@@ -57,9 +59,18 @@ function App() {
 		categories,
 	} = productCategoryList
 
+	//list of product quality
+	const productQualityList = useSelector((state) => state.productQualityList)
+	const {
+		loading: loadingQualities,
+		error: errorQualities,
+		qualities,
+	} = productQualityList
+
 	//get Categories
 	useEffect(() => {
 		dispatch(listProductCategories())
+		dispatch(listProductQualities())
 	}, [dispatch])
 
 	return (
@@ -191,6 +202,35 @@ function App() {
 								</li>
 							))
 						)}
+						<li>
+							<strong>Quality</strong>
+							<button
+								onClick={() => setSidebarIsOpen(false)}
+								className='close-sidebar'
+								type='button'
+							>
+								<i className='fa fa-close'></i>
+							</button>
+						</li>
+
+						{loadingQualities ? (
+							<LoadingBox></LoadingBox>
+						) : errorQualities ? (
+							<MessageBox variant='danger'>
+								{errorQualities}
+							</MessageBox>
+						) : (
+							qualities.map((q) => (
+								<li key={q}>
+									<Link
+										to={`/search/quality/${q}`}
+										onClick={() => setSidebarIsOpen(false)}
+									>
+										{q}
+									</Link>
+								</li>
+							))
+						)}
 					</ul>
 				</aside>
 
@@ -234,8 +274,20 @@ function App() {
 						component={SearchScreen}
 						exact
 					/>
+
 					<Route
-						path='/search/category/:category/name/:name/min/:min/max/:max/order/:order/pageNumber/:pageNumber'
+						path='/search/quality/:quality'
+						component={SearchScreen}
+						exact
+					/>
+					<Route
+						path='/search/quality/:quality/name/:name'
+						component={SearchScreen}
+						exact
+					/>
+
+					<Route
+						path='/search/category/:category/quality/:quality/name/:name/min/:min/max/:max/order/:order/pageNumber/:pageNumber'
 						component={SearchScreen}
 						exact
 					/>

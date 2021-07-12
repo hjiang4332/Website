@@ -15,6 +15,9 @@ import {
 	PRODUCT_LIST_FAIL,
 	PRODUCT_LIST_REQUEST,
 	PRODUCT_LIST_SUCCESS,
+	PRODUCT_QUALITY_LIST_FAIL,
+	PRODUCT_QUALITY_LIST_REQUEST,
+	PRODUCT_QUALITY_LIST_SUCCESS,
 	PRODUCT_UPDATE_FAIL,
 	PRODUCT_UPDATE_REQUEST,
 	PRODUCT_UPDATE_SUCCESS,
@@ -25,6 +28,7 @@ export const listProducts =
 		pageNumber = '',
 		name = '',
 		category = '',
+		quality = '',
 		order = '',
 		min = 0,
 		max = 0,
@@ -35,7 +39,7 @@ export const listProducts =
 		})
 		try {
 			const { data } = await Axios.get(
-				`/api/products?pageNumber=${pageNumber}&name=${name}&category=${category}&min=${min}&max=${max}&order=${order}`
+				`/api/products?pageNumber=${pageNumber}&name=${name}&category=${category}&quality=${quality}&min=${min}&max=${max}&order=${order}`
 			)
 			dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data })
 		} catch (error) {
@@ -54,6 +58,22 @@ export const listProductCategories = () => async (dispatch) => {
 	} catch (error) {
 		dispatch({
 			type: PRODUCT_CATEGORY_LIST_FAIL,
+			payload: error.message,
+		})
+	}
+}
+
+//get qualities from product
+export const listProductQualities = () => async (dispatch) => {
+	dispatch({
+		type: PRODUCT_QUALITY_LIST_REQUEST,
+	})
+	try {
+		const { data } = await Axios.get(`/api/products/qualities`)
+		dispatch({ type: PRODUCT_QUALITY_LIST_SUCCESS, payload: data })
+	} catch (error) {
+		dispatch({
+			type: PRODUCT_QUALITY_LIST_FAIL,
 			payload: error.message,
 		})
 	}

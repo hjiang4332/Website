@@ -19,6 +19,9 @@ productRouter.get(
 		const category = req.query.category || ''
 		const categoryFilter = category ? { category } : {}
 
+		const quality = req.query.quality || ''
+		const qualityFilter = quality ? { quality } : {}
+
 		const order = req.query.order || ''
 		const min =
 			req.query.min && Number(req.query.min) !== 0
@@ -41,12 +44,14 @@ productRouter.get(
 		const count = await Product.count({
 			...nameFilter,
 			...categoryFilter,
+			...qualityFilter,
 			...priceFilter,
 		})
 
 		const products = await Product.find({
 			...nameFilter,
 			...categoryFilter,
+			...qualityFilter,
 			...priceFilter,
 		})
 			.sort(sortOrder)
@@ -63,6 +68,15 @@ productRouter.get(
 	expressAsyncHandler(async (req, res) => {
 		const categories = await Product.find().distinct('category')
 		res.send(categories)
+	})
+)
+
+//get distinct qualities from products
+productRouter.get(
+	'/qualities',
+	expressAsyncHandler(async (req, res) => {
+		const qualities = await Product.find().distinct('quality')
+		res.send(qualities)
 	})
 )
 

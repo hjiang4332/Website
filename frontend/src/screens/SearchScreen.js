@@ -12,6 +12,7 @@ export default function SearchScreen(props) {
 	const {
 		name = 'all',
 		category = 'all',
+		quality = 'all',
 		min = 0,
 		max = 0,
 		order = 'newest',
@@ -32,6 +33,14 @@ export default function SearchScreen(props) {
 		categories,
 	} = productCategoryList
 
+	//see if theres a quality selected
+	const productQualityList = useSelector((state) => state.productQualityList)
+	const {
+		loading: loadingQualities,
+		error: errorQualities,
+		qualities,
+	} = productQualityList
+
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(
@@ -39,22 +48,24 @@ export default function SearchScreen(props) {
 				pageNumber,
 				name: name !== 'all' ? name : '',
 				category: category !== 'all' ? category : '',
+				quality: quality !== 'all' ? quality : '',
 				min,
 				max,
 				order,
 			})
 		)
-	}, [category, dispatch, max, min, name, order, pageNumber])
+	}, [category, quality, dispatch, max, min, name, order, pageNumber])
 
 	//filter for correct link with category
 	const getFilterUrl = (filter) => {
 		const filterPage = filter.page || pageNumber
 		const filterCategory = filter.category || category
+		const filterQuality = filter.quality || quality
 		const filterName = filter.name || name
 		const sortOrder = filter.order || order
 		const filterMin = filter.min ? filter.min : filter.min === 0 ? 0 : min
 		const filterMax = filter.max ? filter.max : filter.max === 0 ? 0 : max
-		return `/search/category/${filterCategory}/name/${filterName}/min/${filterMin}/max/${filterMax}/order/${sortOrder}/pageNumber/${filterPage}`
+		return `/search/category/${filterCategory}/quality/${filterQuality}/name/${filterName}/min/${filterMin}/max/${filterMax}/order/${sortOrder}/pageNumber/${filterPage}`
 	}
 
 	return (
@@ -87,7 +98,7 @@ export default function SearchScreen(props) {
 
 			<div className='row top'>
 				<div className='col-1'>
-					<h3>Department</h3>
+					<h3>Category</h3>
 					<div>
 						{loadingCategories ? (
 							<LoadingBox></LoadingBox>
@@ -116,6 +127,42 @@ export default function SearchScreen(props) {
 											to={getFilterUrl({ category: c })}
 										>
 											{c}
+										</Link>
+									</li>
+								))}
+							</ul>
+						)}
+					</div>
+
+					<h3>Quality:</h3>
+					<div>
+						{loadingQualities ? (
+							<LoadingBox></LoadingBox>
+						) : errorQualities ? (
+							<MessageBox variant='danger'>
+								{errorQualities}
+							</MessageBox>
+						) : (
+							<ul>
+								<li>
+									<Link
+										className={
+											'all' === quality ? 'active' : ''
+										}
+										to={getFilterUrl({ quality: 'all' })}
+									>
+										Any
+									</Link>
+								</li>
+								{qualities.map((q) => (
+									<li key={q}>
+										<Link
+											className={
+												q === quality ? 'active' : ''
+											}
+											to={getFilterUrl({ quality: q })}
+										>
+											{q}
 										</Link>
 									</li>
 								))}
