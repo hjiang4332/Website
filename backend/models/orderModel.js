@@ -1,5 +1,15 @@
 import mongoose from 'mongoose'
 
+/*
+
+in product model add this field:
+
+sizes: [{size:String, price: Number}]
+
+in product screen show all sizes and when the user clicks on it show the relevant price.
+
+*/
+
 const orderSchema = new mongoose.Schema(
 	{
 		orderItems: [

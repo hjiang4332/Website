@@ -10,6 +10,8 @@ const productSchema = new mongoose.Schema(
 		wsPrice: { type: Number, required: true },
 		wzPrice: { type: Number, required: true },
 		countInStock: { type: Number, required: true },
+		colors: { type: String },
+		sizes: { type: String },
 		description: { type: String, required: true },
 	},
 	{

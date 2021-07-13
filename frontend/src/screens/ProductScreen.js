@@ -48,6 +48,8 @@ export default function ProductScreen(props) {
 
 								<li>Price : ${product.price}</li>
 								<li>Wholesale Price : ${product.wsPrice}</li>
+								<li>Colors {product.colors}</li>
+								<li>Sizes{product.sizes}</li>
 
 								<li>
 									Description:

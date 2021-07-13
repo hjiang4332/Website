@@ -106,6 +106,9 @@ export default function ProductListScreen(props) {
 								<th>PRICE</th>
 								<th>WSPRICE</th>
 								<th>WZPRICE</th>
+								<th>COLORS</th>
+								<th>SIZES</th>
+								<th>WZPRICE</th>
 								<th>ACTIONS</th>
 							</tr>
 						</thead>
@@ -121,6 +124,8 @@ export default function ProductListScreen(props) {
 									<td>${product.price}</td>
 									<td>${product.wsPrice}</td>
 									<td>${product.wzPrice}</td>
+									<td>${product.colors}</td>
+									<td>${product.sizes}</td>
 									<td>
 										<button
 											type='button'
