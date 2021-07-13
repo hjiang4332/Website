@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BrowserRouter, Link, Route } from 'react-router-dom'
+
 import { signout } from './actions/userActions'
+import { listProductCategories } from './actions/productActions'
+import { listProductQualities } from './actions/productActions'
+
 import PrivateRoute from './components/PrivateRoute'
 import AdminRoute from './components/AdminRoute'
 import SearchBox from './components/SearchBox'
-import SearchScreen from './screens/SearchScreen'
-import { listProductCategories } from './actions/productActions'
-import { listProductQualities } from './actions/productActions'
 import LoadingBox from './components/LoadingBox'
 import MessageBox from './components/MessageBox'
 
@@ -28,9 +29,11 @@ import ProductEditScreen from './screens/ProductEditScreen'
 import OrderListScreen from './screens/OrderListScreen'
 import UserListScreen from './screens/UserListScreen'
 import UserEditScreen from './screens/UserEditScreen'
+import SearchScreen from './screens/SearchScreen'
 import DashboardScreen from './screens/DashboardScreen'
 import SupportScreen from './screens/SupportScreen'
 import ChatBox from './components/ChatBox'
+import FaqScreen from './screens/FaqScreen'
 
 function App() {
 	//get cart data from redux
@@ -85,6 +88,7 @@ function App() {
 						>
 							<i className='fa fa-bars'></i>
 						</button>
+
 						<Link className='brand' to='/'>
 							Classy Jewelry
 						</Link>
@@ -99,6 +103,7 @@ function App() {
 					</div>
 
 					<div>
+						<Link to='/faq'>FAQ</Link>
 						<Link to='/cart'>
 							Cart
 							{cartItems.length > 0 && (
@@ -107,6 +112,7 @@ function App() {
 								</span>
 							)}
 						</Link>
+
 						{userInfo ? (
 							<div className='dropdown'>
 								<Link to='#'>
@@ -283,14 +289,12 @@ function App() {
 					{/* Public */}
 					<Route path='/signin' component={SigninScreen} />
 					<Route path='/register' component={RegisterScreen} />
-
 					<Route path='/cart/:id?' component={CartScreen} />
 					<Route
 						path='/product/:id'
 						component={ProductScreen}
 						exact
 					/>
-
 					<Route
 						path='/search/name/:name?'
 						component={SearchScreen}
@@ -322,6 +326,7 @@ function App() {
 						exact
 					/>
 
+					<Route path='/faq' component={FaqScreen} exact />
 					<Route path='/' component={HomeScreen} exact />
 					<Route
 						path='/pageNumber/:pageNumber'

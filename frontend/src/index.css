@@ -479,3 +479,30 @@ body::-webkit-scrollbar-thumb {
 		color-stop(0.86, rgb(28, 58, 148))
 	);
 }
+
+/* FAQ */
+.faq {
+	cursor: pointer;
+	margin: 0 0 1rem;
+}
+
+.faq span {
+	display: block;
+	padding: 1.5rem 1rem;
+}
+
+.faq-question {
+	font-size: 125%;
+	font-weight: 600;
+}
+
+.faq-answer {
+	background: #fff;
+	overflow: hidden;
+}
+
+.faqList {
+	background: #efefef;
+	margin: 5rem 0;
+	padding: 1rem;
+}
