@@ -76,7 +76,24 @@ export default function SearchScreen(props) {
 				) : error ? (
 					<MessageBox variant='danger'>{error}</MessageBox>
 				) : (
-					<div>{products.length} Results</div>
+					<div>
+						{products.length} Results for
+						{category !== 'all' && ` : ${category}`}
+						{name !== 'all' && ` : ${name}`}
+						{min !== 0 && ` : $${min} to $${max}`}
+						{category !== 'all' || name !== 'all' || min ? (
+							<>
+								&nbsp;
+								<button
+									type='button'
+									className='small'
+									onClick={() => props.history.push('/')}
+								>
+									Remove Filter
+								</button>
+							</>
+						) : null}
+					</div>
 				)}
 
 				<div>
