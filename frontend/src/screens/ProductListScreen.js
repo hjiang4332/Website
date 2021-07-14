@@ -99,6 +99,7 @@ export default function ProductListScreen(props) {
 						<thead>
 							<tr>
 								<th>ID</th>
+								<th>ITEMNUMBER</th>
 								<th>NAME</th>
 								<th>QUALITY</th>
 								<th>CATEGORY</th>
@@ -106,9 +107,7 @@ export default function ProductListScreen(props) {
 								<th>PRICE</th>
 								<th>WSPRICE</th>
 								<th>WZPRICE</th>
-								<th>COLORS</th>
-								<th>SIZES</th>
-								<th>WZPRICE</th>
+								<th>SALEPRICE</th>
 								<th>ACTIONS</th>
 							</tr>
 						</thead>
@@ -117,6 +116,7 @@ export default function ProductListScreen(props) {
 							{products.map((product) => (
 								<tr key={product._id}>
 									<td>{product._id}</td>
+									<td>{product.itemNumber}</td>
 									<td>{product.name}</td>
 									<td>{product.quality}</td>
 									<td>{product.category}</td>
@@ -124,8 +124,8 @@ export default function ProductListScreen(props) {
 									<td>${product.price}</td>
 									<td>${product.wsPrice}</td>
 									<td>${product.wzPrice}</td>
-									<td>${product.colors}</td>
-									<td>${product.sizes}</td>
+									<td>${product.salePrice}</td>
+
 									<td>
 										<button
 											type='button'

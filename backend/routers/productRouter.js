@@ -110,6 +110,7 @@ productRouter.post(
 	isAdmin,
 	expressAsyncHandler(async (req, res) => {
 		const product = new Product({
+			itemNumber: 0 + Date.now(),
 			name: 'sample name ' + Date.now(),
 			quality: 'Gold Filled',
 			category: 'sample category',
@@ -119,6 +120,7 @@ productRouter.post(
 			wzPrice: 0,
 			countInStock: 0,
 			description: 'sample description',
+			customizations: [],
 		})
 
 		const createdProduct = await product.save()
@@ -136,7 +138,8 @@ productRouter.put(
 		const product = await Product.findById(productId)
 
 		if (product) {
-			product.name = req.body.name
+			;(product.itemNumber = req.body.itemNumber),
+				(product.name = req.body.name)
 			product.quality = req.body.quality
 			product.category = req.body.category
 			product.image = req.body.image
@@ -145,6 +148,7 @@ productRouter.put(
 			product.wzPrice = req.body.wzPrice
 			product.countInStock = req.body.countInStock
 			product.description = req.body.description
+			//TODO product.customizations = req.body.customizations
 
 			const updatedProduct = await product.save()
 			res.send({ message: 'Product Updated', product: updatedProduct })

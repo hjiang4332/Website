@@ -9,6 +9,7 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 export default function ProductEditScreen(props) {
 	const productId = props.match.params.id
 
+	const [itemNumber, setItemNumber] = useState('')
 	const [name, setName] = useState('')
 	const [quality, setQuality] = useState('')
 	const [category, setCategory] = useState('')
@@ -16,8 +17,7 @@ export default function ProductEditScreen(props) {
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
 	const [wzPrice, setWzPrice] = useState('')
-	const [colors, setColors] = useState('')
-	const [sizes, setSizes] = useState('')
+	const [salePrice, setSalePrice] = useState('')
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -45,6 +45,7 @@ export default function ProductEditScreen(props) {
 			dispatch(detailsProduct(productId))
 		} else {
 			//set fields with data from products
+			setName(product.itemNumber)
 			setName(product.name)
 			setQuality(product.quality)
 			setCategory(product.category)
@@ -52,8 +53,7 @@ export default function ProductEditScreen(props) {
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
-			setSizes(product.sizes)
-			setColors(product.colors)
+			setSalePrice(product.SalePrice)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
 		}
@@ -66,6 +66,7 @@ export default function ProductEditScreen(props) {
 			//product actions
 			updateProduct({
 				_id: productId,
+				itemNumber,
 				name,
 				quality,
 				category,
@@ -73,8 +74,7 @@ export default function ProductEditScreen(props) {
 				price,
 				wsPrice,
 				wzPrice,
-				sizes,
-				colors,
+				salePrice,
 				countInStock,
 				description,
 			})
@@ -126,6 +126,17 @@ export default function ProductEditScreen(props) {
 				) : (
 					<>
 						<div>
+							<label htmlFor='itemNumber'>Item Number</label>
+							<input
+								id='itemNumber'
+								type='text'
+								placeholder='Enter item number'
+								value={itemNumber}
+								onChange={(e) => setItemNumber(e.target.value)}
+							/>
+						</div>
+
+						<div>
 							<label htmlFor='name'>Name</label>
 							<input
 								id='name'
@@ -155,6 +166,19 @@ export default function ProductEditScreen(props) {
 								placeholder='Enter category'
 								value={category}
 								onChange={(e) => setCategory(e.target.value)}
+							/>
+						</div>
+
+						<div>
+							<label htmlFor='countInStock'>Count In Stock</label>
+							<input
+								id='countInStock'
+								type='text'
+								placeholder='Enter countInStock'
+								value={countInStock}
+								onChange={(e) =>
+									setCountInStock(e.target.value)
+								}
 							/>
 						</div>
 
@@ -219,37 +243,13 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='sizes'>Sizes</label>
+							<label htmlFor='salePrice'>Sale Price</label>
 							<input
-								id='sizes'
+								id='salePrice'
 								type='text'
-								placeholder='Enter sizes'
-								value={sizes}
-								onChange={(e) => setSizes(e.target.value)}
-							/>
-						</div>
-
-						<div>
-							<label htmlFor='colors'>Colors</label>
-							<input
-								id='colors'
-								type='text'
-								placeholder='Enter colors'
-								value={colors}
-								onChange={(e) => setColors(e.target.value)}
-							/>
-						</div>
-
-						<div>
-							<label htmlFor='countInStock'>Count In Stock</label>
-							<input
-								id='countInStock'
-								type='text'
-								placeholder='Enter countInStock'
-								value={countInStock}
-								onChange={(e) =>
-									setCountInStock(e.target.value)
-								}
+								placeholder='Enter sale price'
+								value={salePrice}
+								onChange={(e) => setSalePrice(e.target.value)}
 							/>
 						</div>
 

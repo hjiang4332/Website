@@ -13,6 +13,12 @@ export default function ProductScreen(props) {
 
 	const { loading, error, product } = productDetails
 
+	// radio buttons for customization
+	// const [size, setSize] = useState(product.customizations[0].size)
+	// const [color, setColor] = useState(
+	// 	JSON.stringify(product.customizations.size)
+	// )
+
 	useEffect(() => {
 		dispatch(detailsProduct(productId))
 	}, [dispatch, productId])
@@ -48,13 +54,43 @@ export default function ProductScreen(props) {
 
 								<li>Price : ${product.price}</li>
 								<li>Wholesale Price : ${product.wsPrice}</li>
-								<li>Colors {product.colors}</li>
-								<li>Sizes{product.sizes}</li>
+								<li>
+									{product.customizations &&
+									product.customizations.length > 0 ? (
+										<span>
+											Sizes:{' '}
+											{product.customizations
+												.map((item) => item.size + ' ')
+												.filter(
+													(value, index, self) =>
+														self.indexOf(value) ===
+														index
+												)}
+										</span>
+									) : (
+										' '
+									)}
+								</li>
 
 								<li>
-									Description:
-									<p>{product.description}</p>
+									{product.customizations &&
+									product.customizations.length > 0 ? (
+										<span>
+											Colors:{' '}
+											{product.customizations
+												.map((item) => item.color + ' ')
+												.filter(
+													(value, index, self) =>
+														self.indexOf(value) ===
+														index
+												)}
+										</span>
+									) : (
+										' '
+									)}
 								</li>
+
+								<li>Description: {product.description}</li>
 							</ul>
 						</div>
 
