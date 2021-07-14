@@ -2,7 +2,7 @@ import React from 'react'
 import Faq from '../components/Faq.js'
 
 export default function FaqScreen() {
-	const faqsData = [
+	const faqData = [
 		{
 			question: 'What does FAQ stand for?',
 			answer: 'Frequently Asked Question',
@@ -15,7 +15,7 @@ export default function FaqScreen() {
 
 	return (
 		<div>
-			{faqsData.map((faq, i) => (
+			{faqData.map((faq, i) => (
 				<Faq
 					key={'faq_' + i}
 					question={faq.question}
