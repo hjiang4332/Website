@@ -22,44 +22,30 @@ export default function Product(props) {
 				</Link>
 				<div>Quality: {product.quality}</div>
 
-				{/* TODO
-                    {product.customizations.map((item, i) =>
-                        i.size ? 'nope' : i.size
-                    )}
-                    
-                */}
 				<div>
 					Colors:{' '}
-					{product.customizations &&
-					product.customizations.length > 0 ? (
-						<span>
-							{product.customizations
-								.map((item) => item.color + ' ')
-								.filter(
-									(value, index, self) =>
-										self.indexOf(value) === index
-								)}
-						</span>
-					) : (
-						'No extra colors'
-					)}
+					{product.customizations.length > 0 &&
+						product.customizations
+							.map((item) => (item.color ? item.color + ' ' : ''))
+							.filter(
+								(value, index, self) =>
+									self.indexOf(value) === index
+							)}
 				</div>
+
 				<div>
 					Sizes:{' '}
-					{product.customizations &&
-					product.customizations.length > 0 ? (
-						<span>
-							{product.customizations
-								.map((item) => item.size + ' ')
-								.filter(
-									(value, index, self) =>
-										self.indexOf(value) === index
-								)}
-						</span>
-					) : (
-						'No extra sizes'
-					)}
+					{product.customizations.length > 0 &&
+						product.customizations
+							.map((item) =>
+								item.size ? item.size + ' ' : 'No extra sizes'
+							)
+							.filter(
+								(value, index, self) =>
+									self.indexOf(value) === index
+							)}
 				</div>
+
 				<div className='price left'>Price: ${product.price}</div>
 				<div className='price right'>Wholesale: ${product.wsPrice}</div>
 			</div>
