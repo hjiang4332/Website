@@ -1,12 +1,9 @@
 import mongoose from 'mongoose'
 
 const customizeSchema = new mongoose.Schema({
-	size: { type: String, required: true },
-	color: { type: String, required: true },
-	countInStock: { type: Number, required: true },
-	price: { type: Number, required: true },
-	wsPrice: { type: Number, required: true },
-	wzPrice: { type: Number, required: true },
+	countInStock: { type: Number },
+	color: { type: String },
+	size: { type: String },
 })
 
 const productSchema = new mongoose.Schema(
