@@ -126,7 +126,55 @@ export default function ProductListScreen(props) {
 									<td>${product.wsPrice}</td>
 									<td>${product.wzPrice}</td>
 									<td>${product.salePrice}</td>
-									{/*<td>${product.customizations}</td> */}
+									<td>
+										{product.customizations.length > 0 ? (
+											<div>
+												<span>
+													Sizes:{' '}
+													{product.customizations
+														.map((item) =>
+															item.size !== 0
+																? item.size +
+																  ' '
+																: ''
+														)
+														.filter(
+															(
+																value,
+																index,
+																self
+															) =>
+																self.indexOf(
+																	value
+																) === index
+														)}
+												</span>
+												<br />
+												<span>
+													Colors:{' '}
+													{product.customizations
+														.map((item) =>
+															item.color !== 0
+																? item.color +
+																  ' '
+																: ''
+														)
+														.filter(
+															(
+																value,
+																index,
+																self
+															) =>
+																self.indexOf(
+																	value
+																) === index
+														)}
+												</span>
+											</div>
+										) : (
+											''
+										)}
+									</td>
 
 									<td>
 										<button

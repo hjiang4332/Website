@@ -112,8 +112,8 @@ const data = {
 			colors: 'silver, gold',
 			description: 'high quality product',
 			customizations: [
-				{ countInStock: 50, color: 'silver' },
-				{ countInStock: 50, color: 'gold' },
+				{ countInStock: 50, color: 'silver', size: 0 },
+				{ countInStock: 50, color: 'gold', size: 0 },
 			],
 		},
 		{
@@ -128,11 +128,11 @@ const data = {
 			countInStock: 100,
 			description: 'high quality product',
 			customizations: [
-				{ countInStock: 10, color: 'red' },
-				{ countInStock: 20, color: 'blue' },
-				{ countInStock: 30, color: 'black' },
-				{ countInStock: 40, color: 'colorful' },
-				{ countInStock: 50, color: 'colorful2' },
+				{ countInStock: 10, color: 'red', size: 0 },
+				{ countInStock: 20, color: 'blue', size: 0 },
+				{ countInStock: 30, color: 'black', size: 0 },
+				{ countInStock: 40, color: 'colorful', size: 0 },
+				{ countInStock: 50, color: 'colorful2', size: 0 },
 			],
 		},
 		{
@@ -147,11 +147,11 @@ const data = {
 			countInStock: 100,
 			description: 'high quality product',
 			customizations: [
-				{ countInStock: 10, color: 'red' },
-				{ countInStock: 20, color: 'blue' },
-				{ countInStock: 30, color: 'black' },
-				{ countInStock: 40, color: 'colorful' },
-				{ countInStock: 50, color: 'colorful2' },
+				{ countInStock: 10, color: 'red', size: 0 },
+				{ countInStock: 20, color: 'blue', size: 0 },
+				{ countInStock: 30, color: 'black', size: 0 },
+				{ countInStock: 40, color: 'colorful', size: 0 },
+				{ countInStock: 50, color: 'colorful2', size: 0 },
 			],
 		},
 		{
@@ -166,11 +166,11 @@ const data = {
 			countInStock: 100,
 			description: 'high quality product',
 			customizations: [
-				{ countInStock: 10, color: 'red' },
-				{ countInStock: 20, color: 'blue' },
-				{ countInStock: 30, color: 'black' },
-				{ countInStock: 40, color: 'colorful' },
-				{ countInStock: 50, color: 'colorful2' },
+				{ countInStock: 10, color: 'red', size: 0 },
+				{ countInStock: 20, color: 'blue', size: 0 },
+				{ countInStock: 30, color: 'black', size: 0 },
+				{ countInStock: 40, color: 'colorful', size: 0 },
+				{ countInStock: 50, color: 'colorful2', size: 0 },
 			],
 		},
 		{
@@ -185,8 +185,8 @@ const data = {
 			countInStock: 100,
 			description: 'high quality product',
 			customizations: [
-				{ countInStock: 10, color: 'silver' },
-				{ countInStock: 20, color: 'gold' },
+				{ countInStock: 10, color: 'silver', size: 0 },
+				{ countInStock: 20, color: 'gold', size: 0 },
 			],
 		},
 		{

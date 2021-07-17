@@ -22,14 +22,13 @@ export default function Product(props) {
 				</Link>
 				<div>Quality: {product.quality}</div>
 
-                {product.customizations.length > 0 ? }
-				{/*<div>
+				<div>
 					{product.customizations.length > 0 ? (
 						<span>
 							Colors:{' '}
 							{product.customizations
 								.map((item) =>
-									item.color ? item.color + ' ' : ''
+									item.color !== '0' ? item.color + ' ' : ''
 								)
 								.filter(
 									(value, index, self) =>
@@ -47,7 +46,7 @@ export default function Product(props) {
 							Sizes:{' '}
 							{product.customizations
 								.map((item) =>
-									item.size ? item.size + ' ' : ''
+									item.size !== 0 ? item.size + ' ' : ''
 								)
 								.filter(
 									(value, index, self) =>
@@ -57,8 +56,7 @@ export default function Product(props) {
 					) : (
 						<br />
 					)}
-                </div>
-                    */}
+				</div>
 
 				<div className='price left'>Price: ${product.price}</div>
 				<div className='price right'>Wholesale: ${product.wsPrice}</div>

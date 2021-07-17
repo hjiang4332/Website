@@ -5,7 +5,13 @@ export default function FaqScreen() {
 	const faqData = [
 		{
 			question: 'How long does the jewelry last?',
-			answer: 'Generally 6 months to a year. With basic jewelry care, such avoiding getting your jewelry soaked in water such as when you shower, they will last for much longer.',
+			answer: `Costume quality: few weeks to a month ${(
+				<br />
+			)} Gold Plated: 6 months to a year ${(
+				<br />
+			)} Gold Filled: about a year ${(
+				<br />
+			)} Stainless Steel: more than a year, even when you shower every day`,
 		},
 		{
 			question: 'Why is there a limit/minimum for card purchases?',
@@ -16,16 +22,16 @@ export default function FaqScreen() {
 			answer: '2',
 		},
 		{
-			question: 'What is the return policy?',
+			question: 'What is your return policy?',
 			answer: '3',
 		},
 		{
-			question: 'Why is there a limit/minimum for card purchases?',
-			answer: '4',
+			question: 'Can you get X for me?',
+			answer: 'No guarantees, but feel free to leave a suggestion',
 		},
 		{
-			question: 'Why is there a limit/minimum for card purchases?',
-			answer: '5',
+			question: 'I havent gotten my package yet, when is it coming?',
+			answer: 'We will always do ground shipping as it is the cheapest, it takes about 1-3 days depending on holidays, and how close you live. Everything is based off of USPS, so please wait a bit more for your package to come.',
 		},
 		{
 			question: 'Why is there a limit/minimum for card purchases?',

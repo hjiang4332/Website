@@ -54,13 +54,17 @@ export default function ProductScreen(props) {
 
 								<li>Price : ${product.price}</li>
 								<li>Wholesale Price : ${product.wsPrice}</li>
+
 								<li>
-									{product.customizations &&
-									product.customizations.length > 0 ? (
+									{product.customizations.length > 0 ? (
 										<span>
-											Sizes:{' '}
+											Colors:{' '}
 											{product.customizations
-												.map((item) => item.size + ' ')
+												.map((item) =>
+													item.color !== '0'
+														? item.color + ' '
+														: ''
+												)
 												.filter(
 													(value, index, self) =>
 														self.indexOf(value) ===
@@ -68,17 +72,20 @@ export default function ProductScreen(props) {
 												)}
 										</span>
 									) : (
-										' '
+										<br />
 									)}
 								</li>
 
 								<li>
-									{product.customizations &&
-									product.customizations.length > 0 ? (
+									{product.customizations.length > 0 ? (
 										<span>
-											Colors:{' '}
+											Sizes:{' '}
 											{product.customizations
-												.map((item) => item.color + ' ')
+												.map((item) =>
+													item.size !== 0
+														? item.size + ' '
+														: ''
+												)
 												.filter(
 													(value, index, self) =>
 														self.indexOf(value) ===
@@ -86,7 +93,7 @@ export default function ProductScreen(props) {
 												)}
 										</span>
 									) : (
-										' '
+										<br />
 									)}
 								</li>
 
