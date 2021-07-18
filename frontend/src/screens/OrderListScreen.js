@@ -70,7 +70,7 @@ export default function OrderListScreen(props) {
 										? order.createdAt.substring(0, 10)
 										: 'No created date'}
 								</td>
-								<td>{order.totalPrice.toFixed(2)}</td>
+								<td>${order.totalPrice.toFixed(2)}</td>
 								<td>
 									{order.isPaid
 										? order.paidAt.substring(0, 10)

@@ -155,13 +155,52 @@ export default function ProductListScreen(props) {
 																) === index
 														)}
 												</span>
+
 												<br />
+
 												<span>
-													Colors:{' '}
+													{product.customizations
+														.slice(0, 1)
+														.map((item) =>
+															item.color === 0
+																? ' '
+																: 'Colors:  '
+														)}
 													{product.customizations
 														.map((item) =>
 															item.color !== 0
 																? item.color +
+																  ' '
+																: ''
+														)
+														.filter(
+															(
+																value,
+																index,
+																self
+															) =>
+																self.indexOf(
+																	value
+																) === index
+														)}
+												</span>
+
+												<br />
+
+												<span>
+													{product.customizations
+														.slice(0, 1)
+														.map((item) =>
+															item.countInStock ===
+															0
+																? ' '
+																: 'Count In Stock:  '
+														)}
+													{product.customizations
+														.map((item) =>
+															item.countInStock !==
+															0
+																? item.countInStock +
 																  ' '
 																: ''
 														)

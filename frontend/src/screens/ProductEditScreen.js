@@ -20,6 +20,7 @@ export default function ProductEditScreen(props) {
 	const [salePrice, setSalePrice] = useState('')
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
+	const [customizations, setCustomizations] = useState('')
 
 	//product for use effect
 	const productDetails = useSelector((state) => state.productDetails)
@@ -45,7 +46,7 @@ export default function ProductEditScreen(props) {
 			dispatch(detailsProduct(productId))
 		} else {
 			//set fields with data from products
-			setName(product.itemNumber)
+			setItemNumber(product.itemNumber)
 			setName(product.name)
 			setQuality(product.quality)
 			setCategory(product.category)
@@ -56,6 +57,18 @@ export default function ProductEditScreen(props) {
 			setSalePrice(product.SalePrice)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
+			setCustomizations(
+				product.customizations.length > 0
+					? product.customizations.map(
+							(item) =>
+								item.color +
+								' ' +
+								item.size +
+								' ' +
+								item.countInStock
+					  )
+					: ''
+			)
 		}
 	}, [product, dispatch, productId, successUpdate, props.history])
 
@@ -63,7 +76,6 @@ export default function ProductEditScreen(props) {
 		e.preventDefault()
 
 		dispatch(
-			//product actions
 			updateProduct({
 				_id: productId,
 				itemNumber,
@@ -77,6 +89,7 @@ export default function ProductEditScreen(props) {
 				salePrice,
 				countInStock,
 				description,
+				customizations,
 			})
 		)
 	}
@@ -243,13 +256,28 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='salePrice'>Sale Price</label>
+							<label htmlFor='wzPrice'>WZ Price</label>
 							<input
-								id='salePrice'
+								id='wzPrice'
 								type='text'
-								placeholder='Enter sale price'
-								value={salePrice}
-								onChange={(e) => setSalePrice(e.target.value)}
+								placeholder='Enter Wz price'
+								value={wzPrice}
+								onChange={(e) => setWzPrice(e.target.value)}
+							/>
+						</div>
+
+						<div>
+							<label htmlFor='customizations'>
+								Customizations
+							</label>
+							<input
+								id='customizations'
+								type='text'
+								placeholder='Enter customization: color, size, countInStock'
+								value={customizations}
+								onChange={(e) =>
+									setCustomizations(e.target.value)
+								}
 							/>
 						</div>
 
