@@ -23,9 +23,13 @@ export default function Product(props) {
 				<div>Quality: {product.quality}</div>
 
 				<div>
+					{product.customizations
+						.slice(0, 1)
+						.map((item) =>
+							item.color === 0 ? <br /> : 'Colors: '
+						)}
 					{product.customizations.length > 0 ? (
 						<span>
-							Colors:{' '}
 							{product.customizations
 								.map((item) =>
 									item.color !== '0' ? item.color + ' ' : ''
@@ -43,7 +47,11 @@ export default function Product(props) {
 				<div>
 					{product.customizations.length > 0 ? (
 						<span>
-							Sizes:{' '}
+							{product.customizations
+								.slice(0, 1)
+								.map((item) =>
+									item.size === 0 ? <br /> : 'Sizes:  '
+								)}
 							{product.customizations
 								.map((item) =>
 									item.size !== 0 ? item.size + ' ' : ''

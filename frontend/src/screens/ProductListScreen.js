@@ -130,7 +130,13 @@ export default function ProductListScreen(props) {
 										{product.customizations.length > 0 ? (
 											<div>
 												<span>
-													Sizes:{' '}
+													{product.customizations
+														.slice(0, 1)
+														.map((item) =>
+															item.size === 0
+																? ' '
+																: 'Sizes:  '
+														)}
 													{product.customizations
 														.map((item) =>
 															item.size !== 0
