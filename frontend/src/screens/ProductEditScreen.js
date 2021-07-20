@@ -78,6 +78,7 @@ export default function ProductEditScreen(props) {
 
 	const submitHandler = (e) => {
 		e.preventDefault()
+		//setCustomizationsHandler(e.target.value)
 
 		dispatch(
 			updateProduct({
@@ -295,8 +296,7 @@ export default function ProductEditScreen(props) {
 								placeholder='Enter customization: color, size, countInStock'
 								value={customizations}
 								onChange={(e) => {
-									/*setCustomizations(e.target.value)*/
-									setCustomizationsHandler(e.target.value)
+									setCustomizations(e.target.value)
 								}}
 							/>
 						</div>
