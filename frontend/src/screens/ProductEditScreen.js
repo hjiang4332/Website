@@ -22,6 +22,10 @@ export default function ProductEditScreen(props) {
 	const [description, setDescription] = useState('')
 	const [customizations, setCustomizations] = useState('')
 
+	const [customizationsArray, setCustomizationsArray] = useState('')
+	const [size, setSize] = useState('')
+	const [color, setColor] = useState('')
+
 	//product for use effect
 	const productDetails = useSelector((state) => state.productDetails)
 	const { loading, error, product } = productDetails
@@ -45,7 +49,7 @@ export default function ProductEditScreen(props) {
 			dispatch({ type: PRODUCT_UPDATE_RESET })
 			dispatch(detailsProduct(productId))
 		} else {
-			//set fields with data from products
+			//set fields with loaded data from products
 			setItemNumber(product.itemNumber)
 			setName(product.name)
 			setQuality(product.quality)
@@ -118,6 +122,21 @@ export default function ProductEditScreen(props) {
 			setErrorUpload(error.message)
 			setLoadingUpload(false)
 		}
+	}
+
+	function setCustomizationsHandler(props) {
+		//create an array -> customizationsArray
+		//create prop
+		//words = props.split(' ')
+		//set prop data
+		//push prop to array
+		//return array
+		/*setCustomizationsArray(props.split(',').split(' '))
+        customizationsArray.map((item) => 
+            //size
+            //color
+            //countInStock
+        )*/
 	}
 
 	return (
@@ -256,13 +275,13 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='wzPrice'>WZ Price</label>
+							<label htmlFor='salePrice'>Sale Price</label>
 							<input
-								id='wzPrice'
+								id='salePrice'
 								type='text'
-								placeholder='Enter Wz price'
-								value={wzPrice}
-								onChange={(e) => setWzPrice(e.target.value)}
+								placeholder='Enter Sale price'
+								value={salePrice}
+								onChange={(e) => setSalePrice(e.target.value)}
 							/>
 						</div>
 
@@ -275,9 +294,10 @@ export default function ProductEditScreen(props) {
 								type='text'
 								placeholder='Enter customization: color, size, countInStock'
 								value={customizations}
-								onChange={(e) =>
-									setCustomizations(e.target.value)
-								}
+								onChange={(e) => {
+									/*setCustomizations(e.target.value)*/
+									setCustomizationsHandler(e.target.value)
+								}}
 							/>
 						</div>
 

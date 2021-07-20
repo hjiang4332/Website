@@ -5,37 +5,24 @@ export default function FaqScreen() {
 	const faqData = [
 		{
 			question: 'How long does the jewelry last?',
-			answer: `Costume quality: few weeks to a month ${(
-				<br />
-			)} Gold Plated: 6 months to a year ${(
-				<br />
-			)} Gold Filled: about a year ${(
-				<br />
-			)} Stainless Steel: more than a year, even when you shower every day`,
+			answer: `Costume quality: few weeks to a month Gold Plated: 6 months to a year Gold Filled: about a year Stainless Steel: more than a year, even when you shower every day`,
 		},
 		{
-			question: 'Why is there a limit/minimum for card purchases?',
-			answer: '1',
-		},
-		{
-			question: 'Why do I have to pay for shipping?',
-			answer: '2',
+			question:
+				'Why is there a limit/minimum for card purchases, why do I always have to pay for shipping?',
+			answer: 'Our business model is to sell low but sell a lot. Card fee and shipping is too much for me to afford. Most people, however, save more time and money from ordering anyways, since driving and or transit will cost a fair amount.',
 		},
 		{
 			question: 'What is your return policy?',
-			answer: '3',
+			answer: 'Email an inquiry to classyjewelryws@gmail.com with the subject being "return inquiry for order #x" and pictures of the items. Any inquiries made after 1 month will not be considered.',
 		},
 		{
 			question: 'Can you get X for me?',
-			answer: 'No guarantees, but feel free to leave a suggestion',
+			answer: 'No guarantees, but feel free to leave a suggestion and if I believe they will sell / I can get it, I will.',
 		},
 		{
 			question: 'I havent gotten my package yet, when is it coming?',
 			answer: 'We will always do ground shipping as it is the cheapest, it takes about 1-3 days depending on holidays, and how close you live. Everything is based off of USPS, so please wait a bit more for your package to come.',
-		},
-		{
-			question: 'Why is there a limit/minimum for card purchases?',
-			answer: '6',
 		},
 	]
 
