@@ -20,9 +20,12 @@ export default function ProductEditScreen(props) {
 	const [salePrice, setSalePrice] = useState('')
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
-	const [customizations, setCustomizations] = useState([])
 
-	const [customizationsArray, setCustomizationsArray] = useState([])
+	const [customizations, setCustomizations] = useState([
+		{ size: 5, color: 'silver', countInStock: 1000 },
+		{ size: 6, color: 'gold', countInStock: 2000 },
+	])
+	const [customizationsString, setCustomizationsString] = useState('')
 
 	//product for use effect
 	const productDetails = useSelector((state) => state.productDetails)
@@ -59,7 +62,7 @@ export default function ProductEditScreen(props) {
 			setSalePrice(product.SalePrice)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
-			setCustomizations(
+			setCustomizationsString(
 				product.customizations.length > 0
 					? product.customizations.map(
 							(item) =>
@@ -71,12 +74,27 @@ export default function ProductEditScreen(props) {
 					  )
 					: ''
 			)
+			/*setCustomizationsString(
+				product.customizations.length > 0
+					? product.customizations.map((item) => (
+							<span key={item}>
+								{item.color}
+								{item.size}
+								{item.countInStock}
+							</span>
+					  ))
+					: ''
+			)*/
 		}
 	}, [product, dispatch, productId, successUpdate, props.history])
 
+	//console.log(customizationsString)
+
 	const submitHandler = (e) => {
 		e.preventDefault()
-		//setCustomizationsHandler(e.target.value)
+
+		//convert CustomizationsString to an array and put it into customizations, then send to be updated
+		parseCustomizations(customizationsString)
 
 		dispatch(
 			updateProduct({
@@ -123,20 +141,7 @@ export default function ProductEditScreen(props) {
 		}
 	}
 
-	function setCustomizationsHandler(props) {
-		//create an array -> customizationsArray
-		//create prop
-		//words = props.split(' ')
-		//set prop data
-		//push prop to array
-		//return array
-		/*setCustomizationsArray(props.split(',').split(' '))
-        customizationsArray.map((item) => 
-            //size
-            //color
-            //countInStock
-        )*/
-	}
+	function parseCustomizations(props) {}
 
 	return (
 		<div>
@@ -285,16 +290,16 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='customizations'>
-								Customizations
+							<label htmlFor='customizationsString'>
+								CustomizationsString
 							</label>
 							<input
-								id='customizations'
+								id='customizationsString'
 								type='text'
 								placeholder='Enter customization: color, size, countInStock'
-								value={customizations}
+								value={customizationsString}
 								onChange={(e) => {
-									setCustomizations(e.target.value)
+									setCustomizationsString(e.target.value)
 								}}
 							/>
 						</div>

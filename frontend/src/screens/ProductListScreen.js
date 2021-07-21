@@ -132,18 +132,26 @@ export default function ProductListScreen(props) {
 												<span>
 													{product.customizations
 														.slice(0, 1)
-														.map((item) =>
-															item.size === 0
-																? ' '
-																: 'Sizes:  '
-														)}
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.size === 0
+																	? ' '
+																	: 'Sizes:  '}
+															</span>
+														))}
 													{product.customizations
-														.map((item) =>
-															item.size !== 0
-																? item.size +
-																  ' '
-																: ''
-														)
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.size !== 0
+																	? item.size +
+																	  ' '
+																	: ''}
+															</span>
+														))
 														.filter(
 															(
 																value,
@@ -161,18 +169,28 @@ export default function ProductListScreen(props) {
 												<span>
 													{product.customizations
 														.slice(0, 1)
-														.map((item) =>
-															item.color === 0
-																? ' '
-																: 'Colors:  '
-														)}
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.color ===
+																0
+																	? ' '
+																	: 'Colors:  '}
+															</span>
+														))}
 													{product.customizations
-														.map((item) =>
-															item.color !== 0
-																? item.color +
-																  ' '
-																: ''
-														)
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.color !==
+																0
+																	? item.color +
+																	  ' '
+																	: ''}
+															</span>
+														))
 														.filter(
 															(
 																value,
@@ -190,20 +208,28 @@ export default function ProductListScreen(props) {
 												<span>
 													{product.customizations
 														.slice(0, 1)
-														.map((item) =>
-															item.countInStock ===
-															0
-																? ' '
-																: 'Count In Stock:  '
-														)}
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.countInStock ===
+																0
+																	? ' '
+																	: 'Count In Stock:  '}
+															</span>
+														))}
 													{product.customizations
-														.map((item) =>
-															item.countInStock !==
-															0
-																? item.countInStock +
-																  ' '
-																: ''
-														)
+														.map((item) => (
+															<span
+																key={item._id}
+															>
+																{item.countInStock !==
+																0
+																	? item.countInStock +
+																	  ' '
+																	: ''}
+															</span>
+														))
 														.filter(
 															(
 																value,

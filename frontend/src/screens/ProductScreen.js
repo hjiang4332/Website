@@ -58,7 +58,17 @@ export default function ProductScreen(props) {
 								<li>
 									{product.customizations.length > 0 ? (
 										<span>
-											Colors:{' '}
+											{product.customizations
+												.slice(0, 1)
+												.map((item) => (
+													<span key={item._id}>
+														{item.color === '0' ? (
+															<br />
+														) : (
+															'Colors:  '
+														)}
+													</span>
+												))}
 											{product.customizations
 												.map((item) =>
 													item.color !== '0'
@@ -79,7 +89,17 @@ export default function ProductScreen(props) {
 								<li>
 									{product.customizations.length > 0 ? (
 										<span>
-											Sizes:{' '}
+											{product.customizations
+												.slice(0, 1)
+												.map((item) => (
+													<span key={item._id}>
+														{item.size === 0 ? (
+															<br />
+														) : (
+															'Sizes:  '
+														)}
+													</span>
+												))}
 											{product.customizations
 												.map((item) =>
 													item.size !== 0
