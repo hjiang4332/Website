@@ -137,23 +137,13 @@ export default function ProductListScreen(props) {
 																? ' '
 																: 'Sizes:  '
 														)}
-													{product.customizations
-														.map((item) =>
+													{product.customizations.map(
+														(item) =>
 															item.size !== 0
 																? item.size +
 																  ' '
 																: ''
-														)
-														.filter(
-															(
-																value,
-																index,
-																self
-															) =>
-																self.indexOf(
-																	value
-																) === index
-														)}
+													)}
 												</span>
 
 												<br />
@@ -166,23 +156,13 @@ export default function ProductListScreen(props) {
 																? ' '
 																: 'Colors:  '
 														)}
-													{product.customizations
-														.map((item) =>
+													{product.customizations.map(
+														(item) =>
 															item.color !== 0
 																? item.color +
 																  ' '
 																: ''
-														)
-														.filter(
-															(
-																value,
-																index,
-																self
-															) =>
-																self.indexOf(
-																	value
-																) === index
-														)}
+													)}
 												</span>
 
 												<br />

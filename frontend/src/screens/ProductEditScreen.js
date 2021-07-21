@@ -64,27 +64,18 @@ export default function ProductEditScreen(props) {
 			setDescription(product.description)
 			setCustomizationsString(
 				product.customizations.length > 0
-					? product.customizations.map(
-							(item) =>
-								item.color +
-								' ' +
-								item.size +
-								' ' +
-								item.countInStock
-					  )
+					? product.customizations
+							.map(
+								(item) =>
+									item.color +
+									' ' +
+									item.size +
+									' ' +
+									item.countInStock
+							)
+							.toString()
 					: ''
 			)
-			/*setCustomizationsString(
-				product.customizations.length > 0
-					? product.customizations.map((item) => (
-							<span key={item}>
-								{item.color}
-								{item.size}
-								{item.countInStock}
-							</span>
-					  ))
-					: ''
-			)*/
 		}
 	}, [product, dispatch, productId, successUpdate, props.history])
 
@@ -94,7 +85,33 @@ export default function ProductEditScreen(props) {
 		e.preventDefault()
 
 		//convert CustomizationsString to an array and put it into customizations, then send to be updated
-		parseCustomizations(customizationsString)
+		//parseCustomizations(customizationsString)
+
+		//console.log('customizationsString: ' + customizationsString)
+		// console.log(
+		// 	'customizationsString.split(',
+		// 	'): ' + customizationsString.split(',')
+		// )
+
+		if (customizationsString.length > 0) {
+			for (
+				let item = 0;
+				item < customizationsString.split(',').length;
+				item++
+			) {
+				let singleCustomization = customizationsString.split(',')[item]
+
+				let color = singleCustomization.split(' ')[0]
+				//console.log('color: ' + color)
+				let size = singleCustomization.split(' ')[1]
+				//console.log('size: ' + size)
+				let countInStock = singleCustomization.split(' ')[2]
+				//console.log('countInStock: ' + countInStock)
+
+				let custom = { color, size, countInStock }
+				customizations.push(custom)
+			}
+		}
 
 		dispatch(
 			updateProduct({
@@ -140,8 +157,6 @@ export default function ProductEditScreen(props) {
 			setLoadingUpload(false)
 		}
 	}
-
-	function parseCustomizations(props) {}
 
 	return (
 		<div>
@@ -291,7 +306,7 @@ export default function ProductEditScreen(props) {
 
 						<div>
 							<label htmlFor='customizationsString'>
-								CustomizationsString
+								CustomizationsString: color size countInStock,
 							</label>
 							<input
 								id='customizationsString'
