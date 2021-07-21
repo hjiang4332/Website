@@ -138,17 +138,18 @@ productRouter.put(
 		const product = await Product.findById(productId)
 
 		if (product) {
-			;(product.itemNumber = req.body.itemNumber),
-				(product.name = req.body.name)
+			product.itemNumber = req.body.itemNumber
+			product.name = req.body.name
 			product.quality = req.body.quality
 			product.category = req.body.category
 			product.image = req.body.image
 			product.price = req.body.price
 			product.wsPrice = req.body.wsPrice
 			product.wzPrice = req.body.wzPrice
+			product.salePrice = req.body.salePrice
 			product.countInStock = req.body.countInStock
 			product.description = req.body.description
-			//TODO product.customizations = req.body.customizations
+			product.customizations = req.body.customizations
 
 			const updatedProduct = await product.save()
 			res.send({ message: 'Product Updated', product: updatedProduct })

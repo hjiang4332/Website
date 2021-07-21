@@ -20,11 +20,9 @@ export default function ProductEditScreen(props) {
 	const [salePrice, setSalePrice] = useState('')
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
-	const [customizations, setCustomizations] = useState('')
+	const [customizations, setCustomizations] = useState([])
 
-	const [customizationsArray, setCustomizationsArray] = useState('')
-	const [size, setSize] = useState('')
-	const [color, setColor] = useState('')
+	const [customizationsArray, setCustomizationsArray] = useState([])
 
 	//product for use effect
 	const productDetails = useSelector((state) => state.productDetails)
