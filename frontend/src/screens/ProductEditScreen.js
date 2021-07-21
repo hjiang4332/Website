@@ -22,8 +22,8 @@ export default function ProductEditScreen(props) {
 	const [description, setDescription] = useState('')
 
 	let customizations = [
-		{ size: 5, color: 'silver', countInStock: 1000 },
-		{ size: 6, color: 'gold', countInStock: 2000 },
+		//{ size: 5, color: 'silver', countInStock: 1000 },
+		//{ size: 6, color: 'gold', countInStock: 2000 },
 	]
 	const [customizationsString, setCustomizationsString] = useState('')
 
