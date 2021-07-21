@@ -21,10 +21,10 @@ export default function ProductEditScreen(props) {
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
-	const [customizations, setCustomizations] = useState([
+	let customizations = [
 		{ size: 5, color: 'silver', countInStock: 1000 },
 		{ size: 6, color: 'gold', countInStock: 2000 },
-	])
+	]
 	const [customizationsString, setCustomizationsString] = useState('')
 
 	//product for use effect
@@ -278,7 +278,7 @@ export default function ProductEditScreen(props) {
 							/>
 						</div>
 
-						<div>
+						{/*<div>
 							<label htmlFor='salePrice'>Sale Price</label>
 							<input
 								id='salePrice'
@@ -287,7 +287,7 @@ export default function ProductEditScreen(props) {
 								value={salePrice}
 								onChange={(e) => setSalePrice(e.target.value)}
 							/>
-						</div>
+						</div>*/}
 
 						<div>
 							<label htmlFor='customizationsString'>
