@@ -21,10 +21,7 @@ export default function ProductEditScreen(props) {
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
-	let customizations = [
-		//{ size: 5, color: 'silver', countInStock: 1000 },
-		//{ size: 6, color: 'gold', countInStock: 2000 },
-	]
+	let customizations = []
 	const [customizationsString, setCustomizationsString] = useState('')
 
 	//product for use effect
@@ -84,15 +81,6 @@ export default function ProductEditScreen(props) {
 	const submitHandler = (e) => {
 		e.preventDefault()
 
-		//convert CustomizationsString to an array and put it into customizations, then send to be updated
-		//parseCustomizations(customizationsString)
-
-		//console.log('customizationsString: ' + customizationsString)
-		// console.log(
-		// 	'customizationsString.split(',
-		// 	'): ' + customizationsString.split(',')
-		// )
-
 		if (customizationsString.length > 0) {
 			for (
 				let item = 0;
@@ -100,13 +88,9 @@ export default function ProductEditScreen(props) {
 				item++
 			) {
 				let singleCustomization = customizationsString.split(',')[item]
-
 				let color = singleCustomization.split(' ')[0]
-				//console.log('color: ' + color)
 				let size = singleCustomization.split(' ')[1]
-				//console.log('size: ' + size)
 				let countInStock = singleCustomization.split(' ')[2]
-				//console.log('countInStock: ' + countInStock)
 
 				let custom = { color, size, countInStock }
 				customizations.push(custom)
