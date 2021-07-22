@@ -1,14 +1,15 @@
 {
-    "cSpell.ignoreWords": [
-        "classyjewelry",
-        "dqva",
-        "jsonwebtokensecret",
-        "placeorder",
-        "qmblf",
-        "signin",
-        "signout",
-        "somethingsecret",
-        "vodfom",
-        "xlim"
-    ]
+	"cSpell.ignoreWords": [
+		"classyjewelry",
+		"dqva",
+		"jsonwebtokensecret",
+		"placeorder",
+		"productlist",
+		"qmblf",
+		"signin",
+		"signout",
+		"somethingsecret",
+		"vodfom",
+		"xlim"
+	]
 }
