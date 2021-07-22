@@ -21,23 +21,12 @@ export default function ProductScreen(props) {
 		props.history.push(`/cart/${productId}?qty=${qty}`)
 	}
 
-	//radio buttons for customization
+	//radio buttons for customizations
 	const [size, setSize] = useState()
 	const [color, setColor] = useState()
 
-	const sizeOptions = product.customizations
-		.map((p) => p.size)
-		.filter((v, i, a) => a.indexOf(v) === i)
-		.map((size) => ({ label: size, value: size }))
-
-	// const colorOptions = product.customizations
-	// 	.filter((p) => size && p.size === size.value)
-	// 	.map((p) => p.color)
-	// 	.filter((v, i, a) => a.indexOf(v) === i)
-	// 	.map((color) => ({ label: color, value: color }))
-
-	// console.log(sizeOptions)
-	// console.log(colorOptions)
+	let sizeOptions = []
+	let colorOptions = []
 
 	return (
 		<div>
@@ -154,19 +143,51 @@ export default function ProductScreen(props) {
 										</div>
 									</li>
 
-									{/*<div>
+									{product.customizations
+										.map((item) => item.size)
+										.filter((v, i, a) => a.indexOf(v) === i)
+										.map((size) =>
+											sizeOptions.push({
+												label: size,
+												value: size,
+											})
+										)}
+
+									{product.customizations
+										.filter(
+											(p) => size && p.size === size.value
+										)
+										.map((p) => p.color)
+										.filter((v, i, a) => a.indexOf(v) === i)
+										.map((color) =>
+											colorOptions.push({
+												label: color,
+												value: color,
+											})
+										)}
+
+									{console.log(
+										'sizeOptions: ' +
+											sizeOptions[0].toString()
+									)}
+									{console.log(
+										'colorOptions: ' + colorOptions
+									)}
+
+									<div>
 										<select
 											value={size}
 											onChange={setSize}
 											options={sizeOptions}
 										/>
+
 										<select
 											value={color}
 											onChange={setColor}
 											options={colorOptions}
-											isDisabled={!size}
+											// isDisabled={!size}
 										/>
-                                    </div>*/}
+									</div>
 
 									<li>
 										<div className='row'>
@@ -184,7 +205,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									{product.countInStock > 0 && (
 										<>
 											<li>
