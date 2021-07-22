@@ -13,12 +13,6 @@ export default function ProductScreen(props) {
 
 	const { loading, error, product } = productDetails
 
-	// radio buttons for customization
-	// const [size, setSize] = useState(product.customizations[0].size)
-	// const [color, setColor] = useState(
-	// 	JSON.stringify(product.customizations.size)
-	// )
-
 	useEffect(() => {
 		dispatch(detailsProduct(productId))
 	}, [dispatch, productId])
@@ -26,6 +20,24 @@ export default function ProductScreen(props) {
 	const addToCartHandler = () => {
 		props.history.push(`/cart/${productId}?qty=${qty}`)
 	}
+
+	//radio buttons for customization
+	const [size, setSize] = useState()
+	const [color, setColor] = useState()
+
+	const sizeOptions = product.customizations
+		.map((p) => p.size)
+		.filter((v, i, a) => a.indexOf(v) === i)
+		.map((size) => ({ label: size, value: size }))
+
+	// const colorOptions = product.customizations
+	// 	.filter((p) => size && p.size === size.value)
+	// 	.map((p) => p.color)
+	// 	.filter((v, i, a) => a.indexOf(v) === i)
+	// 	.map((color) => ({ label: color, value: color }))
+
+	// console.log(sizeOptions)
+	// console.log(colorOptions)
 
 	return (
 		<div>
@@ -132,6 +144,29 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
+
+									<li>
+										<div className='row'>
+											<div>Wholesale Price</div>
+											<div className='price'>
+												${product.wsPrice}
+											</div>
+										</div>
+									</li>
+
+									{/*<div>
+										<select
+											value={size}
+											onChange={setSize}
+											options={sizeOptions}
+										/>
+										<select
+											value={color}
+											onChange={setColor}
+											options={colorOptions}
+											isDisabled={!size}
+										/>
+                                    </div>*/}
 
 									<li>
 										<div className='row'>
