@@ -4,6 +4,8 @@ import { detailsProduct } from '../actions/productActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
+import Select from 'react-select'
+
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
 	const productId = props.match.params.id
@@ -168,20 +170,32 @@ export default function ProductScreen(props) {
 
 									{console.log(
 										'sizeOptions: ' +
-											sizeOptions[0].toString()
+											//sizeOptions[0].toString()
+											sizeOptions.map(
+												(item) =>
+													item.value +
+													' ' +
+													item.label
+											)
 									)}
 									{console.log(
-										'colorOptions: ' + colorOptions
+										'colorOptions: ' +
+											colorOptions.map(
+												(item) =>
+													item.value +
+													' ' +
+													item.label
+											)
 									)}
 
 									<div>
-										<select
+										<Select
 											value={size}
 											onChange={setSize}
 											options={sizeOptions}
 										/>
 
-										<select
+										<Select
 											value={color}
 											onChange={setColor}
 											options={colorOptions}
@@ -205,6 +219,7 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
+                                    
 									{product.countInStock > 0 && (
 										<>
 											<li>
