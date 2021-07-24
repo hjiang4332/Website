@@ -4,8 +4,6 @@ import { detailsProduct } from '../actions/productActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
-import Select from 'react-select'
-
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
 	const productId = props.match.params.id
@@ -26,6 +24,7 @@ export default function ProductScreen(props) {
 	//radio buttons for customizations
 	const [size, setSize] = useState()
 	const [color, setColor] = useState()
+	const [countInStock, setCountInStock] = useState()
 
 	let sizeOptions = []
 	let colorOptions = []
@@ -135,7 +134,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									<li>
 										<div className='row'>
 											<div>Wholesale Price</div>
@@ -144,7 +142,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									{product.customizations
 										.map((item) => item.size)
 										.filter((v, i, a) => a.indexOf(v) === i)
@@ -156,9 +153,6 @@ export default function ProductScreen(props) {
 										)}
 
 									{product.customizations
-										.filter(
-											(p) => size && p.size === size.value
-										)
 										.map((p) => p.color)
 										.filter((v, i, a) => a.indexOf(v) === i)
 										.map((color) =>
@@ -167,42 +161,48 @@ export default function ProductScreen(props) {
 												value: color,
 											})
 										)}
-
-									{console.log(
-										'sizeOptions: ' +
-											//sizeOptions[0].toString()
-											sizeOptions.map(
-												(item) =>
-													item.value +
-													' ' +
-													item.label
-											)
-									)}
-									{console.log(
-										'colorOptions: ' +
-											colorOptions.map(
-												(item) =>
-													item.value +
-													' ' +
-													item.label
-											)
+									{product.customizations.map((item) =>
+										item.size === size &&
+										item.color === color
+											? setCountInStock(item.countInStock)
+											: ''
 									)}
 
 									<div>
-										<Select
+										<select
 											value={size}
-											onChange={setSize}
-											options={sizeOptions}
-										/>
+											onChange={(e) =>
+												setSize(e.target.value)
+											}
+										>
+											{sizeOptions.map((x) => (
+												<option
+													key={x.value}
+													value={x.value}
+												>
+													{x.label}
+												</option>
+											))}
+										</select>
 
-										<Select
+										<select
 											value={color}
-											onChange={setColor}
-											options={colorOptions}
-											// isDisabled={!size}
-										/>
+											onChange={(e) =>
+												setColor(e.target.value)
+											}
+										>
+											{colorOptions.map((x) => (
+												<option
+													key={x.value}
+													value={x.value}
+												>
+													{x.label}
+												</option>
+											))}
+										</select>
+										<span>{countInStock}</span>
+										{console.log(countInStock)}
 									</div>
-
 									<li>
 										<div className='row'>
 											<div>Status</div>
@@ -219,7 +219,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-                                    
 									{product.countInStock > 0 && (
 										<>
 											<li>
