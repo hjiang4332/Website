@@ -23,7 +23,7 @@ export default function ProductScreen(props) {
 
 	//radio buttons for customizations
 	const [size, setSize] = useState()
-	const [color, setColor] = useState()
+	const [color, setColor] = useState('')
 	const [countInStock, setCountInStock] = useState()
 
 	let sizeOptions = []
@@ -134,6 +134,7 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
+
 									<li>
 										<div className='row'>
 											<div>Wholesale Price</div>
@@ -142,32 +143,45 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-									{product.customizations
-										.map((item) => item.size)
-										.filter((v, i, a) => a.indexOf(v) === i)
-										.map((size) =>
-											sizeOptions.push({
-												label: size,
-												value: size,
-											})
-										)}
 
-									{product.customizations
-										.map((p) => p.color)
-										.filter((v, i, a) => a.indexOf(v) === i)
-										.map((color) =>
-											colorOptions.push({
-												label: color,
-												value: color,
-											})
-										)}
-									{product.customizations.map((item) =>
-										item.size === size &&
-										item.color === color
-											? setCountInStock(item.countInStock)
-											: ''
-									)}
+									{/* Get Select button info*/}
+									<div className='hidden'>
+										{product.customizations
+											.map((item) => item.size)
+											.filter(
+												(v, i, a) => a.indexOf(v) === i
+											)
+											.map((size) =>
+												sizeOptions.push({
+													label: size,
+													value: size,
+												})
+											)}
 
+										{product.customizations
+											.map((p) => p.color)
+											.filter(
+												(v, i, a) => a.indexOf(v) === i
+											)
+											.map((color) =>
+												colorOptions.push({
+													label: color,
+													value: color,
+												})
+											)}
+
+										{product.customizations
+											.filter(
+												(item) => item.size === size
+											)
+											.map((filteredItem) =>
+												console.log(
+													filteredItem.countInStock
+												)
+											)}
+									</div>
+
+									{/* Display Select buttons*/}
 									<div>
 										<select
 											value={size}
@@ -200,8 +214,8 @@ export default function ProductScreen(props) {
 												</option>
 											))}
 										</select>
-										<span>{countInStock}</span>
-										{console.log(countInStock)}
+
+										<span>{'Stock: ' + countInStock}</span>
 									</div>
 									<li>
 										<div className='row'>

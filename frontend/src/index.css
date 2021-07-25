@@ -22,6 +22,10 @@ body {
 	float: left;
 }
 
+.hidden {
+	display: none;
+}
+
 /* Layout */
 .grid-container {
 	display: grid;
