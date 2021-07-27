@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { detailsProduct } from '../actions/productActions'
 import LoadingBox from '../components/LoadingBox'
@@ -10,12 +10,7 @@ export default function ProductScreen(props) {
 
 	const [qty, setQty] = useState(1)
 	const productDetails = useSelector((state) => state.productDetails)
-
 	const { loading, error, product } = productDetails
-
-	useEffect(() => {
-		dispatch(detailsProduct(productId))
-	}, [dispatch, productId])
 
 	const addToCartHandler = () => {
 		props.history.push(`/cart/${productId}?qty=${qty}`)
@@ -28,6 +23,52 @@ export default function ProductScreen(props) {
 
 	let sizeOptions = []
 	let colorOptions = []
+
+	const setup = useCallback(() => {
+		//Get init values
+		let temp = product.customizations.slice(0, 1)
+		setSize(temp.size)
+		setColor(temp.color)
+		setCountInStock(temp.countInStock)
+
+		//Get select button values
+		product.customizations
+			.map((item) => item.size)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((size) =>
+				sizeOptions.push({
+					label: size,
+					value: size,
+				})
+			)
+		product.customizations
+			.map((p) => p.color)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((color) =>
+				colorOptions.push({
+					label: color,
+					value: color,
+				})
+			)
+
+		//console.log
+		product.customizations.map((filteredItem) =>
+			console.log(
+				'item.size: ' +
+					filteredItem.size +
+					' color: ' +
+					filteredItem.color +
+					' count: ' +
+					filteredItem.countInStock +
+					' size: ' +
+					size
+			)
+		)
+	}, [])
+
+	useEffect(() => {
+		dispatch(detailsProduct(productId))
+	}, [dispatch, productId])
 
 	return (
 		<div>
@@ -134,7 +175,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									<li>
 										<div className='row'>
 											<div>Wholesale Price</div>
@@ -144,43 +184,6 @@ export default function ProductScreen(props) {
 										</div>
 									</li>
 
-									{/* Get Select button info*/}
-									<div className='hidden'>
-										{product.customizations
-											.map((item) => item.size)
-											.filter(
-												(v, i, a) => a.indexOf(v) === i
-											)
-											.map((size) =>
-												sizeOptions.push({
-													label: size,
-													value: size,
-												})
-											)}
-
-										{product.customizations
-											.map((p) => p.color)
-											.filter(
-												(v, i, a) => a.indexOf(v) === i
-											)
-											.map((color) =>
-												colorOptions.push({
-													label: color,
-													value: color,
-												})
-											)}
-
-										{product.customizations
-											.filter(
-												(item) => item.size === size
-											)
-											.map((filteredItem) =>
-												console.log(
-													filteredItem.countInStock
-												)
-											)}
-									</div>
-
 									{/* Display Select buttons*/}
 									<div>
 										<select
@@ -189,6 +192,9 @@ export default function ProductScreen(props) {
 												setSize(e.target.value)
 											}
 										>
+											{console.log(
+												'select size: ' + size
+											)}
 											{sizeOptions.map((x) => (
 												<option
 													key={x.value}

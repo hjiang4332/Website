@@ -8,6 +8,10 @@ export default function FaqScreen() {
 			answer: `Costume quality: few weeks to a month Gold Plated: 6 months to a year Gold Filled: about a year Stainless Steel: more than a year, even when you shower every day`,
 		},
 		{
+			question: 'Can allergic people wear X?',
+			answer: 'Usually stainless steel is the safest option if you are allergic to certain metals because its hypoallergenic. Gold filled tends to be similar unless youre very allergic. Gold plated and Fashion jewelry are more dangerous options and should be avoided. ',
+		},
+		{
 			question:
 				'Why is there a limit/minimum for card purchases, why do I always have to pay for shipping?',
 			answer: 'Our business model is to sell low but sell a lot. Card fee and shipping is too much for me to afford. Most people, however, save more time and money from ordering anyways, since driving and or transit will cost a fair amount.',
