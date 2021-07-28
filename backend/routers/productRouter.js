@@ -110,7 +110,6 @@ productRouter.post(
 	isAdmin,
 	expressAsyncHandler(async (req, res) => {
 		const product = new Product({
-			itemNumber: 0 + Date.now(),
 			name: 'sample name ' + Date.now(),
 			quality: 'Gold Filled',
 			category: 'sample category',
@@ -139,7 +138,6 @@ productRouter.put(
 		const product = await Product.findById(productId)
 
 		if (product) {
-			product.itemNumber = req.body.itemNumber
 			product.name = req.body.name
 			product.quality = req.body.quality
 			product.category = req.body.category

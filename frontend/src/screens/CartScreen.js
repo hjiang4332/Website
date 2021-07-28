@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
@@ -6,20 +6,26 @@ import MessageBox from '../components/MessageBox'
 
 export default function CartScreen(props) {
 	const productId = props.match.params.id
-	const qty = props.location.search
-		? Number(props.location.search.split('=')[1])
-		: 1
+	// const qty = props.location.search
+	// 	? Number(props.location.search.split('=')[1])
+	// 	: 1
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
+
+	let params = new URLSearchParams(document.location.search.substring(1))
+	let qty = params.get('qty') ? params.get('qty') : 1
+	let color = params.get('color') ? params.get('color') : '0'
+	let size = params.get('size') ? params.get('size') : 0
+	//console.log('yo: ' + qty, color, size)
+
 	const dispatch = useDispatch()
 	useEffect(() => {
 		if (productId) {
-			dispatch(addToCart(productId, qty))
+			dispatch(addToCart(productId, qty, color, size))
 		}
 	}, [dispatch, productId, qty])
 
 	const removeFromCartHandler = (id) => {
-		// delete action
 		dispatch(removeFromCart(id))
 	}
 
@@ -53,6 +59,9 @@ export default function CartScreen(props) {
 										</Link>
 									</div>
 
+									<span>{'Color: ' + item.color}</span>
+									<span>{'Size : ' + item.size}</span>
+
 									<div>
 										<select
 											value={item.qty}
@@ -60,7 +69,9 @@ export default function CartScreen(props) {
 												dispatch(
 													addToCart(
 														item.product,
-														Number(e.target.value)
+														Number(e.target.value),
+														item.color,
+														item.size
 													)
 												)
 											}
@@ -86,6 +97,7 @@ export default function CartScreen(props) {
 										Total cost: ${item.price * item.qty}
 									</div>
 
+									{/* Remove Item */}
 									<div>
 										<button
 											type='button'
@@ -104,6 +116,7 @@ export default function CartScreen(props) {
 					</ul>
 				)}
 			</div>
+
 			<div className='col-1'>
 				<div className='card card-body'>
 					<ul>

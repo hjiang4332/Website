@@ -26,9 +26,7 @@ export default function Product(props) {
 						state: { customizations: product.customizations },
 					}}
 				>
-					<h2>
-						{product.itemNumber}: {product.name}
-					</h2>
+					<h2>{product.name}</h2>
 				</Link>
 				<div>Quality: {product.quality}</div>
 

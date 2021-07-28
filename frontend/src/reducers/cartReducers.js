@@ -9,11 +9,15 @@ import {
 export const cartReducer = (state = { cartItems: [] }, action) => {
 	switch (action.type) {
 		case CART_ADD_ITEM:
-			const item = action.payload
+			const item = action.payload //whats being added
 			const itemExists = state.cartItems.find(
 				(x) => x.product === item.product
 			)
-			if (itemExists) {
+			const same = state.cartItems.find(
+				(x) => x.color === item.color && x.size === item.size
+			)
+			console.log(same)
+			if (itemExists && same) {
 				return {
 					...state,
 					cartItems: state.cartItems.map((x) =>

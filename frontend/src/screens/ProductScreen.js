@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom'
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
 
-	//get product detils
+	//get product details
 	const productId = props.match.params.id
 	const productDetails = useSelector((state) => state.productDetails)
 	const { loading, error, product } = productDetails
@@ -16,6 +16,7 @@ export default function ProductScreen(props) {
 	//get item customizations from product component in home screen
 	const location = useLocation()
 	const { customizations } = location.state
+	//TODO FIX LOCATION.STATE UNDEFINED WHEN CLICKING LINK FROM CART SCREEN
 
 	//radio buttons for customizations
 	const [size, setSize] = useState('')
@@ -29,10 +30,15 @@ export default function ProductScreen(props) {
 	const [hasCustomizations, setHasCustomizations] = useState(false)
 
 	useEffect(() => {
-		setSize(customizations.slice(0, 1).map((item) => item.size))
-		setColor(customizations.slice(0, 1).map((item) => item.color))
+		setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
+
+		const initialColor = customizations
+			.slice(0, 1)
+			.map((item) => item.color)
+		setColor(initialColor[0])
+
 		setCountInStock(
-			customizations.slice(0, 1).map((item) => item.countInStock)
+			Number(customizations.slice(0, 1).map((item) => item.countInStock))
 		)
 		if (customizations.length > 0) {
 			setHasCustomizations(true)
@@ -77,7 +83,9 @@ export default function ProductScreen(props) {
 	}, [dispatch, productId])
 
 	const addToCartHandler = () => {
-		props.history.push(`/cart/${productId}?qty=${qty}`)
+		props.history.push(
+			`/cart/${productId}?qty=${qty}&color=${color}&size=${size}`
+		)
 	}
 
 	return (
@@ -108,7 +116,6 @@ export default function ProductScreen(props) {
 								<li>Price : ${product.price}</li>
 								<li>Wholesale Price : ${product.wsPrice}</li>
 
-								{console.log(hasCustomizations)}
 								<li>
 									{hasCustomizations ? (
 										<span>
@@ -140,6 +147,7 @@ export default function ProductScreen(props) {
 									)}
 								</li>
 
+								{console.log(size)}
 								<li>
 									{hasCustomizations ? (
 										<span>

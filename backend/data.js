@@ -22,8 +22,7 @@ const data = {
 	],
 	products: [
 		{
-			itemNumber: 1,
-			name: 'Heart Ring',
+			name: '1: Heart Ring',
 			quality: 'Gold Filled',
 			category: 'Ring',
 			image: '/images/p1.jpg',
@@ -48,8 +47,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 2,
-			name: 'Circle Ring',
+			name: '2: Circle Ring',
 			quality: 'Gold Filled',
 			category: 'Ring',
 			image: '/images/p2.jpg',
@@ -74,8 +72,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 3,
-			name: 'Crystal Ring',
+			name: '3: Crystal Ring',
 			quality: 'Gold Filled',
 			category: 'Ring',
 			image: '/images/p3.jpg',
@@ -100,8 +97,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 4,
-			name: 'Gold Filled Tennis Chain',
+			name: '4: Gold Filled Tennis Chain',
 			quality: 'Gold Filled',
 			category: 'Necklace',
 			image: '/images/p4.jpg',
@@ -117,8 +113,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 6,
-			name: 'Eye anklet',
+			name: '6: Eye anklet',
 			quality: 'Gold Filled',
 			category: 'Anklet',
 			image: '/images/p6.jpg',
@@ -136,8 +131,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 7,
-			name: 'Eye bracelet',
+			name: '7: Eye bracelet',
 			quality: 'Gold Filled',
 			category: 'Bracelet',
 			image: '/images/p7.jpg',
@@ -155,8 +149,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 8,
-			name: 'Eye chain',
+			name: '8: Eye chain',
 			quality: 'Gold Filled',
 			category: 'Necklace',
 			image: '/images/p8.jpg',
@@ -174,8 +167,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 9,
-			name: 'Rhinestone cuban chain',
+			name: '9: Rhinestone cuban chain',
 			quality: 'Stainless Steel',
 			category: 'Necklace',
 			image: '/images/p9.jpg',
@@ -190,8 +182,7 @@ const data = {
 			],
 		},
 		{
-			itemNumber: 10,
-			name: 'Dz fashion earrings',
+			name: '10: Dz fashion earrings',
 			quality: 'Fashion',
 			category: 'Earring',
 			image: '/images/p10.jpg',
@@ -202,8 +193,7 @@ const data = {
 			description: 'high quality product',
 		},
 		{
-			itemNumber: 11,
-			name: 'Dz Balloons',
+			name: '11: Dz Balloons',
 			quality: 'Not applicable',
 			category: 'Dz',
 			image: '/images/p11.jpg',
