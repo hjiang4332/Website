@@ -6,7 +6,12 @@ export default function Product(props) {
 
 	return (
 		<div key={product._id} className='card'>
-			<Link to={`/product/${product._id}`}>
+			<Link
+				to={{
+					pathname: `/product/${product._id}`,
+					state: { customizations: product.customizations },
+				}}
+			>
 				<img
 					className='medium'
 					src={product.image}
@@ -15,7 +20,12 @@ export default function Product(props) {
 			</Link>
 
 			<div className='card-body'>
-				<Link to={`/product/${product._id}`}>
+				<Link
+					to={{
+						pathname: `/product/${product._id}`,
+						state: { customizations: product.customizations },
+					}}
+				>
 					<h2>
 						{product.itemNumber}: {product.name}
 					</h2>
