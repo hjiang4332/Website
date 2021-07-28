@@ -26,12 +26,17 @@ export default function ProductScreen(props) {
 	const sizeOptions = []
 	const colorOptions = []
 
+	const [hasCustomizations, setHasCustomizations] = useState(false)
+
 	useEffect(() => {
 		setSize(customizations.slice(0, 1).map((item) => item.size))
 		setColor(customizations.slice(0, 1).map((item) => item.color))
 		setCountInStock(
 			customizations.slice(0, 1).map((item) => item.countInStock)
 		)
+		if (customizations.length > 0) {
+			setHasCustomizations(true)
+		}
 	}, [customizations])
 
 	useEffect(() => {
@@ -103,8 +108,9 @@ export default function ProductScreen(props) {
 								<li>Price : ${product.price}</li>
 								<li>Wholesale Price : ${product.wsPrice}</li>
 
+								{console.log(hasCustomizations)}
 								<li>
-									{customizations.length > 0 ? (
+									{hasCustomizations ? (
 										<span>
 											{customizations
 												.slice(0, 1)
@@ -135,7 +141,7 @@ export default function ProductScreen(props) {
 								</li>
 
 								<li>
-									{customizations.length > 0 ? (
+									{hasCustomizations ? (
 										<span>
 											{customizations
 												.slice(0, 1)
@@ -191,7 +197,7 @@ export default function ProductScreen(props) {
 									</li>
 
 									{/* Display Select buttons*/}
-									{customizations.length > 0 ? (
+									{hasCustomizations ? (
 										<div>
 											<select
 												value={size}
@@ -237,21 +243,37 @@ export default function ProductScreen(props) {
 										<div className='row'>
 											<div>Status</div>
 
-											<div>
-												{product.countInStock > 0 ? (
-													<span className='success'>
-														In Stock
-													</span>
-												) : (
-													<span className='danger'>
-														Unavailable
-													</span>
-												)}
-											</div>
+											{/* If there are customizations, use countInStock from there. If not, use regular countInStock*/}
+											{hasCustomizations ? (
+												<div>
+													{countInStock > 0 ? (
+														<span className='success'>
+															In Stock
+														</span>
+													) : (
+														<span className='danger'>
+															Unavailable
+														</span>
+													)}
+												</div>
+											) : (
+												<div>
+													{product.countInStock >
+													0 ? (
+														<span className='success'>
+															In Stock
+														</span>
+													) : (
+														<span className='danger'>
+															Unavailable
+														</span>
+													)}
+												</div>
+											)}
 										</div>
 									</li>
 
-									{product.countInStock > 0 && (
+									{hasCustomizations ? (
 										<>
 											<li>
 												<div className='row'>
@@ -268,7 +290,7 @@ export default function ProductScreen(props) {
 														>
 															{[
 																...Array(
-																	product.countInStock
+																	countInStock
 																).keys(),
 															].map((x) => (
 																<option
@@ -294,6 +316,57 @@ export default function ProductScreen(props) {
 												</button>
 											</li>
 										</>
+									) : (
+										product.countInStock > 0 && (
+											<>
+												<li>
+													<div className='row'>
+														<div>Quantity</div>
+														<div>
+															<select
+																value={qty}
+																onChange={(e) =>
+																	setQty(
+																		e.target
+																			.value
+																	)
+																}
+															>
+																{[
+																	...Array(
+																		product.countInStock
+																	).keys(),
+																].map((x) => (
+																	<option
+																		key={
+																			x +
+																			1
+																		}
+																		value={
+																			x +
+																			1
+																		}
+																	>
+																		{x + 1}
+																	</option>
+																))}
+															</select>
+														</div>
+													</div>
+												</li>
+
+												<li>
+													<button
+														onClick={
+															addToCartHandler
+														}
+														className='primary block'
+													>
+														Add to Cart
+													</button>
+												</li>
+											</>
+										)
 									)}
 								</ul>
 							</div>
