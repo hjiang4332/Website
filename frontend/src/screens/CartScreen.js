@@ -54,8 +54,16 @@ export default function CartScreen(props) {
 									</div>
 
 									<div className='min-30'>
-										<Link to={`/product/${item.product}`}>
-											{item.name}
+										<Link
+											to={{
+												pathname: `/product/${item.product}`,
+												state: {
+													customizations:
+														item.customizations,
+												},
+											}}
+										>
+											<h2>{item.name}</h2>
 										</Link>
 									</div>
 

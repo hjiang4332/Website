@@ -16,7 +16,6 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 			const same = state.cartItems.find(
 				(x) => x.color === item.color && x.size === item.size
 			)
-			console.log(same)
 			if (itemExists && same) {
 				return {
 					...state,
@@ -28,11 +27,26 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 				return { ...state, cartItems: [...state.cartItems, item] }
 			}
 		case CART_REMOVE_ITEM:
-			return {
-				...state,
-				cartItems: state.cartItems.filter(
-					(x) => x.product !== action.payload
-				),
+			const item2 = action.payload
+			console.log('input color: ' + item2.color)
+			console.log('input size: ' + item2.size)
+			const same2 = state.cartItems.find(
+				(x) => x.color === item2.color && x.size === item2.size
+			)
+			if (same2) {
+				return {
+					...state,
+					cartItems: state.cartItems.filter(
+						(x) => x.color !== item2.color && x.size !== item2.size
+					),
+				}
+			} else {
+				return {
+					...state,
+					cartItems: state.cartItems.filter(
+						(x) => x.product !== action.payload
+					),
+				}
 			}
 		case CART_SAVE_SHIPPING_ADDRESS:
 			return { ...state, shippingAddress: action.payload }

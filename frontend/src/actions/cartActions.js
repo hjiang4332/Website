@@ -17,6 +17,7 @@ export const addToCart =
 				price: data.price,
 				countInStock: data.countInStock,
 				product: data._id,
+				customizations: data.customizations,
 				qty,
 				color,
 				size,
