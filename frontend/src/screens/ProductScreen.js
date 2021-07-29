@@ -16,7 +16,6 @@ export default function ProductScreen(props) {
 	//get item customizations from product component in home screen
 	const location = useLocation()
 	const { customizations } = location.state
-	//TODO FIX LOCATION.STATE UNDEFINED WHEN CLICKING LINK FROM CART SCREEN
 
 	//radio buttons for customizations
 	const [size, setSize] = useState('')
