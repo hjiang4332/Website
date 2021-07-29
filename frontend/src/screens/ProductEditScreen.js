@@ -74,8 +74,6 @@ export default function ProductEditScreen(props) {
 		}
 	}, [product, dispatch, productId, successUpdate, props.history])
 
-	//console.log(customizationsString)
-
 	const submitHandler = (e) => {
 		e.preventDefault()
 

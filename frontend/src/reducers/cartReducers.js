@@ -28,26 +28,19 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 			}
 		case CART_REMOVE_ITEM:
 			const item2 = action.payload
-			console.log('input color: ' + item2.color)
-			console.log('input size: ' + item2.size)
-			const same2 = state.cartItems.find(
+			const itemRemoved = state.cartItems.find(
 				(x) => x.color === item2.color && x.size === item2.size
 			)
-			if (same2) {
-				return {
-					...state,
-					cartItems: state.cartItems.filter(
-						(x) => x.color !== item2.color && x.size !== item2.size
-					),
-				}
-			} else {
-				return {
-					...state,
-					cartItems: state.cartItems.filter(
-						(x) => x.product !== action.payload
-					),
-				}
+			return {
+				...state,
+				cartItems: state.cartItems.filter((x) => x !== itemRemoved),
 			}
+		// return {
+		// 	...state,
+		// 	cartItems: state.cartItems.filter(
+		// 		(x) => x.product !== action.payload
+		// 	),
+		// }
 		case CART_SAVE_SHIPPING_ADDRESS:
 			return { ...state, shippingAddress: action.payload }
 		case CART_SAVE_PAYMENT_METHOD:

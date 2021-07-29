@@ -18,9 +18,9 @@ export default function ProductScreen(props) {
 	const { customizations } = location.state
 
 	//radio buttons for customizations
-	const [size, setSize] = useState('')
-	const [color, setColor] = useState('')
-	const [countInStock, setCountInStock] = useState('')
+	const [size, setSize] = useState(0)
+	const [color, setColor] = useState('0')
+	const [countInStock, setCountInStock] = useState(0)
 	const [qty, setQty] = useState(1)
 
 	const sizeOptions = []
@@ -146,7 +146,6 @@ export default function ProductScreen(props) {
 									)}
 								</li>
 
-								{console.log(size)}
 								<li>
 									{hasCustomizations ? (
 										<span>
@@ -193,7 +192,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									<li>
 										<div className='row'>
 											<div>Wholesale Price</div>
@@ -202,7 +200,6 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
-
 									{/* Display Select buttons*/}
 									{hasCustomizations ? (
 										<div>
@@ -245,7 +242,6 @@ export default function ProductScreen(props) {
 									) : (
 										<br />
 									)}
-
 									<li>
 										<div className='row'>
 											<div>Status</div>
@@ -279,102 +275,47 @@ export default function ProductScreen(props) {
 											)}
 										</div>
 									</li>
-
-									{hasCustomizations ? (
-										<>
-											<li>
-												<div className='row'>
-													<div>Quantity</div>
-													<div>
-														<select
-															value={qty}
-															onChange={(e) =>
-																setQty(
-																	e.target
-																		.value
-																)
-															}
-														>
-															{[
-																...Array(
-																	countInStock
-																).keys(),
-															].map((x) => (
-																<option
-																	key={x + 1}
-																	value={
-																		x + 1
-																	}
-																>
-																	{x + 1}
-																</option>
-															))}
-														</select>
-													</div>
-												</div>
-											</li>
-
-											<li>
-												<button
-													onClick={addToCartHandler}
-													className='primary block'
-												>
-													Add to Cart
-												</button>
-											</li>
-										</>
-									) : (
-										product.countInStock > 0 && (
-											<>
-												<li>
-													<div className='row'>
-														<div>Quantity</div>
-														<div>
-															<select
-																value={qty}
-																onChange={(e) =>
-																	setQty(
-																		e.target
-																			.value
-																	)
-																}
-															>
-																{[
-																	...Array(
-																		product.countInStock
-																	).keys(),
-																].map((x) => (
-																	<option
-																		key={
-																			x +
-																			1
-																		}
-																		value={
-																			x +
-																			1
-																		}
-																	>
-																		{x + 1}
-																	</option>
-																))}
-															</select>
-														</div>
-													</div>
-												</li>
-
-												<li>
-													<button
-														onClick={
-															addToCartHandler
+									<>
+										<li>
+											<div className='row'>
+												<div>Quantity</div>
+												<div>
+													<select
+														value={qty}
+														onChange={(e) =>
+															setQty(
+																e.target.value
+															)
 														}
-														className='primary block'
 													>
-														Add to Cart
-													</button>
-												</li>
-											</>
-										)
-									)}
+														{[
+															...Array(
+																hasCustomizations
+																	? countInStock
+																	: product.countInStock
+															).keys(),
+														].map((x) => (
+															<option
+																key={x + 1}
+																value={x + 1}
+															>
+																{x + 1}
+															</option>
+														))}
+													</select>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<button
+												onClick={addToCartHandler}
+												className='primary block'
+											>
+												Add to Cart
+											</button>
+										</li>
+									</>
 								</ul>
 							</div>
 						</div>

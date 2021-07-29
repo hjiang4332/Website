@@ -16,7 +16,6 @@ export default function CartScreen(props) {
 	let qty = params.get('qty') ? params.get('qty') : 1
 	let color = params.get('color') ? params.get('color') : '0'
 	let size = params.get('size') ? params.get('size') : 0
-	//console.log('yo: ' + qty, color, size)
 
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -25,8 +24,8 @@ export default function CartScreen(props) {
 		}
 	}, [dispatch, productId, qty])
 
-	const removeFromCartHandler = (id) => {
-		dispatch(removeFromCart(id))
+	const removeFromCartHandler = (id, color, size) => {
+		dispatch(removeFromCart(id, color, size))
 	}
 
 	const checkoutHandler = () => {
@@ -43,7 +42,7 @@ export default function CartScreen(props) {
 				) : (
 					<ul>
 						{cartItems.map((item) => (
-							<li key={item.product}>
+							<li key={item.product + item.color + item.size}>
 								<div className='row'>
 									<div>
 										<img
@@ -111,7 +110,9 @@ export default function CartScreen(props) {
 											type='button'
 											onClick={() =>
 												removeFromCartHandler(
-													item.product
+													item.product,
+													item.color,
+													item.size
 												)
 											}
 										>
