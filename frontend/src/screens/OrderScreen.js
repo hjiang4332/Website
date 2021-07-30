@@ -147,7 +147,13 @@ export default function OrderScreen(props) {
 								<h2>Order Items</h2>
 								<ul>
 									{order.orderItems.map((item) => (
-										<li key={item.product}>
+										<li
+											key={
+												item.product +
+												item.color +
+												item.size
+											}
+										>
 											<div className='row'>
 												<div>
 													<img
@@ -159,11 +165,20 @@ export default function OrderScreen(props) {
 
 												<div className='min-30'>
 													<Link
-														to={`/product/${item.product}`}
+														to={{
+															pathname: `/product/${item.product}`,
+															state: {
+																customizations:
+																	item.customizations,
+															},
+														}}
 													>
 														{item.name}
 													</Link>
 												</div>
+
+												<div>Color: {item.color}</div>
+												<div>Size: {item.size}</div>
 
 												<div>
 													{item.qty} x ${item.price} =

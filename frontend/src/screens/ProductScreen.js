@@ -200,40 +200,45 @@ export default function ProductScreen(props) {
 											</div>
 										</div>
 									</li>
+
 									{/* Display Select buttons*/}
 									{hasCustomizations ? (
 										<div>
-											<select
-												value={size}
-												onChange={(e) =>
-													setSize(e.target.value)
-												}
-											>
-												{sizeOptions.map((x) => (
-													<option
-														key={x.value}
-														value={x.value}
-													>
-														{x.label}
-													</option>
-												))}
-											</select>
+											{size !== 0 && (
+												<select
+													value={size}
+													onChange={(e) =>
+														setSize(e.target.value)
+													}
+												>
+													{sizeOptions.map((x) => (
+														<option
+															key={x.value}
+															value={x.value}
+														>
+															{x.label}
+														</option>
+													))}
+												</select>
+											)}
 
-											<select
-												value={color}
-												onChange={(e) =>
-													setColor(e.target.value)
-												}
-											>
-												{colorOptions.map((x) => (
-													<option
-														key={x.value}
-														value={x.value}
-													>
-														{x.label}
-													</option>
-												))}
-											</select>
+											{color !== '0' && (
+												<select
+													value={color}
+													onChange={(e) =>
+														setColor(e.target.value)
+													}
+												>
+													{colorOptions.map((x) => (
+														<option
+															key={x.value}
+															value={x.value}
+														>
+															{x.label}
+														</option>
+													))}
+												</select>
+											)}
 
 											<span>
 												{'Available: ' + countInStock}
