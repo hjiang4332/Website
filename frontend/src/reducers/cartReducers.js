@@ -14,8 +14,20 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 				(x) => x.product === item.product
 			)
 			const same = state.cartItems.find(
-				(x) => x.color === item.color && x.size === item.size
+				(x) => x.color === item.color && x.size === item.size //TODO: PROBLEM
 			)
+			same
+				? console.log(
+						'sames size: ' +
+							same.size +
+							' sames color: ' +
+							same.color
+				  )
+				: console.log('same doesnt exist yet')
+			console.log(
+				'item size: ' + item.size + ' item color: ' + item.color
+			)
+
 			if (itemExists && same) {
 				return {
 					...state,

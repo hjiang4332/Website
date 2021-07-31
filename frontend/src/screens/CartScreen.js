@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
@@ -22,7 +22,7 @@ export default function CartScreen(props) {
 		if (productId) {
 			dispatch(addToCart(productId, qty, color, size))
 		}
-	}, [dispatch, productId, qty])
+	}, [dispatch, productId, qty, color, size])
 
 	const removeFromCartHandler = (id, color, size) => {
 		dispatch(removeFromCart(id, color, size))
@@ -43,7 +43,7 @@ export default function CartScreen(props) {
 					<ul>
 						{cartItems.map((item) => (
 							<li key={item.product + item.color + item.size}>
-								{console.log(
+								{/*{console.log(
 									'item: ' +
 										item.name +
 										' Type: ' +
@@ -66,7 +66,8 @@ export default function CartScreen(props) {
 										typeof size +
 										' Size: ' +
 										size
-								)}
+								)}*/}
+
 								<div className='row'>
 									<div>
 										<img
@@ -90,9 +91,13 @@ export default function CartScreen(props) {
 										</Link>
 									</div>
 
-									{item.color !== '0' && (
-										<span>{'Color: ' + item.color}</span>
-									)}
+									{item.color === '0' ||
+										(item.color !== '' && (
+											<span>
+												{'Color: ' + item.color}
+											</span>
+										))}
+
 									{Number(item.size) !== 0 && (
 										<span>{'Size : ' + item.size}</span>
 									)}
@@ -171,6 +176,17 @@ export default function CartScreen(props) {
 								)}
 							</h2>
 						</li>
+
+						<li>
+							<h2>
+								Wholesale price: $
+								{cartItems.reduce(
+									(a, c) => a + c.wsPrice * c.qty,
+									0
+								)}
+							</h2>
+						</li>
+
 						<li>
 							<button
 								type='button'
