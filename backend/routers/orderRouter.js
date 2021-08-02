@@ -147,18 +147,33 @@ orderRouter.put(
 			}*/
 
 			//update count in stock - new
-			for (const index in updatedOrder.orderItems) {
+			/*for (const index in updatedOrder.orderItems) {
 				//loop through items in order
-				const item = updatedOrder.orderItems[index] //get each item in order
-				const product = await Product.findById(item.product) //find the product that corresponds with each item in order
+				const orderItem = updatedOrder.orderItems[index] //get each item in order
+				console.log(
+					'orderItem: ' +
+						orderItem +
+						' size: ' +
+						orderItem.size +
+						' color: ' +
+						orderItem.color
+				)
+				const product = await Product.findById(orderItem.product) //find the product that corresponds with each item in order
 				product.customizations.length > 0
-					? //TODO - get color and shit and find
-					  product.customizations.map((item) => {
-							const tempObject = item
-					  })
+					? product.customizations.map((item) =>
+							item.color === orderItem.color &&
+							item.size === orderItem.size
+								? {
+										...item,
+										countInStock: (countInStock -=
+											item.qty),
+								  }
+								: item
+					  )
 					: (product.countInStock -= item.qty)
+
 				await product.save()
-			}
+			}*/
 
 			//update user payment totals n stuff
 			//user: req.user._id
