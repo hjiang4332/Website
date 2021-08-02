@@ -9,30 +9,23 @@ import {
 export const cartReducer = (state = { cartItems: [] }, action) => {
 	switch (action.type) {
 		case CART_ADD_ITEM:
-			const item = action.payload //whats being added
+			const item = action.payload
 			const itemExists = state.cartItems.find(
-				(x) => x.product === item.product
-			)
-			const same = state.cartItems.find(
-				(x) => x.color === item.color && x.size === item.size //TODO: PROBLEM
-			)
-			same
-				? console.log(
-						'sames size: ' +
-							same.size +
-							' sames color: ' +
-							same.color
-				  )
-				: console.log('same doesnt exist yet')
-			console.log(
-				'item size: ' + item.size + ' item color: ' + item.color
+				(x) =>
+					x.product === item.product &&
+					x.color === item.color &&
+					x.size === item.size
 			)
 
-			if (itemExists && same) {
+			if (itemExists) {
 				return {
 					...state,
 					cartItems: state.cartItems.map((x) =>
-						x.product === itemExists.product ? item : x
+						x.product === itemExists.product &&
+						x.color === itemExists.color &&
+						x.size === itemExists.size
+							? item
+							: x
 					),
 				}
 			} else {

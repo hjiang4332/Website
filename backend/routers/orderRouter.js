@@ -136,12 +136,27 @@ orderRouter.put(
 				email_address: req.body.email_address,
 			}
 			const updatedOrder = await order.save()
-			//subtract count in stock by amount paid for
-			for (const index in updatedOrder.orderItems) {
+
+			//subtract count in stock by amount paid for OLD
+			/*for (const index in updatedOrder.orderItems) {
 				const item = updatedOrder.orderItems[index]
 				const product = await Product.findById(item.product)
 				product.countInStock -= item.qty
 				product.sold += item.qty
+				await product.save()
+			}*/
+
+			//update count in stock - new
+			for (const index in updatedOrder.orderItems) {
+				//loop through items in order
+				const item = updatedOrder.orderItems[index] //get each item in order
+				const product = await Product.findById(item.product) //find the product that corresponds with each item in order
+				product.customizations.length > 0
+					? //TODO - get color and shit and find
+					  product.customizations.map((item) => {
+							const tempObject = item
+					  })
+					: (product.countInStock -= item.qty)
 				await product.save()
 			}
 

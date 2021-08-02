@@ -28,6 +28,7 @@ export default function ProductScreen(props) {
 
 	const [hasCustomizations, setHasCustomizations] = useState(false)
 
+	//get initial values
 	useEffect(() => {
 		setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
 
@@ -39,11 +40,13 @@ export default function ProductScreen(props) {
 		setCountInStock(
 			Number(customizations.slice(0, 1).map((item) => item.countInStock))
 		)
+
 		if (customizations.length > 0) {
 			setHasCustomizations(true)
 		}
 	}, [customizations])
 
+	//get count in stock based off of select values (size and color)
 	useEffect(() => {
 		customizations
 			.filter(
