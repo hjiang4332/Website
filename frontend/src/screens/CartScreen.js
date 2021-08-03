@@ -43,31 +43,6 @@ export default function CartScreen(props) {
 					<ul>
 						{cartItems.map((item) => (
 							<li key={item.product + item.color + item.size}>
-								{/*{console.log(
-									'item: ' +
-										item.name +
-										' Type: ' +
-										typeof qty +
-										' QTY: ' +
-										qty
-								)}
-								{console.log(
-									'item: ' +
-										item.name +
-										' Type: ' +
-										typeof color +
-										' Color: ' +
-										color
-								)}
-								{console.log(
-									'item: ' +
-										item.name +
-										' Type: ' +
-										typeof size +
-										' Size: ' +
-										size
-								)}*/}
-
 								<div className='row'>
 									<div>
 										<img

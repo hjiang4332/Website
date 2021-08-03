@@ -147,22 +147,15 @@ orderRouter.put(
 			}*/
 
 			//update count in stock - new
-			/*for (const index in updatedOrder.orderItems) {
-				//loop through items in order
-				const orderItem = updatedOrder.orderItems[index] //get each item in order
-				console.log(
-					'orderItem: ' +
-						orderItem +
-						' size: ' +
-						orderItem.size +
-						' color: ' +
-						orderItem.color
-				)
-				const product = await Product.findById(orderItem.product) //find the product that corresponds with each item in order
+			for (const index in updatedOrder.orderItems) {
+				const item = updatedOrder.orderItems[index] //get each item from orderItems array
+				const product = await Product.findById(item.product) //find product that corresponds with each item in orderItems array
+
 				product.customizations.length > 0
-					? product.customizations.map((item) =>
-							item.color === orderItem.color &&
-							item.size === orderItem.size
+					? product.customizations.map((productItem) =>
+							productItem.color.toString() ===
+								item.color.toString() &&
+							Number(productItem.size) === Number(item.size)
 								? {
 										...item,
 										countInStock: (countInStock -=
@@ -173,14 +166,7 @@ orderRouter.put(
 					: (product.countInStock -= item.qty)
 
 				await product.save()
-			}*/
-
-			//update user payment totals n stuff
-			//user: req.user._id
-			/*const user = await User.findById(req.params.id)
-            if (user) {
-                user.totalSpent += 
-            }*/
+			}
 
 			res.send({ message: 'Order Paid', order: updatedOrder })
 		} else {
