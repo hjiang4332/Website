@@ -103,6 +103,11 @@ function App() {
 						></Route>
 					</div>
 
+					<div className='social-widget'>
+						<a href='https://www.instagram.com/classyjewelryws/'>
+							<i className='fa fa-instagram' aria-hidden='true' />
+						</a>
+					</div>
 					<div>
 						<Link to='/faq'>FAQ</Link>
 						<Link to='/cart'>
@@ -378,16 +383,13 @@ function App() {
 										</Link>
 									</li>
 									<li>
-										<Link to='/refund-policy'>Refund-policy</Link>
+										<Link to='/refund-policy'>
+											Refund-policy
+										</Link>
 									</li>
 									<li>
 										<Link to='/shipping-policy'>
 											Shipping and Delivery
-										</Link>
-									</li>
-									<li>
-										<Link to='/dashboard'>
-											Privacy policy
 										</Link>
 									</li>
 								</ul>
@@ -407,13 +409,6 @@ function App() {
 
 								<div className='contact-number'>
 									<i
-										className='fa fa-phone-square'
-										aria-hidden='true'
-									/>
-									Store number: (646)-490-7779
-								</div>
-								<div className='contact-number'>
-									<i
 										className='fa fa-mobile'
 										aria-hidden='true'
 									></i>
@@ -426,15 +421,6 @@ function App() {
 										aria-hidden='true'
 									/>
 									Email: classyjewelryws@gmail.com
-								</div>
-
-								<div className='social-widget'>
-									<a href='https://www.instagram.com/classyjewelryws/'>
-										<i
-											className='fa fa-instagram'
-											aria-hidden='true'
-										/>
-									</a>
 								</div>
 							</div>
 						</div>

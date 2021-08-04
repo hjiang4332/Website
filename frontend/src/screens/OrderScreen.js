@@ -173,9 +173,6 @@ export default function OrderScreen(props) {
 															},
 														}}
 													>
-														{console.log(
-															item.customizations
-														)}
 														{item.name}
 													</Link>
 												</div>
