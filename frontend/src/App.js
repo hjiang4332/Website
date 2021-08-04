@@ -6,11 +6,13 @@ import { signout } from './actions/userActions'
 import { listProductCategories } from './actions/productActions'
 import { listProductQualities } from './actions/productActions'
 
+//components
 import PrivateRoute from './components/PrivateRoute'
 import AdminRoute from './components/AdminRoute'
 import SearchBox from './components/SearchBox'
 import LoadingBox from './components/LoadingBox'
 import MessageBox from './components/MessageBox'
+import ChatBox from './components/ChatBox'
 
 //screens
 import CartScreen from './screens/CartScreen'
@@ -32,7 +34,6 @@ import UserEditScreen from './screens/UserEditScreen'
 import SearchScreen from './screens/SearchScreen'
 import DashboardScreen from './screens/DashboardScreen'
 import SupportScreen from './screens/SupportScreen'
-import ChatBox from './components/ChatBox'
 import FaqScreen from './screens/FaqScreen'
 
 function App() {
@@ -336,11 +337,114 @@ function App() {
 				</main>
 
 				<footer className='row center'>
-					{userInfo && !userInfo.isAdmin && (
-						<ChatBox userInfo={userInfo} />
-					)}
-					<div>All rights reserved</div>{' '}
+					<div className='row'>
+						<div className='col-1'>
+							<div>
+								<h2 className='widget-title'>About</h2>
+								<p>THIS IS MY CONTENT</p>
+								<div className='cards'>
+									<i
+										className='fa fa-cc-paypal'
+										aria-hidden='true'
+									></i>
+									<i
+										className='fa fa-credit-card-alt'
+										aria-hidden='true'
+									></i>
+
+									<i
+										className='fa fa-cc-discover'
+										aria-hidden='true'
+									></i>
+								</div>
+
+								<p>
+									<i
+										className='fa fa-lock'
+										aria-hidden='true'
+									/>
+									Secure Online Payments
+								</p>
+							</div>
+						</div>
+
+						<div className='col-1'>
+							<div className='footer-widget'>
+								<h2 className='widget-title'>Information</h2>
+								<ul>
+									<li>
+										<a href='#'>About Us</a>
+									</li>
+									<li>
+										<a href='#'>Contact Us</a>
+									</li>
+									<li>
+										<a href='#'>Terms and Conditions</a>
+									</li>
+									<li>
+										<a href='#'>Returns</a>
+									</li>
+									<li>
+										<a href='#'>Shipping and Delivery</a>
+									</li>
+									<li>
+										<a href='#'>Privacy policy</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+						<div className='col-1'>
+							<div>
+								<h2 className='widget-title'>Contact</h2>
+								<div className='contact-address'>
+									<i
+										className='fa fa-map-marker'
+										aria-hidden='true'
+									></i>
+									Address : 48W 28th street Manhattan
+								</div>
+
+								<div className='contact-number'>
+									<i
+										className='fa fa-phone-square'
+										aria-hidden='true'
+									/>
+									Store number: (646)-490-7779
+								</div>
+								<div className='contact-number'>
+									<i
+										class='fa fa-mobile'
+										aria-hidden='true'
+									></i>
+									Phone Number: (347)-773-6389
+								</div>
+
+								<div className='contact-email'>
+									<i
+										className='fa fa-envelope'
+										aria-hidden='true'
+									/>
+									Email: classyjewelryws@gmail.com
+								</div>
+
+								<div className='social-widget'>
+									<a href='https://www.instagram.com/classyjewelryws/'>
+										<i
+											className='fa fa-instagram'
+											aria-hidden='true'
+										/>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 				</footer>
+				<div>Copyright © All rights reserved</div>
+
+				{userInfo && !userInfo.isAdmin && (
+					<ChatBox userInfo={userInfo} />
+				)}
 			</div>
 		</BrowserRouter>
 	)
