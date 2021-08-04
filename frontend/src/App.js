@@ -373,22 +373,22 @@ function App() {
 								<h2 className='widget-title'>Information</h2>
 								<ul>
 									<li>
-										<a href='#'>About Us</a>
+										<Link to='/terms'>
+											Terms and Conditions
+										</Link>
 									</li>
 									<li>
-										<a href='#'>Contact Us</a>
+										<Link to='/refund-policy'>Refund-policy</Link>
 									</li>
 									<li>
-										<a href='#'>Terms and Conditions</a>
+										<Link to='/shipping-policy'>
+											Shipping and Delivery
+										</Link>
 									</li>
 									<li>
-										<a href='#'>Returns</a>
-									</li>
-									<li>
-										<a href='#'>Shipping and Delivery</a>
-									</li>
-									<li>
-										<a href='#'>Privacy policy</a>
+										<Link to='/dashboard'>
+											Privacy policy
+										</Link>
 									</li>
 								</ul>
 							</div>
