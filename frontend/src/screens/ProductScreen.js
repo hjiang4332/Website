@@ -30,19 +30,20 @@ export default function ProductScreen(props) {
 
 	//get initial values
 	useEffect(() => {
-		setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
-
-		const initialColor = customizations
-			.slice(0, 1)
-			.map((item) => item.color)
-		setColor(initialColor[0])
-
-		setCountInStock(
-			Number(customizations.slice(0, 1).map((item) => item.countInStock))
-		)
-
 		if (customizations.length > 0) {
 			setHasCustomizations(true)
+			setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
+
+			const initialColor = customizations
+				.slice(0, 1)
+				.map((item) => item.color)
+			setColor(initialColor[0])
+
+			setCountInStock(
+				Number(
+					customizations.slice(0, 1).map((item) => item.countInStock)
+				)
+			)
 		}
 	}, [customizations])
 
