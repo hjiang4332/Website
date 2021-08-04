@@ -8,6 +8,16 @@ const orderSchema = new mongoose.Schema(
 				qty: { type: Number, required: true },
 				image: { type: String, required: true },
 				price: { type: Number, required: true },
+				wsPrice: { type: Number, required: true },
+				wzPrice: { type: Number, required: true },
+				salePrice: { type: Number },
+				customizations: [
+					{
+						color: { type: String },
+						size: { type: Number },
+						countInStock: { type: Number },
+					},
+				],
 				color: { type: String },
 				size: { type: Number },
 				product: {
@@ -44,7 +54,7 @@ const orderSchema = new mongoose.Schema(
 			ref: 'User',
 			required: true,
 		},
-        
+
 		isPaid: { type: Boolean, default: false },
 		paidAt: { type: Date },
 		isDelivered: { type: Boolean, default: false },

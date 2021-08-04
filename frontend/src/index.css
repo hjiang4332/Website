@@ -22,6 +22,10 @@ body {
 	float: left;
 }
 
+.pad-right {
+	padding-right: 5rem;
+}
+
 .hidden {
 	display: none;
 }

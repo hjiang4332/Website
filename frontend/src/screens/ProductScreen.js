@@ -116,8 +116,22 @@ export default function ProductScreen(props) {
 
 								<li>Quality : {product.quality}</li>
 
-								<li>Price : ${product.price}</li>
-								<li>Wholesale Price : ${product.wsPrice}</li>
+								{product.salePrice < product.price ? (
+									<li>On Sale: ${product.salePrice}</li>
+								) : (
+									<li>
+										<div className='row'>
+											<div>Price</div>
+											<div className='price'>
+												${product.price}
+											</div>
+											<div> Wholesale Price</div>
+											<div className='price'>
+												${product.wsPrice}
+											</div>
+										</div>
+									</li>
+								)}
 
 								<li>
 									{hasCustomizations ? (
@@ -188,22 +202,22 @@ export default function ProductScreen(props) {
 						<div className='col-1'>
 							<div className='card card-body'>
 								<ul>
-									<li>
-										<div className='row'>
-											<div>Price</div>
-											<div className='price'>
-												${product.price}
+									{product.salePrice < product.price ? (
+										<li>On Sale: ${product.salePrice}</li>
+									) : (
+										<li>
+											<div className='row'>
+												<div>Price</div>
+												<div className='price'>
+													${product.price}
+												</div>
+												<div> Wholesale Price</div>
+												<div className='price'>
+													${product.wsPrice}
+												</div>
 											</div>
-										</div>
-									</li>
-									<li>
-										<div className='row'>
-											<div>Wholesale Price</div>
-											<div className='price'>
-												${product.wsPrice}
-											</div>
-										</div>
-									</li>
+										</li>
+									)}
 
 									{/* Display Select buttons*/}
 									{hasCustomizations ? (

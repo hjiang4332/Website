@@ -20,7 +20,11 @@ export default function PlaceOrderScreen(props) {
 	//calculate prices
 	const toPrice = (num) => Number(num.toFixed(2))
 	cart.itemsPrice = toPrice(
-		cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
+		cart.cartItems.reduce(
+			(a, c) =>
+				a + (c.salePrice < c.price ? c.salePrice : c.price) * c.qty,
+			0
+		)
 	)
 	cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10)
 	cart.taxPrice = toPrice(0.15 * cart.itemsPrice)
@@ -104,23 +108,45 @@ export default function PlaceOrderScreen(props) {
 													</Link>
 												</div>
 
-												{item.color !== '0' ? (
+												{item.color !== '0' && (
 													<div>
 														Color: {item.color}
 													</div>
-												) : (
-													<div />
 												)}
-												{item.size !== 0 ? (
+												{item.size !== 0 && (
 													<div>Size: {item.size}</div>
-												) : (
-													<div />
 												)}
 
-												<div>
-													{item.qty} x ${item.price} =
-													${item.qty * item.price}
-												</div>
+												{typeof item.salePrice ===
+												'undefined' ? (
+													<div>
+														<span className='pad-right'>
+															${item.price} ea.
+														</span>
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.price}=$
+															{item.price *
+																item.qty}
+														</span>
+													</div>
+												) : (
+													<div>
+														<span className='pad-right'>
+															On Sale: $
+															{item.salePrice}ea.
+														</span>
+
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.salePrice}=$
+															{item.salePrice *
+																item.qty}
+														</span>
+													</div>
+												)}
 											</div>
 										</li>
 									))}

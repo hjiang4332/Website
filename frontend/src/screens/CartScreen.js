@@ -106,11 +106,28 @@ export default function CartScreen(props) {
 										</select>
 									</div>
 
-									<div>${item.price} ea.</div>
+									{typeof item.salePrice === 'undefined' ? (
+										<div>
+											<span className='pad-right'>
+												${item.price} ea.
+											</span>
+											<span>
+												Total cost: $
+												{item.price * item.qty}
+											</span>
+										</div>
+									) : (
+										<div>
+											<span className='pad-right'>
+												On Sale: ${item.salePrice}ea
+											</span>
 
-									<div>
-										Total cost: ${item.price * item.qty}
-									</div>
+											<span>
+												Total cost: $
+												{item.salePrice * item.qty}
+											</span>
+										</div>
+									)}
 
 									{/* Remove Item */}
 									<div>
@@ -146,7 +163,12 @@ export default function CartScreen(props) {
 								)}{' '}
 								items) : $
 								{cartItems.reduce(
-									(a, c) => a + c.price * c.qty,
+									(a, c) =>
+										a +
+										(c.salePrice < c.price
+											? c.salePrice
+											: c.price) *
+											c.qty,
 									0
 								)}
 							</h2>
@@ -156,7 +178,12 @@ export default function CartScreen(props) {
 							<h2>
 								Wholesale price: $
 								{cartItems.reduce(
-									(a, c) => a + c.wsPrice * c.qty,
+									(a, c) =>
+										a +
+										(c.salePrice < c.wsPrice
+											? c.salePrice
+											: c.wsPrice) *
+											c.qty,
 									0
 								)}
 							</h2>

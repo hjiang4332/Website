@@ -414,7 +414,7 @@ function App() {
 								</div>
 								<div className='contact-number'>
 									<i
-										class='fa fa-mobile'
+										className='fa fa-mobile'
 										aria-hidden='true'
 									></i>
 									Phone Number: (347)-773-6389

@@ -173,6 +173,9 @@ export default function OrderScreen(props) {
 															},
 														}}
 													>
+														{console.log(
+															item.customizations
+														)}
 														{item.name}
 													</Link>
 												</div>
@@ -190,10 +193,36 @@ export default function OrderScreen(props) {
 													<div />
 												)}
 
-												<div>
-													{item.qty} x ${item.price} =
-													${item.qty * item.price}
-												</div>
+												{typeof item.salePrice ===
+												'undefined' ? (
+													<div>
+														<span className='pad-right'>
+															${item.price} ea.
+														</span>
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.price}=$
+															{item.price *
+																item.qty}
+														</span>
+													</div>
+												) : (
+													<div>
+														<span className='pad-right'>
+															On Sale: $
+															{item.salePrice}ea.
+														</span>
+
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.salePrice}=$
+															{item.salePrice *
+																item.qty}
+														</span>
+													</div>
+												)}
 											</div>
 										</li>
 									))}
