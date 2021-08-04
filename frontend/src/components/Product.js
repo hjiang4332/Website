@@ -74,8 +74,20 @@ export default function Product(props) {
 					)}
 				</div>
 
-				<div className='price left'>Price: ${product.price}</div>
-				<div className='price right'>Wholesale: ${product.wsPrice}</div>
+				{product.salePrice < product.price ? (
+					<div className='price left'>
+						On Sale: ${product.salePrice}
+					</div>
+				) : (
+					<span>
+						<div className='price left'>
+							Price: ${product.price}
+						</div>
+						<div className='price right'>
+							Wholesale: ${product.wsPrice}
+						</div>
+					</span>
+				)}
 			</div>
 		</div>
 	)

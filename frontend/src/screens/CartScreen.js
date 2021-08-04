@@ -13,9 +13,9 @@ export default function CartScreen(props) {
 	const { cartItems } = cart
 
 	let params = new URLSearchParams(document.location.search.substring(1))
-	let qty = params.get('qty') ? params.get('qty') : 1
+	let qty = params.get('qty') ? Number(params.get('qty')) : 1
 	let color = params.get('color') ? params.get('color') : '0'
-	let size = params.get('size') ? params.get('size') : 0
+	let size = params.get('size') ? Number(params.get('size')) : 0
 
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -73,7 +73,7 @@ export default function CartScreen(props) {
 											</span>
 										))}
 
-									{Number(item.size) !== 0 && (
+									{item.size !== 0 && (
 										<span>{'Size : ' + item.size}</span>
 									)}
 

@@ -54,7 +54,7 @@ export default function ProductEditScreen(props) {
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
-			setSalePrice(product.SalePrice)
+			setSalePrice(product.salePrice)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
 			setCustomizationsString(
@@ -261,7 +261,7 @@ export default function ProductEditScreen(props) {
 							/>
 						</div>
 
-						{/*<div>
+						<div>
 							<label htmlFor='salePrice'>Sale Price</label>
 							<input
 								id='salePrice'
@@ -270,7 +270,7 @@ export default function ProductEditScreen(props) {
 								value={salePrice}
 								onChange={(e) => setSalePrice(e.target.value)}
 							/>
-						</div>*/}
+						</div>
 
 						<div>
 							<label htmlFor='customizationsString'>
