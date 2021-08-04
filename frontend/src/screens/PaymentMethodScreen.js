@@ -11,7 +11,7 @@ export default function PaymentMethodScreen(props) {
 		props.history.push('/shipping')
 	}
 
-	const [paymentMethod, setPaymentMethod] = useState('PayPal')
+	const [paymentMethod, setPaymentMethod] = useState('Ship My Order')
 
 	const dispatch = useDispatch()
 	const submitHandler = (e) => {
@@ -25,23 +25,21 @@ export default function PaymentMethodScreen(props) {
 			<CheckoutSteps step1 step2 step3></CheckoutSteps>
 			<form className='form' onSubmit={submitHandler}>
 				<div>
-					<h1>Payment Method</h1>
+					<h1>Pickup Method</h1>
 				</div>
 
 				<div>
 					<div>
 						<input
 							type='radio'
-							id='paypal'
-							value='PayPal'
+							id='ship'
+							value='Ship'
 							name='paymentMethod'
 							required
 							checked
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						<label htmlFor='paypal'>
-							PayPal / Card and ship my order
-						</label>
+						<label htmlFor='ship'>Ship My Order</label>
 					</div>
 				</div>
 
@@ -49,13 +47,13 @@ export default function PaymentMethodScreen(props) {
 					<div>
 						<input
 							type='radio'
-							id='stripe'
-							value='Stripe'
+							id='pickup'
+							value='Pick up at Store'
 							name='paymentMethod'
 							required
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						<label htmlFor='stripe'>Stripe</label>
+						<label htmlFor='pickup'>Pick up at Store</label>
 					</div>
 				</div>
 

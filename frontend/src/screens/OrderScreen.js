@@ -177,8 +177,18 @@ export default function OrderScreen(props) {
 													</Link>
 												</div>
 
-												<div>Color: {item.color}</div>
-												<div>Size: {item.size}</div>
+												{item.color !== '0' ? (
+													<div>
+														Color: {item.color}
+													</div>
+												) : (
+													<div />
+												)}
+												{item.size !== 0 ? (
+													<div>Size: {item.size}</div>
+												) : (
+													<div />
+												)}
 
 												<div>
 													{item.qty} x ${item.price} =

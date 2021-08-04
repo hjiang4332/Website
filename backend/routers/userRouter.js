@@ -4,6 +4,7 @@ import bcrypt from 'bcryptjs'
 import data from '../data.js'
 import User from '../models/userModel.js'
 import { generateToken, isAdmin, isAuth } from '../utils.js'
+import Order from '../models/orderModel.js'
 
 const userRouter = express.Router()
 
@@ -121,6 +122,7 @@ userRouter.delete(
 				res.status(400).send({ message: 'Can Not Delete Admin User' })
 				return
 			}
+			await Order.deleteMany({ user: user._id })
 			const deleteUser = await user.remove()
 			res.send({ message: 'User Deleted', user: deleteUser })
 		} else {
