@@ -26,27 +26,13 @@ export default function HomeScreen() {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<>
-					<div>ON SALE ITEMS</div>
-					<div className='row center'>
-						{products.map((product) =>
-							product.salePrice > 0 ? (
-								<Product key={product._id} product={product} />
-							) : (
-								<br />
-							)
-						)}
-					</div>
-
-					<div>REGULAR ITEMS</div>
 					<div className='row center'>
 						{products.map(
-							(product) =>
-								typeof product.salePrice === 'undefined' && (
-									<Product
-										key={product._id}
-										product={product}
-									/>
-								)
+							(product) => (
+								//typeof product.salePrice === 'undefined' && (
+								<Product key={product._id} product={product} />
+							)
+							//)
 						)}
 					</div>
 

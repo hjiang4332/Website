@@ -35,6 +35,9 @@ import SearchScreen from './screens/SearchScreen'
 import DashboardScreen from './screens/DashboardScreen'
 import SupportScreen from './screens/SupportScreen'
 import FaqScreen from './screens/FaqScreen'
+import TermsScreen from './screens/policyScreens/TermsScreen'
+import RefundpolicyScreen from './screens/policyScreens/RefundpolicyScreen'
+import ShippingpolicyScreen from './screens/policyScreens/ShippingpolicyScreen'
 
 function App() {
 	//get cart data from redux
@@ -266,7 +269,6 @@ function App() {
 						component={OrderHistoryScreen}
 					/>
 					<PrivateRoute path='/order/:id' component={OrderScreen} />
-
 					{/* Admin */}
 					<AdminRoute path='/dashboard' component={DashboardScreen} />
 					<AdminRoute
@@ -291,7 +293,6 @@ function App() {
 						component={UserEditScreen}
 					/>
 					<AdminRoute path='/support' component={SupportScreen} />
-
 					{/* Public */}
 					<Route path='/signin' component={SigninScreen} />
 					<Route path='/register' component={RegisterScreen} />
@@ -331,12 +332,23 @@ function App() {
 						component={SearchScreen}
 						exact
 					/>
-
 					<Route path='/faq' component={FaqScreen} exact />
 					<Route path='/' component={HomeScreen} exact />
 					<Route
 						path='/pageNumber/:pageNumber'
 						component={HomeScreen}
+						exact
+					/>
+					{/* */}
+					<Route path='/terms' component={TermsScreen} exact />
+					<Route
+						path='/refund-policy'
+						component={RefundpolicyScreen}
+						exact
+					/>
+					<Route
+						path='/shipping-policy'
+						component={ShippingpolicyScreen}
 						exact
 					/>
 				</main>

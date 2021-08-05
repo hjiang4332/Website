@@ -22,12 +22,20 @@ body {
 	float: left;
 }
 
+.center {
+	text-align: center;
+}
+
 .pad-right {
 	padding-right: 5rem;
 }
 
 .hidden {
 	display: none;
+}
+
+div .policy {
+	padding: 10rem 50rem;
 }
 
 /* Layout */
