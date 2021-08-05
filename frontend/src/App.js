@@ -36,8 +36,8 @@ import DashboardScreen from './screens/DashboardScreen'
 import SupportScreen from './screens/SupportScreen'
 import FaqScreen from './screens/FaqScreen'
 import TermsScreen from './screens/policyScreens/TermsScreen'
-import RefundpolicyScreen from './screens/policyScreens/RefundpolicyScreen'
-import ShippingpolicyScreen from './screens/policyScreens/ShippingpolicyScreen'
+import RefundPolicyScreen from './screens/policyScreens/RefundPolicyScreen'
+import ShippingPolicyScreen from './screens/policyScreens/ShippingPolicyScreen'
 
 function App() {
 	//get cart data from redux
@@ -343,12 +343,12 @@ function App() {
 					<Route path='/terms' component={TermsScreen} exact />
 					<Route
 						path='/refund-policy'
-						component={RefundpolicyScreen}
+						component={RefundPolicyScreen}
 						exact
 					/>
 					<Route
 						path='/shipping-policy'
-						component={ShippingpolicyScreen}
+						component={ShippingPolicyScreen}
 						exact
 					/>
 				</main>

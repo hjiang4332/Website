@@ -12,12 +12,35 @@ const RefundPolicyScreen = () => {
 					DAMAGED.
 				</h2>
 				<div>
-					Send an email within 14 days to classyjewelryws@gmail.com
-					with "refund inquiry" in the subject line along with photos
-					of damaged goods. If more than 14 days have gone by since
-					your purchase was received, unfortunately we can’t offer you
-					a refund.
+					If a product you receive is defective or damaged, send a
+					picture of it to our email: classyjewelryws@gmail.com with
+					"refund inquiry" in the subject line. Along with a  Afterwards, you will
+					have 1 month to bring back the item to our store.
+					<h3>
+						If more than 14 days have gone by since your purchase
+						was received or more than 1 month has passed since you
+						placed an email, unfortunately we can’t offer you a
+						refund.
+					</h3>
 				</div>
+				<h4>At the store</h4>
+				<div>
+					Show us the email you sent with the damaged goods, and we
+					will attempt to repair said item. If we're unable to, feel
+					free to exchange or ask for a refund.
+				</div>
+				<h4>Online</h4>
+				<div>
+					Unfortunately with low prices, we also have low margins per
+					item. Along with a $10 shipping fee that ups applies to us,
+					refunding items are generally not worthwhile to both the
+					consumer and I. In the future, we will be buying parts that
+					we can ship to you in your next order, which is the best
+					alternative we can offer.
+				</div>
+
+                <h4>Non eligable refundable items</h4>
+                <div>Any item on sale, along with items sold at $1 or below are not eligable for refunds. Sanitary goods, or flammable liquids are also non eligbale. </div>
 			</div>
 			<div>
 				<h2>new</h2>
@@ -30,7 +53,8 @@ const RefundPolicyScreen = () => {
 			intimate or sanitary goods, hazardous materials, or flammable
 			liquids or gases. Additional non-returnable items: Gift cards
 			Downloadable software products Some health and personal care items
-			To complete your return, we require a receipt or proof of purchase.
+			
+            To complete your return, we require a receipt or proof of purchase.
 			Please do not send your purchase back to the manufacturer. There are
 			certain situations where only partial refunds are granted (if
 			applicable) - Any item not in its original condition, is damaged or
