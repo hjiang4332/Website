@@ -9,97 +9,58 @@ const RefundPolicyScreen = () => {
 			<div>
 				<h2>
 					REFUNDS ARE ONLY GIVEN TO ITEMS THAT ARE DEFECTIVE OR
-					DAMAGED.
+					DAMAGED, SOLD AT RETAIL PRICE, EXCEEDING $5, OR IN STORE
 				</h2>
+				<div>
+					As a wholesale company, we offer very low prices for
+					customers to resell to make a profit. As such, our profits
+					per item too are very low. Furthermore, shipping the item
+					back to us will generally cost more than the refunded
+					item(s).
+				</div>
+
+				<h4> InquiryEmail</h4>
 				<div>
 					If a product you receive is defective or damaged, send a
 					picture of it to our email: classyjewelryws@gmail.com with
-					"refund inquiry" in the subject line. Along with a  Afterwards, you will
-					have 1 month to bring back the item to our store.
-					<h3>
-						If more than 14 days have gone by since your purchase
-						was received or more than 1 month has passed since you
-						placed an email, unfortunately we can’t offer you a
-						refund.
-					</h3>
-				</div>
-				<h4>At the store</h4>
-				<div>
-					Show us the email you sent with the damaged goods, and we
-					will attempt to repair said item. If we're unable to, feel
-					free to exchange or ask for a refund.
-				</div>
-				<h4>Online</h4>
-				<div>
-					Unfortunately with low prices, we also have low margins per
-					item. Along with a $10 shipping fee that ups applies to us,
-					refunding items are generally not worthwhile to both the
-					consumer and I. In the future, we will be buying parts that
-					we can ship to you in your next order, which is the best
-					alternative we can offer.
+					"refund inquiry" in the subject line. Along with pictures of
+					items as well as a link to your order or the order number
+					and your contact details such as your phone number or email.
+					Emails should be sent within 7 days of receiving your
+					package. We will respond to the same email whether said item
+					is eligible for a refund
 				</div>
 
-                <h4>Non eligable refundable items</h4>
-                <div>Any item on sale, along with items sold at $1 or below are not eligable for refunds. Sanitary goods, or flammable liquids are also non eligbale. </div>
+				<h4>Out of State</h4>
+				<div>
+					We plan to order jewelry parts so that you will be able to
+					fix said items. New parts will be shipped along with your
+					next order in order to prevent extra costs.
+				</div>
+
+				<h4>At the store</h4>
+				<div>
+					After sending a refund inquiry email, you will have 1 month
+					to bring back the item to our store. Please have the refund
+					inquiry email opened prior to avoid delays. We will first
+					attempt to repair each item and if it is irreparable, we
+					will offer a refund or exchange.
+				</div>
+
+				<h4>Disclaimer</h4>
+				<div>
+					If more than 7 days have passed since your purchase was
+					received or more than 30 days have passed since you placed
+					an email, unfortunately we can’t offer you a refund.
+				</div>
+
+				<h4>Non eligible items</h4>
+				<div>
+					Any item on sale, items sold at $1 or below, sanitary goods,
+					flammable liquids, as well as used items are not eligible
+					for refunds.
+				</div>
 			</div>
-			<div>
-				<h2>new</h2>
-				<div>yoyoyo</div>
-			</div>
-			To be eligible for a return, your item must be unused and in the
-			same condition that you received it. It must also be in the original
-			packaging, labels, and tags still all intact. Several types of goods
-			are exempt from being returned. We do not accept products that are
-			intimate or sanitary goods, hazardous materials, or flammable
-			liquids or gases. Additional non-returnable items: Gift cards
-			Downloadable software products Some health and personal care items
-			
-            To complete your return, we require a receipt or proof of purchase.
-			Please do not send your purchase back to the manufacturer. There are
-			certain situations where only partial refunds are granted (if
-			applicable) - Any item not in its original condition, is damaged or
-			missing parts for reasons not due to our error - Any item that is
-			returned more than 14 days after delivery Refunds (if applicable)
-			REFUNDS ARE ONLY GIVEN TO ITEMS THAT ARE DEFECTIVE OR DAMAGED. Once
-			your return is received and inspected, we will send you an email to
-			notify you that we have received your returned item. We will also
-			notify you of the approval or rejection of your refund. If you are
-			approved, then your refund will be processed, and a credit will
-			automatically be applied to your credit card or original method of
-			payment, within a certain amount of days. Late or missing refunds
-			(if applicable) If you haven’t received a refund yet, first check
-			your bank account again. Then contact your credit card company, it
-			may take some time before your refund is officially posted. Next
-			contact your bank. There is often some processing time before a
-			refund is posted. If you’ve done all of this and you still have not
-			received your refund yet, please contact us at
-			off.lethaldreams@gmail.com. Sale items (if applicable) Only regular
-			priced items may be refunded, unfortunately sale items cannot be
-			refunded. Exchanges (if applicable) We only replace items if they
-			are defective or damaged. In cases of size exchanges, please send us
-			an email at off.lethaldreams@gmail.com with your order number for
-			further instructions. Return shipping fee is NOT covered by us.
-			Gifts If the item was marked as a gift when purchased and shipped
-			directly to you, you’ll receive a gift credit for the value of your
-			return. Once the returned item is received, a gift certificate will
-			be mailed to you. If the item wasn’t marked as a gift when
-			purchased, or the gift giver had the order shipped to themselves to
-			give to you later, we will send a refund to the gift giver and he
-			will find out about your return. SHIPPING To return your product,
-			you should mail your product to: 1527 64th ST, Brooklyn NY 11219,
-			United States You will be responsible for paying for your own
-			shipping costs for returning your item. Shipping costs are
-			non-refundable. If you receive a refund, the cost of return shipping
-			will be deducted from your refund. Depending on where you live, the
-			time it may take for your exchanged product to reach you, may vary.
-			If you are shipping an item over $75, you should consider using a
-			trackable shipping service or purchasing shipping insurance. We
-			don’t guarantee that we will receive your returned item. REFUSED
-			SHIPMENTS If you refuse a shipment from Lethal Dreams, you are
-			responsible for the original shipping charges, any Import Fees that
-			are incurred on the package, and the cost of returning the package
-			to Lethal Dreams. This amount will be deducted from your merchandise
-			refund.
 		</div>
 	)
 }
