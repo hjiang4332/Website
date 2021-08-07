@@ -19,7 +19,7 @@ const RefundPolicyScreen = () => {
 					item(s).
 				</div>
 
-				<h4> InquiryEmail</h4>
+				<h4> Inquiry Email</h4>
 				<div>
 					If a product you receive is defective or damaged, send a
 					picture of it to our email: classyjewelryws@gmail.com with
