@@ -43,6 +43,11 @@ export default function ShippingAddressScreen(props) {
 			<form className='form' onSubmit={submitHandler}>
 				<div>
 					<h1>Shipping Address</h1>
+					<div>
+						You can choose to pick up at the 48W 28th street store
+						in the next page, however after a month we will ship
+						your items to this address (shipping fees will apply)
+					</div>
 				</div>
 
 				<div>

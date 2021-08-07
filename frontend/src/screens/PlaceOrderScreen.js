@@ -20,7 +20,11 @@ export default function PlaceOrderScreen(props) {
 	//calculate prices
 	const toPrice = (num) => Number(num.toFixed(2))
 	cart.itemsPrice = toPrice(
-		cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
+		cart.cartItems.reduce(
+			(a, c) =>
+				a + (c.salePrice < c.price ? c.salePrice : c.price) * c.qty,
+			0
+		)
 	)
 	cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10)
 	cart.taxPrice = toPrice(0.15 * cart.itemsPrice)
@@ -75,7 +79,13 @@ export default function PlaceOrderScreen(props) {
 								<h2>Order Items</h2>
 								<ul>
 									{cart.cartItems.map((item) => (
-										<li key={item.product}>
+										<li
+											key={
+												item.product +
+												item.color +
+												item.size
+											}
+										>
 											<div className='row'>
 												<div>
 													<img
@@ -86,16 +96,57 @@ export default function PlaceOrderScreen(props) {
 												</div>
 												<div className='min-30'>
 													<Link
-														to={`/product/${item.product}`}
+														to={{
+															pathname: `/product/${item.product}`,
+															state: {
+																customizations:
+																	item.customizations,
+															},
+														}}
 													>
 														{item.name}
 													</Link>
 												</div>
 
-												<div>
-													{item.qty} x ${item.price} =
-													${item.qty * item.price}
-												</div>
+												{item.color !== '0' && (
+													<div>
+														Color: {item.color}
+													</div>
+												)}
+												{item.size !== 0 && (
+													<div>Size: {item.size}</div>
+												)}
+
+												{typeof item.salePrice ===
+												'undefined' ? (
+													<div>
+														<span className='pad-right'>
+															${item.price} ea.
+														</span>
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.price}=$
+															{item.price *
+																item.qty}
+														</span>
+													</div>
+												) : (
+													<div>
+														<span className='pad-right'>
+															On Sale: $
+															{item.salePrice}ea.
+														</span>
+
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.salePrice}=$
+															{item.salePrice *
+																item.qty}
+														</span>
+													</div>
+												)}
 											</div>
 										</li>
 									))}

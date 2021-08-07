@@ -6,21 +6,26 @@ import MessageBox from '../components/MessageBox'
 
 export default function CartScreen(props) {
 	const productId = props.match.params.id
-	const qty = props.location.search
-		? Number(props.location.search.split('=')[1])
-		: 1
+	// const qty = props.location.search
+	// 	? Number(props.location.search.split('=')[1])
+	// 	: 1
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
+
+	let params = new URLSearchParams(document.location.search.substring(1))
+	let qty = params.get('qty') ? Number(params.get('qty')) : 1
+	let color = params.get('color') ? params.get('color') : '0'
+	let size = params.get('size') ? Number(params.get('size')) : 0
+
 	const dispatch = useDispatch()
 	useEffect(() => {
 		if (productId) {
-			dispatch(addToCart(productId, qty))
+			dispatch(addToCart(productId, qty, color, size))
 		}
-	}, [dispatch, productId, qty])
+	}, [dispatch, productId, qty, color, size])
 
-	const removeFromCartHandler = (id) => {
-		// delete action
-		dispatch(removeFromCart(id))
+	const removeFromCartHandler = (id, color, size) => {
+		dispatch(removeFromCart(id, color, size))
 	}
 
 	const checkoutHandler = () => {
@@ -37,7 +42,7 @@ export default function CartScreen(props) {
 				) : (
 					<ul>
 						{cartItems.map((item) => (
-							<li key={item.product}>
+							<li key={item.product + item.color + item.size}>
 								<div className='row'>
 									<div>
 										<img
@@ -46,12 +51,30 @@ export default function CartScreen(props) {
 											className='small'
 										/>
 									</div>
-
 									<div className='min-30'>
-										<Link to={`/product/${item.product}`}>
-											{item.name}
+										<Link
+											to={{
+												pathname: `/product/${item.product}`,
+												state: {
+													customizations:
+														item.customizations,
+												},
+											}}
+										>
+											<h2>{item.name}</h2>
 										</Link>
 									</div>
+
+									{item.color === '0' ||
+										(item.color !== '' && (
+											<span>
+												{'Color: ' + item.color}
+											</span>
+										))}
+
+									{item.size !== 0 && (
+										<span>{'Size : ' + item.size}</span>
+									)}
 
 									<div>
 										<select
@@ -60,7 +83,9 @@ export default function CartScreen(props) {
 												dispatch(
 													addToCart(
 														item.product,
-														Number(e.target.value)
+														Number(e.target.value),
+														item.color,
+														item.size
 													)
 												)
 											}
@@ -80,18 +105,38 @@ export default function CartScreen(props) {
 										</select>
 									</div>
 
-									<div>${item.price} ea.</div>
+									{typeof item.salePrice === 'undefined' ? (
+										<div>
+											<span className='pad-right'>
+												${item.price} ea.
+											</span>
+											<span>
+												Total cost: $
+												{item.price * item.qty}
+											</span>
+										</div>
+									) : (
+										<div>
+											<span className='pad-right'>
+												On Sale: ${item.salePrice}ea
+											</span>
 
-									<div>
-										Total cost: ${item.price * item.qty}
-									</div>
+											<span>
+												Total cost: $
+												{item.salePrice * item.qty}
+											</span>
+										</div>
+									)}
 
+									{/* Remove Item */}
 									<div>
 										<button
 											type='button'
 											onClick={() =>
 												removeFromCartHandler(
-													item.product
+													item.product,
+													item.color,
+													item.size
 												)
 											}
 										>
@@ -104,20 +149,45 @@ export default function CartScreen(props) {
 					</ul>
 				)}
 			</div>
+
 			<div className='col-1'>
 				<div className='card card-body'>
 					<ul>
 						<li>
 							<h2>
 								Subtotal (
-								{cartItems.reduce((a, c) => a + c.qty, 0)}{' '}
+								{cartItems.reduce(
+									(a, c) => a + Number(c.qty),
+									0
+								)}{' '}
 								items) : $
 								{cartItems.reduce(
-									(a, c) => a + c.price * c.qty,
+									(a, c) =>
+										a +
+										(c.salePrice < c.price
+											? c.salePrice
+											: c.price) *
+											c.qty,
 									0
 								)}
 							</h2>
 						</li>
+
+						<li>
+							<h2>
+								Wholesale price: $
+								{cartItems.reduce(
+									(a, c) =>
+										a +
+										(c.salePrice < c.wsPrice
+											? c.salePrice
+											: c.wsPrice) *
+											c.qty,
+									0
+								)}
+							</h2>
+						</li>
+
 						<li>
 							<button
 								type='button'

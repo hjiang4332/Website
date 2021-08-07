@@ -11,25 +11,41 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 		case CART_ADD_ITEM:
 			const item = action.payload
 			const itemExists = state.cartItems.find(
-				(x) => x.product === item.product
+				(x) =>
+					x.product === item.product &&
+					x.color === item.color &&
+					x.size === item.size
 			)
+
 			if (itemExists) {
 				return {
 					...state,
 					cartItems: state.cartItems.map((x) =>
-						x.product === itemExists.product ? item : x
+						x.product === itemExists.product &&
+						x.color === itemExists.color &&
+						x.size === itemExists.size
+							? item
+							: x
 					),
 				}
 			} else {
 				return { ...state, cartItems: [...state.cartItems, item] }
 			}
 		case CART_REMOVE_ITEM:
+			const item2 = action.payload
+			const itemRemoved = state.cartItems.find(
+				(x) => x.color === item2.color && x.size === item2.size
+			)
 			return {
 				...state,
-				cartItems: state.cartItems.filter(
-					(x) => x.product !== action.payload
-				),
+				cartItems: state.cartItems.filter((x) => x !== itemRemoved),
 			}
+		// return {
+		// 	...state,
+		// 	cartItems: state.cartItems.filter(
+		// 		(x) => x.product !== action.payload
+		// 	),
+		// }
 		case CART_SAVE_SHIPPING_ADDRESS:
 			return { ...state, shippingAddress: action.payload }
 		case CART_SAVE_PAYMENT_METHOD:

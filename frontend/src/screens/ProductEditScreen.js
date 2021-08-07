@@ -9,7 +9,6 @@ import { PRODUCT_UPDATE_RESET } from '../constants/productConstants'
 export default function ProductEditScreen(props) {
 	const productId = props.match.params.id
 
-	const [itemNumber, setItemNumber] = useState('')
 	const [name, setName] = useState('')
 	const [quality, setQuality] = useState('')
 	const [category, setCategory] = useState('')
@@ -48,7 +47,6 @@ export default function ProductEditScreen(props) {
 			dispatch(detailsProduct(productId))
 		} else {
 			//set fields with loaded data from products
-			setItemNumber(product.itemNumber)
 			setName(product.name)
 			setQuality(product.quality)
 			setCategory(product.category)
@@ -56,7 +54,7 @@ export default function ProductEditScreen(props) {
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
-			setSalePrice(product.SalePrice)
+			setSalePrice(product.salePrice)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
 			setCustomizationsString(
@@ -75,8 +73,6 @@ export default function ProductEditScreen(props) {
 			)
 		}
 	}, [product, dispatch, productId, successUpdate, props.history])
-
-	//console.log(customizationsString)
 
 	const submitHandler = (e) => {
 		e.preventDefault()
@@ -100,7 +96,6 @@ export default function ProductEditScreen(props) {
 		dispatch(
 			updateProduct({
 				_id: productId,
-				itemNumber,
 				name,
 				quality,
 				category,
@@ -160,17 +155,6 @@ export default function ProductEditScreen(props) {
 					<MessageBox variant='danger'>{error}</MessageBox>
 				) : (
 					<>
-						<div>
-							<label htmlFor='itemNumber'>Item Number</label>
-							<input
-								id='itemNumber'
-								type='text'
-								placeholder='Enter item number'
-								value={itemNumber}
-								onChange={(e) => setItemNumber(e.target.value)}
-							/>
-						</div>
-
 						<div>
 							<label htmlFor='name'>Name</label>
 							<input
@@ -277,7 +261,7 @@ export default function ProductEditScreen(props) {
 							/>
 						</div>
 
-						{/*<div>
+						<div>
 							<label htmlFor='salePrice'>Sale Price</label>
 							<input
 								id='salePrice'
@@ -286,7 +270,7 @@ export default function ProductEditScreen(props) {
 								value={salePrice}
 								onChange={(e) => setSalePrice(e.target.value)}
 							/>
-						</div>*/}
+						</div>
 
 						<div>
 							<label htmlFor='customizationsString'>

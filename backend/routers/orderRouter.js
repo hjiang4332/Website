@@ -136,21 +136,37 @@ orderRouter.put(
 				email_address: req.body.email_address,
 			}
 			const updatedOrder = await order.save()
-			//subtract count in stock by amount paid for
-			for (const index in updatedOrder.orderItems) {
+
+			//subtract count in stock by amount paid for OLD
+			/*for (const index in updatedOrder.orderItems) {
 				const item = updatedOrder.orderItems[index]
 				const product = await Product.findById(item.product)
 				product.countInStock -= item.qty
 				product.sold += item.qty
 				await product.save()
-			}
+			}*/
 
-			//update user payment totals n stuff
-			//user: req.user._id
-			/*const user = await User.findById(req.params.id)
-            if (user) {
-                user.totalSpent += 
-            }*/
+			//update count in stock - new
+			for (const index in updatedOrder.orderItems) {
+				const item = updatedOrder.orderItems[index] //get each item from orderItems array
+				const product = await Product.findById(item.product) //find product that corresponds with each item in orderItems array
+
+				product.customizations.length > 0
+					? product.customizations.map((productItem) =>
+							productItem.color.toString() ===
+								item.color.toString() &&
+							Number(productItem.size) === Number(item.size)
+								? {
+										...item,
+										countInStock: (countInStock -=
+											item.qty),
+								  }
+								: item
+					  )
+					: (product.countInStock -= item.qty)
+
+				await product.save()
+			}
 
 			res.send({ message: 'Order Paid', order: updatedOrder })
 		} else {

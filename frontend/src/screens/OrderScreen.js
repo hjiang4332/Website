@@ -147,7 +147,13 @@ export default function OrderScreen(props) {
 								<h2>Order Items</h2>
 								<ul>
 									{order.orderItems.map((item) => (
-										<li key={item.product}>
+										<li
+											key={
+												item.product +
+												item.color +
+												item.size
+											}
+										>
 											<div className='row'>
 												<div>
 													<img
@@ -159,16 +165,61 @@ export default function OrderScreen(props) {
 
 												<div className='min-30'>
 													<Link
-														to={`/product/${item.product}`}
+														to={{
+															pathname: `/product/${item.product}`,
+															state: {
+																customizations:
+																	item.customizations,
+															},
+														}}
 													>
 														{item.name}
 													</Link>
 												</div>
 
-												<div>
-													{item.qty} x ${item.price} =
-													${item.qty * item.price}
-												</div>
+												{item.color !== '0' ? (
+													<div>
+														Color: {item.color}
+													</div>
+												) : (
+													<div />
+												)}
+												{item.size !== 0 ? (
+													<div>Size: {item.size}</div>
+												) : (
+													<div />
+												)}
+
+												{typeof item.salePrice ===
+												'undefined' ? (
+													<div>
+														<span className='pad-right'>
+															${item.price} ea.
+														</span>
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.price}=$
+															{item.price *
+																item.qty}
+														</span>
+													</div>
+												) : (
+													<div>
+														<span className='pad-right'>
+															On Sale: $
+															{item.salePrice}ea.
+														</span>
+
+														<span>
+															Total cost:{' '}
+															{item.qty} x{' '}
+															{item.salePrice}=$
+															{item.salePrice *
+																item.qty}
+														</span>
+													</div>
+												)}
 											</div>
 										</li>
 									))}

@@ -26,9 +26,7 @@ export default function Product(props) {
 						state: { customizations: product.customizations },
 					}}
 				>
-					<h2>
-						{product.itemNumber}: {product.name}
-					</h2>
+					<h2>{product.name}</h2>
 				</Link>
 				<div>Quality: {product.quality}</div>
 
@@ -76,8 +74,21 @@ export default function Product(props) {
 					)}
 				</div>
 
-				<div className='price left'>Price: ${product.price}</div>
-				<div className='price right'>Wholesale: ${product.wsPrice}</div>
+				{typeof product.salePrice == 'undefined' ||
+				product.salePrice !== null ? (
+					<span>
+						<div className='price left'>
+							Price: ${product.price}
+						</div>
+						<div className='price right'>
+							Wholesale: ${product.wsPrice}
+						</div>
+					</span>
+				) : (
+					<div className='price left'>
+						On Sale: ${product.salePrice}
+					</div>
+				)}
 			</div>
 		</div>
 	)
