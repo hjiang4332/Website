@@ -22,7 +22,7 @@ const ShippingPolicyScreen = () => {
 						Orders are shipped out Mondays-Fridays. Though if an
 						order is placed after 5PM EST of that date, it will
 						likely be pushed to the following day. Any
-						inconsistancies with the order being shipped to the
+						inconsistencies with the order being shipped to the
 						wrong address will result in a $10 fee to correct it. We
 						are not responsible for lost or stolen packages or
 						packages delayed by the carrier.
