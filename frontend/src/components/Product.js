@@ -74,8 +74,7 @@ export default function Product(props) {
 					)}
 				</div>
 
-				{typeof product.salePrice == 'undefined' ||
-				product.salePrice !== null ? (
+				{typeof product.salePrice === 'undefined' ? (
 					<span>
 						<div className='price left'>
 							Price: ${product.price}

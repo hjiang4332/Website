@@ -339,7 +339,8 @@ function App() {
 						component={HomeScreen}
 						exact
 					/>
-					{/* */}
+
+					{/* Policy Screens */}
 					<Route path='/terms' component={TermsScreen} exact />
 					<Route
 						path='/refund-policy'
