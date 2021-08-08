@@ -358,7 +358,10 @@ function App() {
 						<div className='col-1'>
 							<div>
 								<h2 className='widget-title'>About</h2>
-								<p>THIS IS MY CONTENT</p>
+								<div className='copyright'>
+									© All rights reserved
+								</div>
+
 								<div className='cards'>
 									<i
 										className='fa fa-cc-paypal'
@@ -424,7 +427,9 @@ function App() {
 										className='fa fa-mobile'
 										aria-hidden='true'
 									></i>
-									Phone Number: (347)-773-6389
+									Phone Number:
+									<br />
+									(347)-773-6389
 								</div>
 
 								<div className='contact-email'>
@@ -438,8 +443,6 @@ function App() {
 						</div>
 					</div>
 				</footer>
-				<div>Copyright © All rights reserved</div>
-
 				{userInfo && !userInfo.isAdmin && (
 					<ChatBox userInfo={userInfo} />
 				)}

@@ -531,7 +531,7 @@ footer {
 	grid-area: footer;
 	background-color: #203040;
 	color: #ffffff;
-	height: 40rem;
+	height: 25rem;
 }
 
 .widget-title {
@@ -585,7 +585,6 @@ footer {
 	transition: all 0.5s ease;
 }
 
-.copyright p {
-	color: #d2d2d2;
-	text-align: center;
+.copyright {
+	padding-bottom: 1rem;
 }

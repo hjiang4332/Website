@@ -108,11 +108,11 @@ export default function CartScreen(props) {
 									{typeof item.salePrice === 'undefined' ? (
 										<div>
 											<span className='pad-right'>
-												${item.price} ea.
+												${item.wsPrice} ea.
 											</span>
 											<span>
 												Total cost: $
-												{item.price * item.qty}
+												{item.wsPrice * item.qty}
 											</span>
 										</div>
 									) : (
@@ -159,23 +159,8 @@ export default function CartScreen(props) {
 								{cartItems.reduce(
 									(a, c) => a + Number(c.qty),
 									0
-								)}{' '}
-								items) : $
-								{cartItems.reduce(
-									(a, c) =>
-										a +
-										(c.salePrice < c.price
-											? c.salePrice
-											: c.price) *
-											c.qty,
-									0
 								)}
-							</h2>
-						</li>
-
-						<li>
-							<h2>
-								Wholesale price: $
+								items) : $
 								{cartItems.reduce(
 									(a, c) =>
 										a +
@@ -189,13 +174,43 @@ export default function CartScreen(props) {
 						</li>
 
 						<li>
+							<h2>
+								Amount saved: $
+								{cartItems.reduce(
+									(a, c) => a + c.price * c.qty,
+									0
+								) -
+									cartItems.reduce(
+										(a, c) =>
+											a +
+											(c.salePrice < c.wsPrice
+												? c.salePrice
+												: c.wsPrice) *
+												c.qty,
+										0
+									)}
+							</h2>
+						</li>
+
+						<li>
 							<button
 								type='button'
 								onClick={checkoutHandler}
 								className='primary block'
-								disabled={cartItems.length === 0}
+								disabled={
+									cartItems.length === 0 ||
+									cartItems.reduce(
+										(a, c) =>
+											a +
+											(c.salePrice < c.wsPrice
+												? c.salePrice
+												: c.wsPrice) *
+												c.qty,
+										0
+									) < 100
+								}
 							>
-								Proceed to Checkout
+								Proceed to Checkout ($100 minimum)
 							</button>
 						</li>
 					</ul>
