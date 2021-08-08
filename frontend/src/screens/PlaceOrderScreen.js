@@ -22,12 +22,13 @@ export default function PlaceOrderScreen(props) {
 	cart.itemsPrice = toPrice(
 		cart.cartItems.reduce(
 			(a, c) =>
-				a + (c.salePrice < c.price ? c.salePrice : c.price) * c.qty,
+				a + (c.salePrice < c.wsPrice ? c.salePrice : c.wsPrice) * c.qty,
 			0
 		)
 	)
-	cart.shippingPrice = cart.itemsPrice > 100 ? toPrice(0) : toPrice(10)
-	cart.taxPrice = toPrice(0.15 * cart.itemsPrice)
+	cart.shippingPrice =
+		cart.paymentMethod === 'Ship My Order' ? toPrice(10) : toPrice(0)
+	cart.taxPrice = toPrice(0.03 * cart.itemsPrice)
 	cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
 
 	//create the order
@@ -121,13 +122,13 @@ export default function PlaceOrderScreen(props) {
 												'undefined' ? (
 													<div>
 														<span className='pad-right'>
-															${item.price} ea.
+															${item.wsPrice} ea.
 														</span>
 														<span>
 															Total cost:{' '}
 															{item.qty} x{' '}
-															{item.price}=$
-															{item.price *
+															{item.wsPrice}=$
+															{item.wsPrice *
 																item.qty}
 														</span>
 													</div>
@@ -179,7 +180,7 @@ export default function PlaceOrderScreen(props) {
 
 							<li>
 								<div className='row'>
-									<div>Tax</div>
+									<div>Card Fee: </div>
 									<div>${cart.taxPrice.toFixed(2)}</div>
 								</div>
 							</li>
@@ -202,7 +203,10 @@ export default function PlaceOrderScreen(props) {
 									type='button'
 									onClick={placeOrderHandler}
 									className='primary block'
-									disabled={cart.cartItems.length === 0}
+									disabled={
+										cart.cartItems.length === 0 ||
+										cart.itemsPrice.toFixed(2) < 100
+									}
 								>
 									Save Order and Go To Payment
 								</button>
