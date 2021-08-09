@@ -167,7 +167,10 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='quality'>Quality</label>
+							<label htmlFor='quality'>
+								Quality (Gold Filled, Stainless Steel, Fashion,
+								Not applicable)
+							</label>
 							<input
 								id='quality'
 								type='text'
@@ -178,7 +181,10 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='category'>Category</label>
+							<label htmlFor='category'>
+								Category(Anklet, Bracelet, Dz, Earring,
+								Necklace, Ring, Set, etc)
+							</label>
 							<input
 								id='category'
 								type='text'
@@ -240,6 +246,16 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
+							<label htmlFor='onSale'>On Sale</label>
+							<input
+								id='onSale'
+								type='checkbox'
+								checked={onSale}
+								onChange={(e) => setOnSale(e.target.checked)}
+							></input>
+						</div>
+
+						<div>
 							<label htmlFor='wsPrice'>WS Price</label>
 							<input
 								id='wsPrice'
@@ -259,16 +275,6 @@ export default function ProductEditScreen(props) {
 								value={wzPrice}
 								onChange={(e) => setWzPrice(e.target.value)}
 							/>
-						</div>
-
-						<div>
-							<label htmlFor='onSale'>On Sale</label>
-							<input
-								id='onSale'
-								type='checkbox'
-								checked={onSale}
-								onChange={(e) => setOnSale(e.target.checked)}
-							></input>
 						</div>
 
 						<div>

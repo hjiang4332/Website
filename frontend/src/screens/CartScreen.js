@@ -152,7 +152,7 @@ export default function CartScreen(props) {
 								{cartItems.reduce(
 									(a, c) => a + Number(c.qty),
 									0
-								)}
+								)}{' '}
 								items) : $
 								{cartItems.reduce(
 									(a, c) => a + c.wsPrice * c.qty,
