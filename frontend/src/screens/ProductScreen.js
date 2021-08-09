@@ -35,7 +35,10 @@ export default function ProductScreen(props) {
 
 	//get initial values
 	useEffect(() => {
-		if (typeof customizations !== 'undefined') {
+		if (
+			typeof customizations !== 'undefined' &&
+			customizations.length > 0
+		) {
 			setHasCustomizations(true)
 			setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
 
@@ -272,6 +275,7 @@ export default function ProductScreen(props) {
 											<span>
 												{'Available: ' + countInStock}
 											</span>
+											{console.log(hasCustomizations)}
 										</div>
 									) : (
 										<br />
