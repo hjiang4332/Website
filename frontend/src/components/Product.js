@@ -71,6 +71,7 @@ export default function Product(props) {
 						<br />
 					)}
 				</div>
+        
 				<span>
 					<div className='price'>
 						{product.onSale ? (
@@ -79,6 +80,7 @@ export default function Product(props) {
 							<span>Wholesale: </span>
 						)}
 						${product.wsPrice} ea.
+
 					</div>
 				</span>
 			</div>
