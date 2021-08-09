@@ -64,43 +64,46 @@ export default function UserListScreen(props) {
 						</tr>
 					</thead>
 					<tbody>
-						{users.map((user) => (
-							<tr key={user._id}>
-								<td>{user._id}</td>
-								<td>{user.name}</td>
-								<td>{user.email}</td>
-								<td>{user.type}</td>
-								<td>{user.totalSpent}</td>
-								<td>{user.numOrders}</td>
-								<td>
-									{user.totalSpent / user.numOrders > 0
-										? user.totalSpent / user.numOrders
-										: 0}
-								</td>
-								<td>{user.isAdmin ? 'YES' : 'NO'}</td>
-								<td>
-									<button
-										type='button'
-										className='small'
-										onClick={() =>
-											props.history.push(
-												`/user/${user._id}/edit`
-											)
-										}
-									>
-										Edit
-									</button>
+						{users
+							.slice(0)
+							.reverse()
+							.map((user) => (
+								<tr key={user._id}>
+									<td>{user._id}</td>
+									<td>{user.name}</td>
+									<td>{user.email}</td>
+									<td>{user.type}</td>
+									<td>{user.totalSpent}</td>
+									<td>{user.numOrders}</td>
+									<td>
+										{user.totalSpent / user.numOrders > 0
+											? user.totalSpent / user.numOrders
+											: 0}
+									</td>
+									<td>{user.isAdmin ? 'YES' : 'NO'}</td>
+									<td>
+										<button
+											type='button'
+											className='small'
+											onClick={() =>
+												props.history.push(
+													`/user/${user._id}/edit`
+												)
+											}
+										>
+											Edit
+										</button>
 
-									<button
-										type='button'
-										className='small'
-										onClick={() => deleteHandler(user)}
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						))}
+										<button
+											type='button'
+											className='small'
+											onClick={() => deleteHandler(user)}
+										>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))}
 					</tbody>
 				</table>
 			)}
