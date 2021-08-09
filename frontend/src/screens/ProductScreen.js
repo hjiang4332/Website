@@ -121,11 +121,11 @@ export default function ProductScreen(props) {
 								) : (
 									<li>
 										<div className='row'>
-											<div>Price</div>
+											<span>Retail: </span>
 											<div className='price'>
 												${product.price}
 											</div>
-											<div> Wholesale Price</div>
+											<span> Wholesale Price: </span>
 											<div className='price'>
 												${product.wsPrice}
 											</div>
@@ -207,11 +207,11 @@ export default function ProductScreen(props) {
 									) : (
 										<li>
 											<div className='row'>
-												<div>Price</div>
+												<div>Retail: </div>
 												<div className='price'>
 													${product.price}
 												</div>
-												<div> Wholesale Price</div>
+												<div> Wholesale Price :</div>
 												<div className='price'>
 													${product.wsPrice}
 												</div>
