@@ -15,6 +15,9 @@ export default function ProductScreen(props) {
 
 	//get item customizations from product component in home screen
 	const location = useLocation()
+	if (!location.state === 'undefined') {
+		props.history.push('/cart')
+	}
 	const { customizations } = location.state
 
 	//radio buttons for customizations
@@ -300,6 +303,16 @@ export default function ProductScreen(props) {
 									</li>
 									<>
 										<li>
+											<div className='row'>
+												<div>
+													Quantity available:{' '}
+													<span>
+														{hasCustomizations
+															? countInStock
+															: product.countInStock}
+													</span>{' '}
+												</div>
+											</div>
 											<div className='row'>
 												<div>Quantity</div>
 												<div>
