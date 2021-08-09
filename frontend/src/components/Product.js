@@ -29,7 +29,6 @@ export default function Product(props) {
 					<h2>{product.name}</h2>
 				</Link>
 				<div>Quality: {product.quality}</div>
-
 				<div>
 					{product.customizations.length > 0 ? (
 						<span>
@@ -51,7 +50,6 @@ export default function Product(props) {
 						<br />
 					)}
 				</div>
-
 				<div>
 					{product.customizations.length > 0 ? (
 						<span>
@@ -73,21 +71,18 @@ export default function Product(props) {
 						<br />
 					)}
 				</div>
+        
+				<span>
+					<div className='price'>
+						{product.onSale ? (
+							<span>On Sale: </span>
+						) : (
+							<span>Wholesale: </span>
+						)}
+						${product.wsPrice} ea.
 
-				{typeof product.salePrice === 'undefined' ? (
-					<span>
-						<div className='price left'>
-							Price: ${product.price}
-						</div>
-						<div className='price right'>
-							Wholesale: ${product.wsPrice}
-						</div>
-					</span>
-				) : (
-					<div className='price left'>
-						On Sale: ${product.salePrice}
 					</div>
-				)}
+				</span>
 			</div>
 		</div>
 	)

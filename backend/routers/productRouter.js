@@ -144,7 +144,7 @@ productRouter.put(
 			product.price = req.body.price
 			product.wsPrice = req.body.wsPrice
 			product.wzPrice = req.body.wzPrice
-			product.salePrice = req.body.salePrice
+			product.onSale = req.body.onSale
 			product.countInStock = req.body.countInStock
 			product.description = req.body.description
 			product.customizations = req.body.customizations

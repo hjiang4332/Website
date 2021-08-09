@@ -16,7 +16,7 @@ export default function ProductEditScreen(props) {
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
 	const [wzPrice, setWzPrice] = useState('')
-	const [salePrice, setSalePrice] = useState('')
+	const [onSale, setOnSale] = useState(false)
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -54,7 +54,7 @@ export default function ProductEditScreen(props) {
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
-			setSalePrice(product.salePrice)
+			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
 			setCustomizationsString(
@@ -103,7 +103,7 @@ export default function ProductEditScreen(props) {
 				price,
 				wsPrice,
 				wzPrice,
-				salePrice,
+				onSale,
 				countInStock,
 				description,
 				customizations,
@@ -167,7 +167,10 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='quality'>Quality</label>
+							<label htmlFor='quality'>
+								Quality (Gold Filled, Stainless Steel, Fashion,
+								Not applicable)
+							</label>
 							<input
 								id='quality'
 								type='text'
@@ -178,7 +181,10 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='category'>Category</label>
+							<label htmlFor='category'>
+								Category(Anklet, Bracelet, Dz, Earring,
+								Necklace, Ring, Set, etc)
+							</label>
 							<input
 								id='category'
 								type='text'
@@ -240,6 +246,16 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
+							<label htmlFor='onSale'>On Sale</label>
+							<input
+								id='onSale'
+								type='checkbox'
+								checked={onSale}
+								onChange={(e) => setOnSale(e.target.checked)}
+							></input>
+						</div>
+
+						<div>
 							<label htmlFor='wsPrice'>WS Price</label>
 							<input
 								id='wsPrice'
@@ -258,17 +274,6 @@ export default function ProductEditScreen(props) {
 								placeholder='Enter Wz price'
 								value={wzPrice}
 								onChange={(e) => setWzPrice(e.target.value)}
-							/>
-						</div>
-
-						<div>
-							<label htmlFor='salePrice'>Sale Price</label>
-							<input
-								id='salePrice'
-								type='text'
-								placeholder='Enter Sale price'
-								value={salePrice}
-								onChange={(e) => setSalePrice(e.target.value)}
 							/>
 						</div>
 

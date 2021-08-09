@@ -184,42 +184,36 @@ export default function OrderScreen(props) {
 												) : (
 													<div />
 												)}
+
 												{item.size !== 0 ? (
 													<div>Size: {item.size}</div>
 												) : (
 													<div />
 												)}
 
-												{typeof item.salePrice ===
-												'undefined' ? (
-													<div>
-														<span className='pad-right'>
-															${item.price} ea.
-														</span>
-														<span>
-															Total cost:{' '}
-															{item.qty} x{' '}
-															{item.price}=$
-															{item.price *
-																item.qty}
-														</span>
-													</div>
-												) : (
-													<div>
-														<span className='pad-right'>
-															On Sale: $
-															{item.salePrice}ea.
-														</span>
+												<div>
+													<span className='pad-right'>
+														{item.onSale ? (
+															<span>
+																On Sale:{' '}
+																{item.wsPrice}
+																ea.
+															</span>
+														) : (
+															<span>
+																${item.wsPrice}
+																ea.
+															</span>
+														)}
+													</span>
 
-														<span>
-															Total cost:{' '}
-															{item.qty} x{' '}
-															{item.salePrice}=$
-															{item.salePrice *
-																item.qty}
-														</span>
-													</div>
-												)}
+													<span>
+														Total cost: {item.qty} x{' '}
+														{item.wsPrice}=$
+														{item.wsPrice *
+															item.qty}
+													</span>
+												</div>
 											</div>
 										</li>
 									))}

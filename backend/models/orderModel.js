@@ -10,7 +10,7 @@ const orderSchema = new mongoose.Schema(
 				price: { type: Number, required: true },
 				wsPrice: { type: Number, required: true },
 				wzPrice: { type: Number, required: true },
-				salePrice: { type: Number },
+				onSale: { type: Boolean },
 				customizations: [
 					{
 						color: { type: String },

@@ -15,7 +15,12 @@ export default function ProductScreen(props) {
 
 	//get item customizations from product component in home screen
 	const location = useLocation()
-	const { customizations } = location.state
+	const { customizations } = location.state || ['']
+
+	//send person back to home if they middle clicked the product link
+	if (typeof customizations === 'undefined') {
+		props.history.push('/')
+	}
 
 	//radio buttons for customizations
 	const [size, setSize] = useState(0)
@@ -30,7 +35,7 @@ export default function ProductScreen(props) {
 
 	//get initial values
 	useEffect(() => {
-		if (customizations.length > 0) {
+		if (typeof customizations !== 'undefined') {
 			setHasCustomizations(true)
 			setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
 
@@ -47,38 +52,44 @@ export default function ProductScreen(props) {
 		}
 	}, [customizations])
 
+	if (typeof customizations !== 'undefined') {
+		//fill sizeOptions
+		customizations
+			.map((item) => item.size)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((size) =>
+				sizeOptions.push({
+					label: size,
+					value: size,
+				})
+			)
+
+		//fill colorOptions
+		customizations
+			.map((p) => p.color)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((color) =>
+				colorOptions.push({
+					label: color,
+					value: color,
+				})
+			)
+	}
+
 	//get count in stock based off of select values (size and color)
 	useEffect(() => {
-		customizations
-			.filter(
-				(item) =>
-					item.size.toString() === size.toString() &&
-					item.color.toString() === color.toString()
-			)
-			.map((filteredItem) => setCountInStock(filteredItem.countInStock))
+		if (typeof customizations !== 'undefined') {
+			customizations
+				.filter(
+					(item) =>
+						item.size.toString() === size.toString() &&
+						item.color.toString() === color.toString()
+				)
+				.map((filteredItem) =>
+					setCountInStock(filteredItem.countInStock)
+				)
+		}
 	}, [customizations, size, color])
-
-	//fill sizeOptions
-	customizations
-		.map((item) => item.size)
-		.filter((v, i, a) => a.indexOf(v) === i)
-		.map((size) =>
-			sizeOptions.push({
-				label: size,
-				value: size,
-			})
-		)
-
-	//fill colorOptions
-	customizations
-		.map((p) => p.color)
-		.filter((v, i, a) => a.indexOf(v) === i)
-		.map((color) =>
-			colorOptions.push({
-				label: color,
-				value: color,
-			})
-		)
 
 	//fill countInStock
 	useEffect(() => {
@@ -116,16 +127,16 @@ export default function ProductScreen(props) {
 
 								<li>Quality : {product.quality}</li>
 
-								{product.salePrice < product.price ? (
-									<li>On Sale: ${product.salePrice}</li>
+								{product.onSale ? (
+									<li>On Sale: ${product.wsPrice}</li>
 								) : (
 									<li>
 										<div className='row'>
-											<div>Price</div>
+											<span>Retail: </span>
 											<div className='price'>
 												${product.price}
 											</div>
-											<div> Wholesale Price</div>
+											<span> Wholesale Price: </span>
 											<div className='price'>
 												${product.wsPrice}
 											</div>
@@ -202,16 +213,16 @@ export default function ProductScreen(props) {
 						<div className='col-1'>
 							<div className='card card-body'>
 								<ul>
-									{product.salePrice < product.price ? (
-										<li>On Sale: ${product.salePrice}</li>
+									{product.onSale ? (
+										<li>On Sale: ${product.wsPrice}</li>
 									) : (
 										<li>
 											<div className='row'>
-												<div>Price</div>
+												<div>Retail: </div>
 												<div className='price'>
 													${product.price}
 												</div>
-												<div> Wholesale Price</div>
+												<div> Wholesale Price :</div>
 												<div className='price'>
 													${product.wsPrice}
 												</div>
@@ -300,6 +311,16 @@ export default function ProductScreen(props) {
 									</li>
 									<>
 										<li>
+											<div className='row'>
+												<div>
+													Quantity available:{' '}
+													<span>
+														{hasCustomizations
+															? countInStock
+															: product.countInStock}
+													</span>{' '}
+												</div>
+											</div>
 											<div className='row'>
 												<div>Quantity</div>
 												<div>

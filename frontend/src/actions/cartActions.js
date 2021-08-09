@@ -17,7 +17,7 @@ export const addToCart =
 				price: data.price,
 				wsPrice: data.wsPrice,
 				wzPrice: data.wzPrice,
-				salePrice: data.salePrice,
+				onSale: data.onSale,
 				countInStock: data.countInStock,
 				product: data._id,
 				customizations: data.customizations,

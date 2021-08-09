@@ -105,28 +105,21 @@ export default function CartScreen(props) {
 										</select>
 									</div>
 
-									{typeof item.salePrice === 'undefined' ? (
-										<div>
-											<span className='pad-right'>
-												${item.wsPrice} ea.
-											</span>
-											<span>
-												Total cost: $
-												{item.wsPrice * item.qty}
-											</span>
-										</div>
-									) : (
-										<div>
-											<span className='pad-right'>
-												On Sale: ${item.salePrice}ea
-											</span>
-
-											<span>
-												Total cost: $
-												{item.salePrice * item.qty}
-											</span>
-										</div>
-									)}
+									<div>
+										<span className='pad-right'>
+											{!item.onSale ? (
+												<span>${item.wsPrice} ea.</span>
+											) : (
+												<span>
+													On Sale: ${item.wsPrice} ea.
+												</span>
+											)}
+										</span>
+										<span>
+											Total cost: $
+											{item.wsPrice * item.qty}
+										</span>
+									</div>
 
 									{/* Remove Item */}
 									<div>
@@ -159,15 +152,10 @@ export default function CartScreen(props) {
 								{cartItems.reduce(
 									(a, c) => a + Number(c.qty),
 									0
-								)}
+								)}{' '}
 								items) : $
 								{cartItems.reduce(
-									(a, c) =>
-										a +
-										(c.salePrice < c.wsPrice
-											? c.salePrice
-											: c.wsPrice) *
-											c.qty,
+									(a, c) => a + c.wsPrice * c.qty,
 									0
 								)}
 							</h2>
@@ -181,12 +169,7 @@ export default function CartScreen(props) {
 									0
 								) -
 									cartItems.reduce(
-										(a, c) =>
-											a +
-											(c.salePrice < c.wsPrice
-												? c.salePrice
-												: c.wsPrice) *
-												c.qty,
+										(a, c) => a + c.wsPrice * c.qty,
 										0
 									)}
 							</h2>
@@ -200,12 +183,7 @@ export default function CartScreen(props) {
 								disabled={
 									cartItems.length === 0 ||
 									cartItems.reduce(
-										(a, c) =>
-											a +
-											(c.salePrice < c.wsPrice
-												? c.salePrice
-												: c.wsPrice) *
-												c.qty,
+										(a, c) => a + c.wsPrice * c.qty,
 										0
 									) < 100
 								}
