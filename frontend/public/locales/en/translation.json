@@ -1,7 +1,57 @@
 {
-	"title": "english1",
-	"description": {
-		"part1": "english2",
-		"part2": "english3"
-	}
+	"language": "English",
+	"faq": "Faq",
+	"cart": "Cart",
+	"profile": "Profile",
+	"orderHistory": "Order History",
+	"signOut": "Sign Out",
+	"signIn": "Sign In",
+	"about": "About",
+	"allRightsReserved": "All Rights Reserved",
+	"secureOnlinePayments": "Secure Online Payments",
+	"information": "Information",
+	"termsAndConditions": "Terms and Conditions",
+	"refundPolicy": "Refund Policy",
+	"shippingAndDelivery": "Shipping and Delivery",
+	"contact": "Contact",
+	"address": "Address",
+	"phoneNumber": "Phone Number",
+	"email": "Email",
+
+	"onSale": "On Sale",
+	"wholesale": "Wholesale",
+
+	"quality": "Quality",
+	"stainlessSteel": "Stainless Steel",
+	"goldFilled": "Gold Filled",
+	"fashion": "Fashion",
+	"notApplicable": "Not Applicable",
+
+	"categories": "Categories",
+	"anklet": "Anklet",
+	"bracelet": "Bracelet",
+	"dz": "Dz",
+	"earring": "Earring",
+	"necklace": "Necklace",
+	"ring": "Ring",
+
+	"retail": "Retail",
+	"description": "Description",
+	"status": "Status",
+	"inStock": "In Stock",
+	"quantity": "Quantity",
+	"addToCart": "Add To Cart",
+	"available": "Available",
+	"unavailable": "Unavailable",
+
+	"shoppingCart": "Shopping Cart",
+	"yourCartIsEmpty": "Your Cart is Empty",
+	"goShopping": "Go Shopping",
+	"subtotal": "Subtotal",
+	"amountSaved": "Amount Saved",
+	"proceedToCheckout": "Proceed to Checkout",
+	"minimum": "Minimum",
+	"total": "Total",
+	"removeItem": "Remove Item",
+	"items": "Items"
 }

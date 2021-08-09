@@ -5,6 +5,8 @@ import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { useLocation } from 'react-router-dom'
 
+import { Trans, useTranslation } from 'react-i18next'
+
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()
 
@@ -128,18 +130,28 @@ export default function ProductScreen(props) {
 									<h1>{product.name}</h1>
 								</li>
 
-								<li>Quality : {product.quality}</li>
+								<li>
+									<Trans i18nKey='quality' /> :{' '}
+									{product.quality}
+								</li>
 
 								{product.onSale ? (
-									<li>On Sale: ${product.wsPrice}</li>
+									<li>
+										<Trans i18nKey='quality' />: $
+										{product.wsPrice}
+									</li>
 								) : (
 									<li>
 										<div className='row'>
-											<span>Retail: </span>
+											<span>
+												<Trans i18nKey='retail' />:{' '}
+											</span>
 											<div className='price'>
 												${product.price}
 											</div>
-											<span> Wholesale Price: </span>
+											<span>
+												<Trans i18nKey='wholesale' />:{' '}
+											</span>
 											<div className='price'>
 												${product.wsPrice}
 											</div>
@@ -209,7 +221,10 @@ export default function ProductScreen(props) {
 									)}
 								</li>
 
-								<li>Description: {product.description}</li>
+								<li>
+									<Trans i18nKey='description' />:{' '}
+									{product.description}
+								</li>
 							</ul>
 						</div>
 
@@ -217,15 +232,23 @@ export default function ProductScreen(props) {
 							<div className='card card-body'>
 								<ul>
 									{product.onSale ? (
-										<li>On Sale: ${product.wsPrice}</li>
+										<li>
+											<Trans i18nKey='onSale' />: $
+											{product.wsPrice}
+										</li>
 									) : (
 										<li>
 											<div className='row'>
-												<div>Retail: </div>
+												<div>
+													<Trans i18nKey='retail' />:{' '}
+												</div>
 												<div className='price'>
 													${product.price}
 												</div>
-												<div> Wholesale Price :</div>
+												<div>
+													<Trans i18nKey='wholesale' />{' '}
+													:
+												</div>
 												<div className='price'>
 													${product.wsPrice}
 												</div>
@@ -273,7 +296,8 @@ export default function ProductScreen(props) {
 											)}
 
 											<span>
-												{'Available: ' + countInStock}
+												<Trans i18nKey='available' />{' '}
+												{countInStock}
 											</span>
 										</div>
 									) : (
@@ -281,18 +305,20 @@ export default function ProductScreen(props) {
 									)}
 									<li>
 										<div className='row'>
-											<div>Status</div>
+											<div>
+												<Trans i18nKey='status' />
+											</div>
 
 											{/* If there are customizations, use countInStock from there. If not, use regular countInStock*/}
 											{hasCustomizations ? (
 												<div>
 													{countInStock > 0 ? (
 														<span className='success'>
-															In Stock
+															<Trans i18nKey='inStock' />
 														</span>
 													) : (
 														<span className='danger'>
-															Unavailable
+															<Trans i18nKey='unavailable' />
 														</span>
 													)}
 												</div>
@@ -301,11 +327,11 @@ export default function ProductScreen(props) {
 													{product.countInStock >
 													0 ? (
 														<span className='success'>
-															In Stock
+															<Trans i18nKey='inStock' />
 														</span>
 													) : (
 														<span className='danger'>
-															Unavailable
+															<Trans i18nKey='unavailable' />
 														</span>
 													)}
 												</div>
@@ -316,7 +342,8 @@ export default function ProductScreen(props) {
 										<li>
 											<div className='row'>
 												<div>
-													Quantity available:{' '}
+													<Trans i18nKey='available' />
+													:{' '}
 													<span>
 														{hasCustomizations
 															? countInStock
@@ -325,7 +352,9 @@ export default function ProductScreen(props) {
 												</div>
 											</div>
 											<div className='row'>
-												<div>Quantity</div>
+												<div>
+													<Trans i18nKey='quantity' />
+												</div>
 												<div>
 													<select
 														value={qty}
@@ -365,7 +394,7 @@ export default function ProductScreen(props) {
 														  0
 												}
 											>
-												Add to Cart
+												<Trans i18nKey='addToCart' />
 											</button>
 										</li>
 									</>

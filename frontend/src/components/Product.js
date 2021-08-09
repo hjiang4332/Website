@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { Trans } from 'react-i18next'
+
 export default function Product(props) {
 	const { product } = props
 
@@ -28,7 +30,9 @@ export default function Product(props) {
 				>
 					<h2>{product.name}</h2>
 				</Link>
-				<div>Quality: {product.quality}</div>
+				<div>
+					<Trans i18nKey='quality' />: {product.quality}
+				</div>
 				<div>
 					{product.customizations.length > 0 ? (
 						<span>
@@ -71,16 +75,15 @@ export default function Product(props) {
 						<br />
 					)}
 				</div>
-        
+
 				<span>
 					<div className='price'>
 						{product.onSale ? (
-							<span>On Sale: </span>
+							<Trans i18nKey='onSale' />
 						) : (
-							<span>Wholesale: </span>
+							<Trans i18nKey='wholesale' />
 						)}
-						${product.wsPrice} ea.
-
+						: ${product.wsPrice} ea.
 					</div>
 				</span>
 			</div>

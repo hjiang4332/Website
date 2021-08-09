@@ -1,7 +1,11 @@
 {
-	"title": "chinese",
+	"app": {
+		"language": "中文",
+		"faq": "FAQ"
+	},
+	"title": "english1",
 	"description": {
-		"part1": "chinese2",
-		"part2": "chinese3"
+		"part1": "english2",
+		"part2": "english3"
 	}
 }

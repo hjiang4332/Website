@@ -122,7 +122,8 @@ function App() {
 					<div>
 						<div className='dropdown'>
 							<Link to='#admin'>
-								<i class='fa fa-globe'></i> Language{' '}
+								<i class='fa fa-globe'></i>{' '}
+								<Trans i18nKey='language' />
 								<i className='fa fa-caret-down'></i>
 							</Link>
 
@@ -138,23 +139,23 @@ function App() {
 									</div>
 								</li>
 								<li>
-									<div onClick={() => changeLanguage('ko')}>
+									<div onClick={() => changeLanguage('zh')}>
 										Chinese - 中文
 									</div>
 								</li>
 								<li>
-									<div onClick={() => changeLanguage('zh')}>
+									<div onClick={() => changeLanguage('ko')}>
 										Korean - 한국어
 									</div>
 								</li>
 							</ul>
 						</div>
-						<Trans i18nKey='title' />
-						<Trans i18nKey='description.part1' />
-						<Trans i18nKey='description.part2' />
-						<Link to='/faq'>FAQ</Link>
+
+						<Link to='/faq'>
+							<Trans i18nKey='faq' />
+						</Link>
 						<Link to='/cart'>
-							Cart
+							<Trans i18nKey='cart' />
 							{cartItems.length > 0 && (
 								<span className='badge'>
 									{cartItems.length}
@@ -171,12 +172,14 @@ function App() {
 
 								<ul className='dropdown-content'>
 									<li>
-										<Link to='/profile'>Profile</Link>
+										<Link to='/profile'>
+											<Trans i18nKey='profile' />
+										</Link>
 									</li>
 
 									<li>
 										<Link to='/orderhistory'>
-											Order History
+											<Trans i18nKey='orderHistory' />
 										</Link>
 									</li>
 
@@ -185,13 +188,15 @@ function App() {
 											to='#signout'
 											onClick={signoutHandler}
 										>
-											Sign Out
+											<Trans i18nKey='signOut' />
 										</Link>
 									</li>
 								</ul>
 							</div>
 						) : (
-							<Link to='/signin'>Sign In</Link>
+							<Link to='/signin'>
+								<Trans i18nKey='signIn' />
+							</Link>
 						)}
 
 						{userInfo && userInfo.isAdmin && (
@@ -229,7 +234,9 @@ function App() {
 				<aside className={sidebarIsOpen ? 'open' : ''}>
 					<ul className='categories'>
 						<li>
-							<strong>Categories</strong>
+							<strong>
+								<Trans i18nKey='categories' />
+							</strong>
 							<button
 								onClick={() => setSidebarIsOpen(false)}
 								className='close-sidebar'
@@ -258,7 +265,9 @@ function App() {
 							))
 						)}
 						<li>
-							<strong>Quality</strong>
+							<strong>
+								<Trans i18nKey='quality' />
+							</strong>
 							<button
 								onClick={() => setSidebarIsOpen(false)}
 								className='close-sidebar'
@@ -398,9 +407,11 @@ function App() {
 					<div className='row'>
 						<div className='col-1'>
 							<div>
-								<h2 className='widget-title'>About</h2>
+								<h2 className='widget-title'>
+									<Trans i18nKey='about' />
+								</h2>
 								<div className='copyright'>
-									© All rights reserved
+									© <Trans i18nKey='allRightsReserved' />
 								</div>
 
 								<div className='cards'>
@@ -424,28 +435,30 @@ function App() {
 										className='fa fa-lock'
 										aria-hidden='true'
 									/>
-									Secure Online Payments
+									<Trans i18nKey='secureOnlinePayments' />
 								</p>
 							</div>
 						</div>
 
 						<div className='col-1'>
 							<div className='footer-widget'>
-								<h2 className='widget-title'>Information</h2>
+								<h2 className='widget-title'>
+									<Trans i18nKey='information' />
+								</h2>
 								<ul>
 									<li>
 										<Link to='/terms'>
-											Terms and Conditions
+											<Trans i18nKey='termsAndConditions' />
 										</Link>
 									</li>
 									<li>
 										<Link to='/refund-policy'>
-											Refund-policy
+											<Trans i18nKey='refundPolicy' />
 										</Link>
 									</li>
 									<li>
 										<Link to='/shipping-policy'>
-											Shipping and Delivery
+											<Trans i18nKey='shippingAndDelivery' />
 										</Link>
 									</li>
 								</ul>
@@ -454,13 +467,16 @@ function App() {
 
 						<div className='col-1'>
 							<div>
-								<h2 className='widget-title'>Contact</h2>
+								<h2 className='widget-title'>
+									<Trans i18nKey='contact' />
+								</h2>
 								<div className='contact-address'>
 									<i
 										className='fa fa-map-marker'
 										aria-hidden='true'
 									></i>
-									Address : 48W 28th street Manhattan
+									<Trans i18nKey='address' /> : 48W 28th
+									street Manhattan
 								</div>
 
 								<div className='contact-number'>
@@ -468,7 +484,7 @@ function App() {
 										className='fa fa-mobile'
 										aria-hidden='true'
 									></i>
-									Phone Number:
+									<Trans i18nKey='phoneNumber' />
 									<br />
 									(347)-773-6389
 								</div>
@@ -478,7 +494,8 @@ function App() {
 										className='fa fa-envelope'
 										aria-hidden='true'
 									/>
-									Email: classyjewelryws@gmail.com
+									<Trans i18nKey='email' />:
+									classyjewelryws@gmail.com
 								</div>
 							</div>
 						</div>

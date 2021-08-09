@@ -1,7 +1,11 @@
 {
-	"title": "korean1",
+	"app": {
+		"language": "한국어",
+		"faq": "FAQ"
+	},
+	"title": "english1",
 	"description": {
-		"part1": "korean2",
-		"part2": "korean3"
+		"part1": "english2",
+		"part2": "english3"
 	}
 }

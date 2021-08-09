@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import MessageBox from '../components/MessageBox'
 
+import { Trans } from 'react-i18next'
+
 export default function CartScreen(props) {
 	const productId = props.match.params.id
 	// const qty = props.location.search
@@ -34,10 +36,15 @@ export default function CartScreen(props) {
 	return (
 		<div className='row top'>
 			<div className='col-2'>
-				<h1>Shopping Cart</h1>
+				<h1>
+					<Trans i18nKey='shoppingCart' />
+				</h1>
 				{cartItems.length === 0 ? (
 					<MessageBox>
-						Your cart is empty. <Link to='/'>Go Shopping</Link>
+						<Trans i18nKey='yourCartIsEmpty' />.
+						<Link to='/'>
+							<Trans i18nKey='goShopping' />
+						</Link>
 					</MessageBox>
 				) : (
 					<ul>
@@ -111,12 +118,13 @@ export default function CartScreen(props) {
 												<span>${item.wsPrice} ea.</span>
 											) : (
 												<span>
-													On Sale: ${item.wsPrice} ea.
+													<Trans i18nKey='onSale' />:
+													${item.wsPrice} ea.
 												</span>
 											)}
 										</span>
 										<span>
-											Total cost: $
+											<Trans i18nKey='total' />: $
 											{item.wsPrice * item.qty}
 										</span>
 									</div>
@@ -133,7 +141,7 @@ export default function CartScreen(props) {
 												)
 											}
 										>
-											Remove item
+											<Trans i18nKey='removeItem' />
 										</button>
 									</div>
 								</div>
@@ -148,12 +156,12 @@ export default function CartScreen(props) {
 					<ul>
 						<li>
 							<h2>
-								Subtotal (
+								<Trans i18nKey='subtotal' /> (
 								{cartItems.reduce(
 									(a, c) => a + Number(c.qty),
 									0
 								)}{' '}
-								items) : $
+								<Trans i18nKey='items' />) : $
 								{cartItems.reduce(
 									(a, c) => a + c.wsPrice * c.qty,
 									0
@@ -163,7 +171,7 @@ export default function CartScreen(props) {
 
 						<li>
 							<h2>
-								Amount saved: $
+								<Trans i18nKey='amountSaved' />: $
 								{cartItems.reduce(
 									(a, c) => a + c.price * c.qty,
 									0
@@ -188,7 +196,8 @@ export default function CartScreen(props) {
 									) < 100
 								}
 							>
-								Proceed to Checkout ($100 minimum)
+								<Trans i18nKey='proceedToCheckout' /> ($100{' '}
+								<Trans i18nKey='minimum' />)
 							</button>
 						</li>
 					</ul>

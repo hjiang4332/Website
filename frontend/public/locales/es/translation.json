@@ -1,7 +1,23 @@
 {
-	"title": "espanol1",
-	"description": {
-		"part1": "espanol2",
-		"part2": "espanol3"
-	}
+	"app": {
+		"language": "Espanol",
+		"faq": "Faqes",
+		"cart": "Cartes",
+		"profile": "Profilees",
+		"orderHistory": "Order Historyes",
+		"signOut": "Sign Outes",
+		"signIn": "Sign Ines"
+	},
+	"quality": "Qualityes",
+	"stainlessSteel": "Stainless Steeles",
+	"goldFilled": "Gold Filledes",
+	"fashion": "Fashiones",
+	"notApplicable": "Not Applicablees",
+	"categories": "Categorieses",
+	"anklet": "Ankletes",
+	"bracelet": "Braceletes",
+	"dz": "Dzes",
+	"earring": "Earringes",
+	"necklace": "Necklacees",
+	"ring": "Ringes"
 }
