@@ -305,6 +305,9 @@ img.large {
 	margin-top: 0.4rem;
 	border-radius: 0.5rem;
 }
+.dropdown-content > li > div {
+	color: #ffffff;
+}
 .dropdown:hover .dropdown-content {
 	display: block;
 }

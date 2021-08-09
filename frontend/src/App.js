@@ -39,6 +39,8 @@ import TermsScreen from './screens/policyScreens/TermsScreen'
 import RefundPolicyScreen from './screens/policyScreens/RefundPolicyScreen'
 import ShippingPolicyScreen from './screens/policyScreens/ShippingPolicyScreen'
 
+import { Trans, useTranslation } from 'react-i18next'
+
 function App() {
 	//get cart data from redux
 	const cart = useSelector((state) => state.cart)
@@ -80,6 +82,12 @@ function App() {
 		dispatch(listProductQualities())
 	}, [dispatch])
 
+	//Different languages - i18next
+	const { t, i18n } = useTranslation()
+	const changeLanguage = (language) => {
+		i18n.changeLanguage(language)
+	}
+
 	return (
 		<BrowserRouter>
 			<div className='grid-container'>
@@ -112,6 +120,38 @@ function App() {
 						</a>
 					</div>
 					<div>
+						<div className='dropdown'>
+							<Link to='#admin'>
+								<i class='fa fa-globe'></i> Language{' '}
+								<i className='fa fa-caret-down'></i>
+							</Link>
+
+							<ul className='dropdown-content'>
+								<li>
+									<div onClick={() => changeLanguage('en')}>
+										English - English
+									</div>
+								</li>
+								<li>
+									<div onClick={() => changeLanguage('es')}>
+										Spanish-español
+									</div>
+								</li>
+								<li>
+									<div onClick={() => changeLanguage('ko')}>
+										Chinese - 中文
+									</div>
+								</li>
+								<li>
+									<div onClick={() => changeLanguage('zh')}>
+										Korean - 한국어
+									</div>
+								</li>
+							</ul>
+						</div>
+						<Trans i18nKey='title' />
+						<Trans i18nKey='description.part1' />
+						<Trans i18nKey='description.part2' />
 						<Link to='/faq'>FAQ</Link>
 						<Link to='/cart'>
 							Cart
