@@ -195,15 +195,16 @@ export default function OrderScreen(props) {
 													<span className='pad-right'>
 														{item.onSale ? (
 															<span>
-																On Sale: $
-															</span>
-														) : (
-															<span>
+																On Sale:{' '}
 																{item.wsPrice}
 																ea.
 															</span>
+														) : (
+															<span>
+																${item.wsPrice}
+																ea.
+															</span>
 														)}
-														{item.wsPrice}ea.
 													</span>
 
 													<span>

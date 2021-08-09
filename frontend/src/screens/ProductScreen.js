@@ -15,8 +15,8 @@ export default function ProductScreen(props) {
 
 	//get item customizations from product component in home screen
 	const location = useLocation()
-	if (!location.state === 'undefined') {
-		props.history.push('/cart')
+	if (typeof location.state === 'undefined') {
+		props.history.push('/')
 	}
 	const { customizations } = location.state
 
