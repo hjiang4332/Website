@@ -15,10 +15,10 @@ export default function ProductScreen(props) {
 
 	//get item customizations from product component in home screen
 	const location = useLocation()
-	if (typeof location.state === 'undefined') {
+	const { customizations } = location.state || ['']
+	if (typeof customizations === 'undefined') {
 		props.history.push('/')
 	}
-	const { customizations } = location.state
 
 	//radio buttons for customizations
 	const [size, setSize] = useState(0)
@@ -33,7 +33,7 @@ export default function ProductScreen(props) {
 
 	//get initial values
 	useEffect(() => {
-		if (customizations.length > 0) {
+		if (typeof customizations !== 'undefined') {
 			setHasCustomizations(true)
 			setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
 
@@ -50,38 +50,44 @@ export default function ProductScreen(props) {
 		}
 	}, [customizations])
 
+	if (typeof customizations !== 'undefined') {
+		//fill sizeOptions
+		customizations
+			.map((item) => item.size)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((size) =>
+				sizeOptions.push({
+					label: size,
+					value: size,
+				})
+			)
+
+		//fill colorOptions
+		customizations
+			.map((p) => p.color)
+			.filter((v, i, a) => a.indexOf(v) === i)
+			.map((color) =>
+				colorOptions.push({
+					label: color,
+					value: color,
+				})
+			)
+	}
+
 	//get count in stock based off of select values (size and color)
 	useEffect(() => {
-		customizations
-			.filter(
-				(item) =>
-					item.size.toString() === size.toString() &&
-					item.color.toString() === color.toString()
-			)
-			.map((filteredItem) => setCountInStock(filteredItem.countInStock))
+		if (typeof customizations !== 'undefined') {
+			customizations
+				.filter(
+					(item) =>
+						item.size.toString() === size.toString() &&
+						item.color.toString() === color.toString()
+				)
+				.map((filteredItem) =>
+					setCountInStock(filteredItem.countInStock)
+				)
+		}
 	}, [customizations, size, color])
-
-	//fill sizeOptions
-	customizations
-		.map((item) => item.size)
-		.filter((v, i, a) => a.indexOf(v) === i)
-		.map((size) =>
-			sizeOptions.push({
-				label: size,
-				value: size,
-			})
-		)
-
-	//fill colorOptions
-	customizations
-		.map((p) => p.color)
-		.filter((v, i, a) => a.indexOf(v) === i)
-		.map((color) =>
-			colorOptions.push({
-				label: color,
-				value: color,
-			})
-		)
 
 	//fill countInStock
 	useEffect(() => {
