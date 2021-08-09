@@ -74,8 +74,7 @@ export default function Product(props) {
 					)}
 				</div>
 
-				{typeof product.salePrice == 'undefined' ||
-				product.salePrice !== null ? (
+				{!product.onSale ? (
 					<span>
 						<div className='price left'>
 							Price: ${product.price}
@@ -86,7 +85,7 @@ export default function Product(props) {
 					</span>
 				) : (
 					<div className='price left'>
-						On Sale: ${product.salePrice}
+						On Sale: ${product.wsPrice}
 					</div>
 				)}
 			</div>

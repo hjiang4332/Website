@@ -116,8 +116,8 @@ export default function ProductScreen(props) {
 
 								<li>Quality : {product.quality}</li>
 
-								{product.salePrice < product.price ? (
-									<li>On Sale: ${product.salePrice}</li>
+								{product.onSale ? (
+									<li>On Sale: ${product.wsPrice}</li>
 								) : (
 									<li>
 										<div className='row'>
@@ -202,8 +202,8 @@ export default function ProductScreen(props) {
 						<div className='col-1'>
 							<div className='card card-body'>
 								<ul>
-									{product.salePrice < product.price ? (
-										<li>On Sale: ${product.salePrice}</li>
+									{product.onSale ? (
+										<li>On Sale: ${product.wsPrice}</li>
 									) : (
 										<li>
 											<div className='row'>

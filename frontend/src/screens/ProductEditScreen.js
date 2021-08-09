@@ -16,7 +16,7 @@ export default function ProductEditScreen(props) {
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
 	const [wzPrice, setWzPrice] = useState('')
-	const [salePrice, setSalePrice] = useState('')
+	const [onSale, setOnSale] = useState('')
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -54,7 +54,7 @@ export default function ProductEditScreen(props) {
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
-			setSalePrice(product.salePrice)
+			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
 			setCustomizationsString(
@@ -103,7 +103,7 @@ export default function ProductEditScreen(props) {
 				price,
 				wsPrice,
 				wzPrice,
-				salePrice,
+				onSale,
 				countInStock,
 				description,
 				customizations,
@@ -262,13 +262,13 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='salePrice'>Sale Price</label>
+							<label htmlFor='pickup'>On Sale</label>
 							<input
-								id='salePrice'
-								type='text'
-								placeholder='Enter Sale price'
-								value={salePrice}
-								onChange={(e) => setSalePrice(e.target.value)}
+								type='radio'
+								id='onSale'
+								placeholder='Enter On Sale'
+								value={onSale}
+								onChange={(e) => setOnSale(e.target.value)}
 							/>
 						</div>
 
