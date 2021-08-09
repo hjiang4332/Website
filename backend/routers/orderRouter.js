@@ -168,6 +168,13 @@ orderRouter.put(
 				await product.save()
 			}
 
+			const user = await User.findById(req.params.user)
+			if (user) {
+				user.numOrders += 1
+				user.totalSpent += req.params.totalPrice
+				await user.save()
+			}
+
 			res.send({ message: 'Order Paid', order: updatedOrder })
 		} else {
 			res.status(404).send({ message: 'Order Not Found' })

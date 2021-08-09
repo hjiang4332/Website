@@ -57,52 +57,55 @@ export default function OrderListScreen(props) {
 						</tr>
 					</thead>
 					<tbody>
-						{orders.map((order) => (
-							<tr key={order._id}>
-								<td>{order._id}</td>
-								<td>
-									{order.user
-										? order.user.name
-										: 'Deleted User'}
-								</td>
-								<td>
-									{order.user
-										? order.createdAt.substring(0, 10)
-										: 'No created date'}
-								</td>
-								<td>${order.totalPrice.toFixed(2)}</td>
-								<td>
-									{order.isPaid
-										? order.paidAt.substring(0, 10)
-										: 'No'}
-								</td>
-								<td>
-									{order.isDelivered
-										? order.deliveredAt.substring(0, 10)
-										: 'No'}
-								</td>
-								<td>
-									<button
-										type='button'
-										className='small'
-										onClick={() => {
-											props.history.push(
-												`/order/${order._id}`
-											)
-										}}
-									>
-										Details
-									</button>
-									<button
-										type='button'
-										className='small'
-										onClick={() => deleteHandler(order)}
-									>
-										Delete
-									</button>
-								</td>
-							</tr>
-						))}
+						{orders
+							.slice(0)
+							.reverse()
+							.map((order) => (
+								<tr key={order._id}>
+									<td>{order._id}</td>
+									<td>
+										{order.user
+											? order.user.name
+											: 'Deleted User'}
+									</td>
+									<td>
+										{order.user
+											? order.createdAt.substring(0, 10)
+											: 'No created date'}
+									</td>
+									<td>${order.totalPrice.toFixed(2)}</td>
+									<td>
+										{order.isPaid
+											? order.paidAt.substring(0, 10)
+											: 'No'}
+									</td>
+									<td>
+										{order.isDelivered
+											? order.deliveredAt.substring(0, 10)
+											: 'No'}
+									</td>
+									<td>
+										<button
+											type='button'
+											className='small'
+											onClick={() => {
+												props.history.push(
+													`/order/${order._id}`
+												)
+											}}
+										>
+											Details
+										</button>
+										<button
+											type='button'
+											className='small'
+											onClick={() => deleteHandler(order)}
+										>
+											Delete
+										</button>
+									</td>
+								</tr>
+							))}
 					</tbody>
 				</table>
 			)}

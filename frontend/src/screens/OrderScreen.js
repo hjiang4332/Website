@@ -123,7 +123,7 @@ export default function OrderScreen(props) {
 
 						<li>
 							<div className='card card-body'>
-								<h2>Payment</h2>
+								<h2>Pickup</h2>
 
 								<p>
 									<strong>Method:</strong>{' '}
@@ -222,6 +222,7 @@ export default function OrderScreen(props) {
 						</li>
 					</ul>
 				</div>
+                
 				<div className='col-1'>
 					<div className='card card-body'>
 						<ul>
