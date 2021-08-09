@@ -275,7 +275,6 @@ export default function ProductScreen(props) {
 											<span>
 												{'Available: ' + countInStock}
 											</span>
-											{console.log(hasCustomizations)}
 										</div>
 									) : (
 										<br />

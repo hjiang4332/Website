@@ -222,6 +222,7 @@ export default function OrderScreen(props) {
 						</li>
 					</ul>
 				</div>
+                
 				<div className='col-1'>
 					<div className='card card-body'>
 						<ul>
