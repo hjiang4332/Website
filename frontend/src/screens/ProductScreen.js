@@ -16,6 +16,8 @@ export default function ProductScreen(props) {
 	//get item customizations from product component in home screen
 	const location = useLocation()
 	const { customizations } = location.state || ['']
+
+	//send person back to home if they middle clicked the product link
 	if (typeof customizations === 'undefined') {
 		props.history.push('/')
 	}
