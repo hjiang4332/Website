@@ -355,6 +355,12 @@ export default function ProductScreen(props) {
 											<button
 												onClick={addToCartHandler}
 												className='primary block'
+												disabled={
+													hasCustomizations
+														? countInStock === 0
+														: product.countInStock ===
+														  0
+												}
 											>
 												Add to Cart
 											</button>
