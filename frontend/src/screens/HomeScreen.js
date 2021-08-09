@@ -27,9 +27,15 @@ export default function HomeScreen() {
 			) : (
 				<>
 					<div className='row center'>
-						{products.map((product) => (
-							<Product key={product._id} product={product} />
-						))}
+						{products.map(
+							(product) =>
+								product.countInStock !== 0 && (
+									<Product
+										key={product._id}
+										product={product}
+									/>
+								)
+						)}
 					</div>
 
 					<div className='row center pagination'>

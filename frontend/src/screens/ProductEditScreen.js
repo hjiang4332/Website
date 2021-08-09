@@ -168,15 +168,15 @@ export default function ProductEditScreen(props) {
 
 						<div>
 							<label htmlFor='quality'>
-								Quality (Gold Filled, Stainless Steel, Fashion,
-								Not applicable)
+								Quality: Gold Filled, Stainless Steel, Fashion,
+								Not applicable
 							</label>
 							<input
 								id='quality'
 								type='text'
 								placeholder='Enter quality'
 								value={quality}
-								onChange={(e) => setName(e.target.value)}
+								onChange={(e) => setQuality(e.target.value)}
 							/>
 						</div>
 
