@@ -16,7 +16,7 @@ export default function ProductEditScreen(props) {
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
 	const [wzPrice, setWzPrice] = useState('')
-	const [onSale, setOnSale] = useState('')
+	const [onSale, setOnSale] = useState(false)
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
 
@@ -262,14 +262,13 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='pickup'>On Sale</label>
+							<label htmlFor='onSale'>On Sale</label>
 							<input
-								type='radio'
 								id='onSale'
-								placeholder='Enter On Sale'
-								value={onSale}
-								onChange={(e) => setOnSale(e.target.value)}
-							/>
+								type='checkbox'
+								checked={onSale}
+								onChange={(e) => setOnSale(e.target.checked)}
+							></input>
 						</div>
 
 						<div>

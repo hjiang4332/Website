@@ -106,7 +106,7 @@ export default function ProductListScreen(props) {
 								<th>PRICE</th>
 								<th>WSPRICE</th>
 								<th>WZPRICE</th>
-								<th>OnSale?</th>
+								<th>ON SALE?</th>
 								<th>CUSTOMIZATIONS</th>
 								<th>ACTIONS</th>
 							</tr>
