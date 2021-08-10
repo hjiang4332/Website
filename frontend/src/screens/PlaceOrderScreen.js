@@ -7,6 +7,8 @@ import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
+import { Trans } from 'react-i18next'
+
 export default function PlaceOrderScreen(props) {
 	//Must select payment option before placing order
 	const cart = useSelector((state) => state.cart)
@@ -48,11 +50,17 @@ export default function PlaceOrderScreen(props) {
 					<ul>
 						<li>
 							<div className='card card-body'>
-								<h2>Shipping</h2>
+								<h2>
+									<Trans i18nKey='shipping' />
+								</h2>
 								<p>
-									<strong>Name:</strong>{' '}
+									<strong>
+										<Trans i18nKey='name' />:
+									</strong>{' '}
 									{cart.shippingAddress.fullName} <br />
-									<strong>Address: </strong>{' '}
+									<strong>
+										<Trans i18nKey='address' />:{' '}
+									</strong>{' '}
 									{cart.shippingAddress.address},
 									{cart.shippingAddress.city},{' '}
 									{cart.shippingAddress.postalCode},
@@ -63,17 +71,18 @@ export default function PlaceOrderScreen(props) {
 
 						<li>
 							<div className='card card-body'>
-								<h2>Pickup</h2>
-								<p>
-									<strong>Method:</strong>{' '}
-									{cart.paymentMethod}
-								</p>
+								<h2>
+									<Trans i18nKey='pickupMethod' />:
+								</h2>
+								<p>{cart.paymentMethod}</p>
 							</div>
 						</li>
 
 						<li>
 							<div className='card card-body'>
-								<h2>Order Items</h2>
+								<h2>
+									<Trans i18nKey='order' />
+								</h2>
 								<ul>
 									{cart.cartItems.map((item) => (
 										<li
@@ -107,19 +116,23 @@ export default function PlaceOrderScreen(props) {
 
 												{item.color !== '0' && (
 													<div>
-														Color: {item.color}
+														<Trans i18nKey='color' />
+														: {item.color}
 													</div>
 												)}
 												{item.size !== 0 && (
-													<div>Size: {item.size}</div>
+													<div>
+														<Trans i18nKey='size' />
+														: {item.size}
+													</div>
 												)}
 
 												<div>
 													<span className='pad-right'>
 														{item.onSale ? (
 															<span>
-																On Sale:{' '}
-																{item.wsPrice}
+																<Trans i18nKey='onSale' />
+																: {item.wsPrice}
 																ea.
 															</span>
 														) : (
@@ -131,7 +144,8 @@ export default function PlaceOrderScreen(props) {
 													</span>
 
 													<span>
-														Total cost: {item.qty} x{' '}
+														<Trans i18nKey='total' />
+														: {item.qty} x{' '}
 														{item.wsPrice}=$
 														{item.wsPrice *
 															item.qty}
@@ -150,26 +164,34 @@ export default function PlaceOrderScreen(props) {
 					<div className='card card-body'>
 						<ul>
 							<li>
-								<h2>Order Summary</h2>
+								<h2>
+									<Trans i18nKey='orderSummary' />
+								</h2>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Items</div>
+									<div>
+										<Trans i18nKey='Items' />
+									</div>
 									<div>${cart.itemsPrice.toFixed(2)}</div>
 								</div>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Shipping</div>
+									<div>
+										<Trans i18nKey='shipping' />
+									</div>
 									<div>${cart.shippingPrice.toFixed(2)}</div>
 								</div>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Card Fee: </div>
+									<div>
+										<Trans i18nKey='cardFee' />:{' '}
+									</div>
 									<div>${cart.taxPrice.toFixed(2)}</div>
 								</div>
 							</li>
@@ -177,7 +199,9 @@ export default function PlaceOrderScreen(props) {
 							<li>
 								<div className='row'>
 									<div>
-										<strong> Order Total</strong>
+										<strong>
+											<Trans i18nKey='total' />
+										</strong>
 									</div>
 									<div>
 										<strong>
@@ -197,7 +221,7 @@ export default function PlaceOrderScreen(props) {
 										cart.itemsPrice.toFixed(2) < 100
 									}
 								>
-									Save Order and Go To Payment
+									<Trans i18nKey='saveOrderAndGoToPayment' />
 								</button>
 							</li>
 

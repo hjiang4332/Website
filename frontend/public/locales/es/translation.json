@@ -1,13 +1,11 @@
 {
-	"app": {
-		"language": "Espanol",
-		"faq": "Faqes",
-		"cart": "Cartes",
-		"profile": "Profilees",
-		"orderHistory": "Order Historyes",
-		"signOut": "Sign Outes",
-		"signIn": "Sign Ines"
-	},
+	"language": "Espanol",
+	"faq": "Faqes",
+	"cart": "Cartes",
+	"profile": "Profilees",
+	"orderHistory": "Order Historyes",
+	"signOut": "Sign Outes",
+	"signIn": "Sign Ines",
 	"quality": "Qualityes",
 	"stainlessSteel": "Stainless Steeles",
 	"goldFilled": "Gold Filledes",

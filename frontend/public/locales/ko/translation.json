@@ -1,11 +1,4 @@
 {
-	"app": {
-		"language": "한국어",
-		"faq": "FAQ"
-	},
-	"title": "english1",
-	"description": {
-		"part1": "english2",
-		"part2": "english3"
-	}
+	"language": "한국어",
+	"faq": "FAQko"
 }

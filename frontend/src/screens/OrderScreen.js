@@ -15,6 +15,8 @@ import {
 	ORDER_PAY_RESET,
 } from '../constants/orderConstants'
 
+import { Trans } from 'react-i18next'
+
 export default function OrderScreen(props) {
 	const orderId = props.match.params.id
 
@@ -91,18 +93,27 @@ export default function OrderScreen(props) {
 		<MessageBox variant='danger'>{error}</MessageBox>
 	) : (
 		<div>
-			<h1>Order {order._id} has been saved</h1>
+			<h1>
+				<Trans i18nKey='order' /> {order._id}{' '}
+				<Trans i18nKey='hasBeenSaved' />
+			</h1>
 			<div className='row top'>
 				<div className='col-2'>
 					<ul>
 						<li>
 							<div className='card card-body'>
-								<h2>Shipping</h2>
+								<h2>
+									<Trans i18nKey='shipping' />
+								</h2>
 
 								<p>
-									<strong>Name:</strong>{' '}
+									<strong>
+										<Trans i18nKey='name' />:
+									</strong>{' '}
 									{order.shippingAddress.fullName} <br />
-									<strong>Address: </strong>{' '}
+									<strong>
+										<Trans i18nKey='address' />:{' '}
+									</strong>{' '}
 									{order.shippingAddress.address},
 									{order.shippingAddress.city},{' '}
 									{order.shippingAddress.postalCode},
@@ -111,11 +122,12 @@ export default function OrderScreen(props) {
 
 								{order.isDelivered ? (
 									<MessageBox variant='success'>
-										Delivered at {order.deliveredAt}
+										<Trans i18nKey='deliveryDate' />{' '}
+										{order.deliveredAt}
 									</MessageBox>
 								) : (
 									<MessageBox variant='danger'>
-										Not Delivered
+										<Trans i18nKey='notDelivered' />
 									</MessageBox>
 								)}
 							</div>
@@ -123,20 +135,20 @@ export default function OrderScreen(props) {
 
 						<li>
 							<div className='card card-body'>
-								<h2>Pickup</h2>
+								<h2>
+									<Trans i18nKey='pickupMethod' />:
+								</h2>
 
-								<p>
-									<strong>Method:</strong>{' '}
-									{order.paymentMethod}
-								</p>
+								<p>{order.paymentMethod}</p>
 
 								{order.isPaid ? (
 									<MessageBox variant='success'>
-										Paid at {order.paidAt}
+										<Trans i18nKey='paidDate' />{' '}
+										{order.paidAt}
 									</MessageBox>
 								) : (
 									<MessageBox variant='danger'>
-										Not Paid
+										<Trans i18nKey='notPaid' />
 									</MessageBox>
 								)}
 							</div>
@@ -144,7 +156,9 @@ export default function OrderScreen(props) {
 
 						<li>
 							<div className='card card-body'>
-								<h2>Order Items</h2>
+								<h2>
+									<Trans i18nKey='order' />
+								</h2>
 								<ul>
 									{order.orderItems.map((item) => (
 										<li
@@ -179,14 +193,18 @@ export default function OrderScreen(props) {
 
 												{item.color !== '0' ? (
 													<div>
-														Color: {item.color}
+														<Trans i18nKey='color' />
+														: {item.color}
 													</div>
 												) : (
 													<div />
 												)}
 
 												{item.size !== 0 ? (
-													<div>Size: {item.size}</div>
+													<div>
+														<Trans i18nKey='size' />
+														: {item.size}
+													</div>
 												) : (
 													<div />
 												)}
@@ -195,8 +213,8 @@ export default function OrderScreen(props) {
 													<span className='pad-right'>
 														{item.onSale ? (
 															<span>
-																On Sale:{' '}
-																{item.wsPrice}
+																<Trans i18nKey='onSale' />
+																: {item.wsPrice}
 																ea.
 															</span>
 														) : (
@@ -208,7 +226,8 @@ export default function OrderScreen(props) {
 													</span>
 
 													<span>
-														Total cost: {item.qty} x{' '}
+														<Trans i18nKey='total' />
+														: {item.qty} x{' '}
 														{item.wsPrice}=$
 														{item.wsPrice *
 															item.qty}
@@ -222,31 +241,39 @@ export default function OrderScreen(props) {
 						</li>
 					</ul>
 				</div>
-                
+
 				<div className='col-1'>
 					<div className='card card-body'>
 						<ul>
 							<li>
-								<h2>Order Summary</h2>
+								<h2>
+									<Trans i18nKey='orderSummary' />
+								</h2>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Items</div>
+									<div>
+										<Trans i18nKey='items' />
+									</div>
 									<div>${order.itemsPrice.toFixed(2)}</div>
 								</div>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Shipping</div>
+									<div>
+										<Trans i18nKey='shipping' />
+									</div>
 									<div>${order.shippingPrice.toFixed(2)}</div>
 								</div>
 							</li>
 
 							<li>
 								<div className='row'>
-									<div>Tax</div>
+									<div>
+										<Trans i18nKey='cardFee' />
+									</div>
 									<div>${order.taxPrice.toFixed(2)}</div>
 								</div>
 							</li>
@@ -254,7 +281,9 @@ export default function OrderScreen(props) {
 							<li>
 								<div className='row'>
 									<div>
-										<strong> Order Total</strong>
+										<strong>
+											<Trans i18nKey='total' />
+										</strong>
 									</div>
 									<div>
 										<strong>
@@ -307,7 +336,7 @@ export default function OrderScreen(props) {
 											className='primary block'
 											onClick={deliverHandler}
 										>
-											Deliver Order
+											<Trans i18nKey='deliverOrder' />
 										</button>
 									</li>
 								)}

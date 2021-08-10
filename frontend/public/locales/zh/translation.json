@@ -1,11 +1,4 @@
 {
-	"app": {
-		"language": "中文",
-		"faq": "FAQ"
-	},
-	"title": "english1",
-	"description": {
-		"part1": "english2",
-		"part2": "english3"
-	}
+	"language": "中文",
+	"faq": "FAQch"
 }

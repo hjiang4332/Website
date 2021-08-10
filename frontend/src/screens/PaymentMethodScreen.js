@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { savePaymentMethod } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
 
+import { Trans } from 'react-i18next'
+
 export default function PaymentMethodScreen(props) {
 	//need shipping address saved before you can go to payment screen
 	const cart = useSelector((state) => state.cart)
@@ -25,7 +27,9 @@ export default function PaymentMethodScreen(props) {
 			<CheckoutSteps step1 step2 step3></CheckoutSteps>
 			<form className='form' onSubmit={submitHandler}>
 				<div>
-					<h1>Pickup Method</h1>
+					<h1>
+						<Trans i18nKey='pickupMethod' />
+					</h1>
 				</div>
 
 				<div>
@@ -39,7 +43,9 @@ export default function PaymentMethodScreen(props) {
 							checked
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						<label htmlFor='ship'>Ship My Order</label>
+						<label htmlFor='ship'>
+							<Trans i18nKey='shipMyOrder' />
+						</label>
 					</div>
 				</div>
 
@@ -53,14 +59,16 @@ export default function PaymentMethodScreen(props) {
 							required
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
-						<label htmlFor='pickup'>Pick up at Store</label>
+						<label htmlFor='pickup'>
+							<Trans i18nKey='pickUpAtStore' />
+						</label>
 					</div>
 				</div>
 
 				<div>
 					<label />
 					<button className='primary' type='submit'>
-						Continue
+						<Trans i18nKey='continue' />
 					</button>
 				</div>
 			</form>

@@ -4,6 +4,8 @@ import { listMyOrder } from '../actions/orderActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 
+import { Trans } from 'react-i18next'
+
 export default function OrderHistoryScreen(props) {
 	const orderHistoryList = useSelector((state) => state.orderHistoryList)
 	const { loading, error, orders } = orderHistoryList
@@ -24,12 +26,24 @@ export default function OrderHistoryScreen(props) {
 				<table className='table'>
 					<thead>
 						<tr>
-							<th>ID</th>
-							<th>DATE</th>
-							<th>TOTAL</th>
-							<th>PAID</th>
-							<th>DELIVERED</th>
-							<th>ACTIONS</th>
+							<th>
+								<Trans i18nKey='id' />
+							</th>
+							<th>
+								<Trans i18nKey='date' />
+							</th>
+							<th>
+								<Trans i18nKey='total' />
+							</th>
+							<th>
+								<Trans i18nKey='paid' />
+							</th>
+							<th>
+								<Trans i18nKey='deliveredDate' />
+							</th>
+							<th>
+								<Trans i18nKey='actions' />
+							</th>
 						</tr>
 					</thead>
 					<tbody>

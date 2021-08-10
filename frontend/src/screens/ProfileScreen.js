@@ -5,6 +5,8 @@ import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
+import { Trans } from 'react-i18next'
+
 export default function ProfileScreen() {
 	const [name, setName] = useState('')
 	const [email, setEmail] = useState('')
@@ -55,7 +57,9 @@ export default function ProfileScreen() {
 		<div>
 			<form className='form' onSubmit={submitHandler}>
 				<div>
-					<h1>User Profile</h1>
+					<h1>
+						<Trans i18nKey='userProfile' />
+					</h1>
 				</div>
 
 				{loading ? (
@@ -76,7 +80,9 @@ export default function ProfileScreen() {
 							</MessageBox>
 						)}
 						<div>
-							<label htmlFor='name'>Name</label>
+							<label htmlFor='name'>
+								<Trans i18nKey='name' />
+							</label>
 							<input
 								id='name'
 								type='text'
@@ -87,7 +93,9 @@ export default function ProfileScreen() {
 						</div>
 
 						<div>
-							<label htmlFor='email'>Email</label>
+							<label htmlFor='email'>
+								<Trans i18nKey='email' />
+							</label>
 							<input
 								id='email'
 								type='email'
@@ -99,7 +107,9 @@ export default function ProfileScreen() {
 						</div>
 
 						<div>
-							<label htmlFor='password'>New Password</label>
+							<label htmlFor='password'>
+								<Trans i18nKey='newPassword' />
+							</label>
 							<input
 								id='password'
 								type='password'
@@ -110,7 +120,8 @@ export default function ProfileScreen() {
 
 						<div>
 							<label htmlFor='confirmPassword'>
-								Confirm New Password
+								<Trans i18nKey='confirm' />{' '}
+								<Trans i18nKey='newPassword' />
 							</label>
 							<input
 								id='confirmPassword'
@@ -125,7 +136,7 @@ export default function ProfileScreen() {
 						<div>
 							<label />
 							<button className='primary' type='submit'>
-								Update
+								<Trans i18nKey='update' />
 							</button>
 						</div>
 					</>

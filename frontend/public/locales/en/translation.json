@@ -53,5 +53,37 @@
 	"minimum": "Minimum",
 	"total": "Total",
 	"removeItem": "Remove Item",
-	"items": "Items"
+	"items": "Items",
+
+	"shippingAddress": "Shipping Address",
+	"shippingDescription1": "You can choose to pick up at the 48W 28th street store in the next page, however after a month we will ship your items to this address shipping fees will apply",
+	"fullName": "Full Name",
+	"city": "City",
+	"country": "Country",
+	"postalCode": "Postal Code",
+	"continue": "Continue",
+
+	"pickupMethod": "Pick Up Method",
+	"shipMyOrder": "Ship My Order",
+	"pickUpAtStore": "Pick Up At Store",
+
+	"shipping": "Shipping",
+	"name": "Name",
+	"order": "Order",
+	"color": "Color",
+	"size": "Size",
+	"orderSummary": "Order Summary",
+	"cardFee": "Card Fee",
+	"saveOrderAndGoToPayment": "Save Order and Go to Payment",
+
+	"hasBeenSaved": "has been saved",
+	"deliveryDate": "Delivery Date",
+	"notDelivered": "Not Delivered",
+	"paidDate": "Paid Date",
+	"notPaid": "Not Paid",
+	"deliverOrder": "Deliver Order",
+
+	"newPassword": "New Password",
+	"confirm": "Confirm",
+	"update": "Update"
 }

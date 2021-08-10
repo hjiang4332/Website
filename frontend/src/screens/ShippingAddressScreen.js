@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveShippingAddress } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
 
+import { Trans } from 'react-i18next'
+
 export default function ShippingAddressScreen(props) {
 	//make sure users are signed in before shipping
 	const userSignin = useSelector((state) => state.userSignin)
@@ -42,16 +44,18 @@ export default function ShippingAddressScreen(props) {
 			<CheckoutSteps step1 step2></CheckoutSteps>
 			<form className='form' onSubmit={submitHandler}>
 				<div>
-					<h1>Shipping Address</h1>
+					<h1>
+						<Trans i18nKey='shippingAddress' />
+					</h1>
 					<div>
-						You can choose to pick up at the 48W 28th street store
-						in the next page, however after a month we will ship
-						your items to this address (shipping fees will apply)
+						<Trans i18nKey='shippingDescription' />
 					</div>
 				</div>
 
 				<div>
-					<label htmlFor='fullName'>Full Name</label>
+					<label htmlFor='fullName'>
+						<Trans i18nKey='fullName' />
+					</label>
 					<input
 						type='text'
 						id='fullName'
@@ -63,7 +67,9 @@ export default function ShippingAddressScreen(props) {
 				</div>
 
 				<div>
-					<label htmlFor='address'>Address</label>
+					<label htmlFor='address'>
+						<Trans i18nKey='address' />
+					</label>
 					<input
 						type='text'
 						id='address'
@@ -75,7 +81,9 @@ export default function ShippingAddressScreen(props) {
 				</div>
 
 				<div>
-					<label htmlFor='city'>City</label>
+					<label htmlFor='city'>
+						<Trans i18nKey='city' />
+					</label>
 					<input
 						type='text'
 						id='city'
@@ -87,7 +95,9 @@ export default function ShippingAddressScreen(props) {
 				</div>
 
 				<div>
-					<label htmlFor='country'>Country</label>
+					<label htmlFor='country'>
+						<Trans i18nKey='country' />
+					</label>
 					<input
 						type='text'
 						id='country'
@@ -99,7 +109,9 @@ export default function ShippingAddressScreen(props) {
 				</div>
 
 				<div>
-					<label htmlFor='postalCode'>Postal Code</label>
+					<label htmlFor='postalCode'>
+						<Trans i18nKey='postalCode' />
+					</label>
 					<input
 						type='text'
 						id='postalCode'
@@ -113,7 +125,7 @@ export default function ShippingAddressScreen(props) {
 				<div>
 					<label />
 					<button className='primary' type='submit'>
-						Continue
+						<Trans i18nKey='continue' />
 					</button>
 				</div>
 			</form>
