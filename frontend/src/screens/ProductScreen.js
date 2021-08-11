@@ -5,7 +5,7 @@ import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import { useLocation } from 'react-router-dom'
 
-import { Trans, useTranslation } from 'react-i18next'
+import { Trans } from 'react-i18next'
 
 export default function ProductScreen(props) {
 	const dispatch = useDispatch()

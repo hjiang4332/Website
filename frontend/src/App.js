@@ -83,7 +83,7 @@ function App() {
 	}, [dispatch])
 
 	//Different languages - i18next
-	const { t, i18n } = useTranslation()
+	const { i18n } = useTranslation()
 	const changeLanguage = (language) => {
 		i18n.changeLanguage(language)
 	}
@@ -122,7 +122,7 @@ function App() {
 					<div>
 						<div className='dropdown'>
 							<Link to='#admin'>
-								<i class='fa fa-globe'></i>{' '}
+								<i className='fa fa-globe'></i>{' '}
 								<Trans i18nKey='language' />
 								<i className='fa fa-caret-down'></i>
 							</Link>
@@ -154,7 +154,23 @@ function App() {
 						<Link to='/faq'>
 							<Trans i18nKey='faq' />
 						</Link>
-						<Link to='/cart'>
+						{/*<Link to='/cart'>
+							<Trans i18nKey='cart' />
+							{cartItems.length > 0 && (
+								<span className='badge'>
+									{cartItems.length}
+								</span>
+							)}
+						</Link>*/}
+
+						<Link
+							to={{
+								pathname: '/cart',
+								state: {
+									cartButtonClicked: 'true',
+								},
+							}}
+						>
 							<Trans i18nKey='cart' />
 							{cartItems.length > 0 && (
 								<span className='badge'>

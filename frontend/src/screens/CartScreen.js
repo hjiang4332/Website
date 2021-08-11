@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import MessageBox from '../components/MessageBox'
+import { useLocation } from 'react-router-dom'
 
 import { Trans } from 'react-i18next'
 
@@ -13,6 +14,16 @@ export default function CartScreen(props) {
 	// 	: 1
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
+
+	//redirect users back to home after adding to cart
+	const location = useLocation()
+	const { cartButtonClicked } = location.state || 'false'
+	if (
+		cartButtonClicked === 'false' ||
+		typeof cartButtonClicked === 'undefined'
+	) {
+		props.history.push('/')
+	}
 
 	let params = new URLSearchParams(document.location.search.substring(1))
 	let qty = params.get('qty') ? Number(params.get('qty')) : 1
