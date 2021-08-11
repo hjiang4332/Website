@@ -31,7 +31,8 @@ export default function Product(props) {
 					<h2>{product.name}</h2>
 				</Link>
 				<div>
-					<Trans i18nKey='quality' />: {product.quality}
+					<Trans i18nKey='quality' />:{' '}
+					<Trans i18nKey={product.quality} />
 				</div>
 				<div>
 					{product.customizations.length > 0 ? (

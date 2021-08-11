@@ -194,7 +194,7 @@ const data = {
 		},
 		{
 			name: '11: Dz Balloons',
-			quality: 'Not applicable',
+			quality: 'Not Applicable',
 			category: 'Dz',
 			image: '/images/p11.jpg',
 			price: 6,
