@@ -75,7 +75,7 @@ export default function OrderHistoryScreen(props) {
 												)
 											}}
 										>
-											Details
+											<Trans i18nKey='orderDetails' />
 										</button>
 									</td>
 								</tr>

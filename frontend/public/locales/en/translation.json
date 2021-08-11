@@ -85,5 +85,18 @@
 
 	"newPassword": "New Password",
 	"confirm": "Confirm",
-	"update": "Update"
+	"update": "Update",
+
+	"id": "Id",
+	"date": "Date",
+	"paid": "Paid",
+	"actions": "Actions",
+	"orderDetails": "Order Details",
+
+	"sortBy": "Sort By",
+	"price": "Price",
+	"any": "Any",
+	"newestArrivals": "Newest Arrivals",
+	"priceLowToHigh": "Price: Low to High",
+	"priceHighToLow": "Price: High to Low"
 }

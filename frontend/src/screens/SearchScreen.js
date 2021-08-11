@@ -7,6 +7,8 @@ import MessageBox from '../components/MessageBox'
 import Product from '../components/Product'
 import { prices } from '../utils'
 
+import { Trans } from 'react-i18next'
+
 export default function SearchScreen(props) {
 	//use all if theres no name
 	const {
@@ -97,7 +99,7 @@ export default function SearchScreen(props) {
 				)}
 
 				<div>
-					Sort by{' '}
+					<Trans i18nKey='sortBy' />{' '}
 					<select
 						value={order}
 						onChange={(e) => {
@@ -106,16 +108,24 @@ export default function SearchScreen(props) {
 							)
 						}}
 					>
-						<option value='newest'>Newest Arrivals</option>
-						<option value='lowest'>Price: Low to High</option>
-						<option value='highest'>Price: High to Low</option>
+						<option value='newest'>
+							<Trans i18nKey='newestArrivals' />
+						</option>
+						<option value='lowest'>
+							<Trans i18nKey='priceLowToHigh' />
+						</option>
+						<option value='highest'>
+							<Trans i18nKey='priceHighToLow' />
+						</option>
 					</select>
 				</div>
 			</div>
 
 			<div className='row top'>
 				<div className='col-1'>
-					<h3>Category</h3>
+					<h3>
+						<Trans i18nKey='category' />
+					</h3>
 					<div>
 						{loadingCategories ? (
 							<LoadingBox></LoadingBox>
@@ -132,7 +142,7 @@ export default function SearchScreen(props) {
 										}
 										to={getFilterUrl({ category: 'all' })}
 									>
-										Any
+										<Trans i18nKey='any' />
 									</Link>
 								</li>
 								{categories.map((c) => (
@@ -151,7 +161,9 @@ export default function SearchScreen(props) {
 						)}
 					</div>
 
-					<h3>Quality:</h3>
+					<h3>
+						<Trans i18nKey='quality' />:
+					</h3>
 					<div>
 						{loadingQualities ? (
 							<LoadingBox></LoadingBox>
@@ -168,7 +180,7 @@ export default function SearchScreen(props) {
 										}
 										to={getFilterUrl({ quality: 'all' })}
 									>
-										Any
+										<Trans i18nKey='any' />
 									</Link>
 								</li>
 								{qualities.map((q) => (
@@ -188,7 +200,9 @@ export default function SearchScreen(props) {
 					</div>
 
 					<div>
-						<h3>Price</h3>
+						<h3>
+							<Trans i18nKey='price' />
+						</h3>
 						<ul>
 							{prices.map((p) => (
 								<li key={p.name}>
