@@ -15,16 +15,6 @@ export default function CartScreen(props) {
 	const cart = useSelector((state) => state.cart)
 	const { cartItems } = cart
 
-	//redirect users back to home after adding to cart
-	const location = useLocation()
-	const { cartButtonClicked } = location.state || 'false'
-	if (
-		cartButtonClicked === 'false' ||
-		typeof cartButtonClicked === 'undefined'
-	) {
-		props.history.push('/')
-	}
-
 	let params = new URLSearchParams(document.location.search.substring(1))
 	let qty = params.get('qty') ? Number(params.get('qty')) : 1
 	let color = params.get('color') ? params.get('color') : '0'
@@ -36,6 +26,22 @@ export default function CartScreen(props) {
 			dispatch(addToCart(productId, qty, color, size))
 		}
 	}, [dispatch, productId, qty, color, size])
+
+	function timeout(delay: number) {
+		return new Promise((res) => setTimeout(res, delay))
+	}
+
+	//redirect users back to home after adding to cart
+	/*const location = useLocation()
+	const cartButtonClicked = location.state || 'false'
+	
+    if (
+		cartButtonClicked === 'false' ||
+		typeof cartButtonClicked === 'undefined'
+	) {
+		await timeout(1000) //for 1 sec delay
+		props.history.push('/')
+	}*/
 
 	const removeFromCartHandler = (id, color, size) => {
 		dispatch(removeFromCart(id, color, size))

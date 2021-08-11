@@ -195,6 +195,7 @@ button.open-sidebar {
 	background: none;
 	color: #ffffff;
 	cursor: pointer;
+	/*border-color: #203040;*/
 }
 button.open-sidebar:hover {
 	border-color: #ffffff;
