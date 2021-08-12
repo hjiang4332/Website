@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
 import MessageBox from '../components/MessageBox'
-import { useLocation } from 'react-router-dom'
+//import { useLocation } from 'react-router-dom'
 
 import { Trans } from 'react-i18next'
 
@@ -27,9 +27,9 @@ export default function CartScreen(props) {
 		}
 	}, [dispatch, productId, qty, color, size])
 
-	function timeout(delay: number) {
+	/*function timeout(delay: number) {
 		return new Promise((res) => setTimeout(res, delay))
-	}
+	}*/
 
 	//redirect users back to home after adding to cart
 	/*const location = useLocation()
