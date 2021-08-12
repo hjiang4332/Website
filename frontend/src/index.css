@@ -38,6 +38,26 @@ div .policy {
 	padding: 10rem 20rem;
 }
 
+.column {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.footer-row:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 /* Layout */
 .grid-container {
 	display: grid;

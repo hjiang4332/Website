@@ -419,104 +419,100 @@ function App() {
 					/>
 				</main>
 
-				<footer className='row center'>
-					<div className='row'>
-						<div className='col-1'>
-							<div>
-								<h2 className='widget-title'>
-									<Trans i18nKey='about' />
-								</h2>
-								<div className='copyright'>
-									© <Trans i18nKey='allRightsReserved' />
-								</div>
-
-								<div className='cards'>
-									<i
-										className='fa fa-cc-paypal'
-										aria-hidden='true'
-									></i>
-									<i
-										className='fa fa-credit-card-alt'
-										aria-hidden='true'
-									></i>
-
-									<i
-										className='fa fa-cc-discover'
-										aria-hidden='true'
-									></i>
-								</div>
-
-								<p>
-									<i
-										className='fa fa-lock'
-										aria-hidden='true'
-									/>
-									<Trans i18nKey='secureOnlinePayments' />
-								</p>
+				<footer className='footer-row'>
+					<div className='column'>
+						<div>
+							<h2 className='widget-title'>
+								<Trans i18nKey='about' />
+							</h2>
+							<div className='copyright'>
+								© <Trans i18nKey='allRightsReserved' />
 							</div>
-						</div>
 
-						<div className='col-1'>
-							<div className='footer-widget'>
-								<h2 className='widget-title'>
-									<Trans i18nKey='information' />
-								</h2>
-								<ul>
-									<li>
-										<Link to='/terms'>
-											<Trans i18nKey='termsAndConditions' />
-										</Link>
-									</li>
-									<li>
-										<Link to='/refund-policy'>
-											<Trans i18nKey='refundPolicy' />
-										</Link>
-									</li>
-									<li>
-										<Link to='/shipping-policy'>
-											<Trans i18nKey='shippingAndDelivery' />
-										</Link>
-									</li>
-								</ul>
+							<div className='cards'>
+								<i
+									className='fa fa-cc-paypal'
+									aria-hidden='true'
+								></i>
+								<i
+									className='fa fa-credit-card-alt'
+									aria-hidden='true'
+								></i>
+
+								<i
+									className='fa fa-cc-discover'
+									aria-hidden='true'
+								></i>
 							</div>
+
+							<p>
+								<i className='fa fa-lock' aria-hidden='true' />
+								<Trans i18nKey='secureOnlinePayments' />
+							</p>
 						</div>
+					</div>
 
-						<div className='col-1'>
-							<div>
-								<h2 className='widget-title'>
-									<Trans i18nKey='contact' />
-								</h2>
-								<div className='contact-address'>
-									<i
-										className='fa fa-map-marker'
-										aria-hidden='true'
-									></i>
-									<Trans i18nKey='address' /> : 48W 28th
-									street Manhattan
-								</div>
+					<div className='column'>
+						<div className='footer-widget'>
+							<h2 className='widget-title'>
+								<Trans i18nKey='information' />
+							</h2>
+							<ul>
+								<li>
+									<Link to='/terms'>
+										<Trans i18nKey='termsAndConditions' />
+									</Link>
+								</li>
+								<li>
+									<Link to='/refund-policy'>
+										<Trans i18nKey='refundPolicy' />
+									</Link>
+								</li>
+								<li>
+									<Link to='/shipping-policy'>
+										<Trans i18nKey='shippingAndDelivery' />
+									</Link>
+								</li>
+							</ul>
+						</div>
+					</div>
 
-								<div className='contact-number'>
-									<i
-										className='fa fa-mobile'
-										aria-hidden='true'
-									></i>
-									<Trans i18nKey='phoneNumber' />
-									<br />
-									(347)-773-6389
-								</div>
+					<div className='column'>
+						<div>
+							<h2 className='widget-title'>
+								<Trans i18nKey='contact' />
+							</h2>
+							<div className='contact-address'>
+								<i
+									className='fa fa-map-marker'
+									aria-hidden='true'
+								></i>
+								<Trans i18nKey='address' /> : 48W 28th street
+								Manhattan
+							</div>
 
-								<div className='contact-email'>
-									<i
-										className='fa fa-envelope'
-										aria-hidden='true'
-									/>
-									<Trans i18nKey='email' />:
-									classyjewelryws@gmail.com
-								</div>
+							<div className='contact-number'>
+								<i
+									className='fa fa-mobile'
+									aria-hidden='true'
+								></i>
+								<Trans i18nKey='phoneNumber' />
+								<br />
+								(347)-773-6389
+							</div>
+
+							<div className='contact-email'>
+								<i
+									className='fa fa-envelope'
+									aria-hidden='true'
+								/>
+								<Trans i18nKey='email' />:
+								classyjewelryws@gmail.com
 							</div>
 						</div>
 					</div>
 				</footer>
+
 				{userInfo && !userInfo.isAdmin && (
 					<ChatBox userInfo={userInfo} />
 				)}
