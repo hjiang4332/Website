@@ -33,7 +33,7 @@ productRouter.get(
 				: 0
 
 		const priceFilter =
-			min && max ? { price: { $gte: min, $lte: max } } : {}
+			min && max ? { wsPrice: { $gte: min, $lte: max } } : {}
 		const sortOrder =
 			order === 'lowest'
 				? { price: 1 }

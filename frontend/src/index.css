@@ -38,6 +38,26 @@ div .policy {
 	padding: 10rem 20rem;
 }
 
+.column {
+	float: left;
+	width: 33.33%;
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
+}
+
+.footer-row:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+
 /* Layout */
 .grid-container {
 	display: grid;
@@ -195,6 +215,7 @@ button.open-sidebar {
 	background: none;
 	color: #ffffff;
 	cursor: pointer;
+	/*border-color: #203040;*/
 }
 button.open-sidebar:hover {
 	border-color: #ffffff;
@@ -304,6 +325,9 @@ img.large {
 	margin: 0;
 	margin-top: 0.4rem;
 	border-radius: 0.5rem;
+}
+.dropdown-content > li > div {
+	color: #ffffff;
 }
 .dropdown:hover .dropdown-content {
 	display: block;
