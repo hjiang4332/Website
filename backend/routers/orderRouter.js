@@ -157,11 +157,12 @@ orderRouter.put(
 								item.color.toString() &&
 							Number(productItem.size) === Number(item.size)
 								? {
-										...item,
-										countInStock: (countInStock -=
-											item.qty),
+										...productItem,
+										countInStock:
+											(productItem.countInStock -=
+												item.qty),
 								  }
-								: item
+								: productItem
 					  )
 					: (product.countInStock -= item.qty)
 
