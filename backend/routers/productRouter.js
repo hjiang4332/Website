@@ -36,9 +36,9 @@ productRouter.get(
 			min && max ? { wsPrice: { $gte: min, $lte: max } } : {}
 		const sortOrder =
 			order === 'lowest'
-				? { price: 1 }
+				? { wsPrice: 1 }
 				: order === 'highest'
-				? { price: -1 }
+				? { wsPrice: -1 }
 				: { _id: -1 }
 
 		const count = await Product.count({

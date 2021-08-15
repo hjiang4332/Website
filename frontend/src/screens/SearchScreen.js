@@ -108,15 +108,9 @@ export default function SearchScreen(props) {
 							)
 						}}
 					>
-						<option value='newest'>
-							<Trans i18nKey='newestArrivals' />
-						</option>
-						<option value='lowest'>
-							<Trans i18nKey='priceLowToHigh' />
-						</option>
-						<option value='highest'>
-							<Trans i18nKey='priceHighToLow' />
-						</option>
+						<option value='newest'>Newest Arrivals</option>
+						<option value='lowest'>Price: Low to High</option>
+						<option value='highest'>Price: High to Low</option>
 					</select>
 				</div>
 			</div>
