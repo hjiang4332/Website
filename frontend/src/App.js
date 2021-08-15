@@ -109,7 +109,7 @@ function App() {
 					<div>
 						<Route
 							render={({ history }) => (
-								<SearchBox history={history}></SearchBox>
+								<SearchBox history={history} />
 							)}
 						></Route>
 					</div>
@@ -154,14 +154,6 @@ function App() {
 						<Link to='/faq'>
 							<Trans i18nKey='faq' />
 						</Link>
-						{/*<Link to='/cart'>
-							<Trans i18nKey='cart' />
-							{cartItems.length > 0 && (
-								<span className='badge'>
-									{cartItems.length}
-								</span>
-							)}
-						</Link>*/}
 
 						<Link
 							to={{
@@ -367,6 +359,7 @@ function App() {
 						component={ProductScreen}
 						exact
 					/>
+					<Route path='/search' component={SearchScreen} exact />
 					<Route
 						path='/search/name/:name?'
 						component={SearchScreen}
