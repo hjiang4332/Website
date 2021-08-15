@@ -61,7 +61,16 @@ export default function OrderListScreen(props) {
 							.slice(0)
 							.reverse()
 							.map((order) => (
-								<tr key={order._id}>
+								<tr
+									key={order._id}
+									className={
+										order.isPaid
+											? order.isDelivered
+												? 'greenbg'
+												: 'redbg'
+											: 'greybg'
+									}
+								>
 									<td>{order._id}</td>
 									<td>
 										{order.user

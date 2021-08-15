@@ -58,6 +58,18 @@ div .policy {
 	clear: both;
 }
 
+.redbg {
+	background-color: #ff4119;
+}
+
+.greenbg {
+	background-color: rgb(85, 170, 0);
+}
+
+.greybg {
+	background-color: #808080;
+}
+
 /* Layout */
 .grid-container {
 	display: grid;
@@ -349,9 +361,9 @@ img.large {
 	width: 100%;
 	border-collapse: collapse;
 }
-.table tbody tr:nth-of-type(odd) {
+/* .table tbody tr:nth-of-type(odd) {
 	background-color: #f4f4f4;
-}
+} */
 .table td,
 .table th {
 	text-align: left;

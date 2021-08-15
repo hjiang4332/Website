@@ -10,7 +10,7 @@ const productRouter = express.Router()
 productRouter.get(
 	'/',
 	expressAsyncHandler(async (req, res) => {
-		const pageSize = 20
+		const pageSize = 50
 		const page = Number(req.query.pageNumber) || 1
 
 		const name = req.query.name || ''

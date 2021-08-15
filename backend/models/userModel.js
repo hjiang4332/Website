@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema(
 		email: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
 		type: { type: String, default: 'Regular', required: true },
-		numOrders: { type: Number },
-		totalSpent: { type: Number },
+		numOrders: { type: Number, default: 0 },
+		totalSpent: { type: Number, default: 0 },
 		isAdmin: { type: Boolean, default: false, required: true },
 	},
 	{

@@ -91,7 +91,7 @@ export default function SearchScreen(props) {
 									className='small'
 									onClick={() => props.history.push('/')}
 								>
-									Remove Filter
+									Go To Home
 								</button>
 							</>
 						) : null}
