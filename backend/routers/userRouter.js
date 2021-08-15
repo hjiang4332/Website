@@ -9,14 +9,14 @@ import Order from '../models/orderModel.js'
 const userRouter = express.Router()
 
 //populate with previously created users
-userRouter.get(
+/*userRouter.get(
 	'/seed',
 	expressAsyncHandler(async (req, res) => {
 		//await User.remove({})
 		const createdUsers = await User.insertMany(data.users)
 		res.send({ createdUsers })
 	})
-)
+)*/
 
 //user signin email and password authentication
 userRouter.post(
@@ -82,7 +82,7 @@ userRouter.put(
 		if (user) {
 			user.name = req.body.name || user.name
 			user.email = req.body.email || user.email
-            //user.whateveryouadded = req.body.whateveryouadded || user.whateveryouadded
+			//user.whateveryouadded = req.body.whateveryouadded || user.whateveryouadded
 			if (req.body.password) {
 				user.password = bcrypt.hashSync(req.body.password, 8)
 			}

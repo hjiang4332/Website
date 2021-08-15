@@ -81,14 +81,14 @@ productRouter.get(
 )
 
 //create products
-productRouter.get(
+/*productRouter.get(
 	'/seed',
 	expressAsyncHandler(async (req, res) => {
 		await Product.remove({})
 		const createdProducts = await Product.insertMany(data.products)
 		res.send({ createdProducts })
 	})
-)
+)*/
 
 //product exists authentication
 productRouter.get(
