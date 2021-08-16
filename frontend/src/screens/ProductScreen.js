@@ -35,6 +35,8 @@ export default function ProductScreen(props) {
 
 	const [hasCustomizations, setHasCustomizations] = useState(false)
 
+	//selected image for carousel
+	const [selectedImage, setSelectedImage] = useState('')
 	//get initial values
 	useEffect(() => {
 		if (
@@ -107,6 +109,10 @@ export default function ProductScreen(props) {
 		)
 	}
 
+	const changeImage = (image) => {
+		setSelectedImage(image)
+	}
+
 	return (
 		<div>
 			{loading ? (
@@ -119,7 +125,7 @@ export default function ProductScreen(props) {
 						<div className='col-2'>
 							<img
 								className='large'
-								src={product.image}
+								src={selectedImage || product.image}
 								alt={product.name}
 							/>
 						</div>
@@ -224,6 +230,31 @@ export default function ProductScreen(props) {
 								<li>
 									<Trans i18nKey='description' />:{' '}
 									{product.description}
+								</li>
+
+								<li>
+									Images:
+									<ul className='images'>
+										{[product.image, ...product.images].map(
+											(x) => (
+												<li key={x}>
+													<button
+														type='button'
+														className='light'
+														onClick={() =>
+															changeImage(x)
+														}
+													>
+														<img
+															src={x}
+															alt='product'
+															className='small'
+														/>
+													</button>
+												</li>
+											)
+										)}
+									</ul>
 								</li>
 							</ul>
 						</div>

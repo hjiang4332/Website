@@ -81,14 +81,14 @@ productRouter.get(
 )
 
 //create products
-/*productRouter.get(
+productRouter.get(
 	'/seed',
 	expressAsyncHandler(async (req, res) => {
 		await Product.remove({})
 		const createdProducts = await Product.insertMany(data.products)
 		res.send({ createdProducts })
 	})
-)*/
+)
 
 //product exists authentication
 productRouter.get(
@@ -141,6 +141,7 @@ productRouter.put(
 			product.quality = req.body.quality
 			product.category = req.body.category
 			product.image = req.body.image
+			product.images = req.body.images
 			product.price = req.body.price
 			product.wsPrice = req.body.wsPrice
 			product.wzPrice = req.body.wzPrice

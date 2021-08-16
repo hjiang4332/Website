@@ -263,6 +263,17 @@ img.large {
 	max-width: 50rem;
 	width: 100%;
 }
+ul.images {
+	display: flex;
+	flex-wrap: wrap;
+}
+ul.images li {
+	margin: 0.5rem;
+}
+ul.images button {
+	background: none;
+	cursor: pointer;
+}
 
 /* Card */
 .card {

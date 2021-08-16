@@ -13,6 +13,7 @@ export default function ProductEditScreen(props) {
 	const [quality, setQuality] = useState('')
 	const [category, setCategory] = useState('')
 	const [image, setImage] = useState('')
+	const [images, setImages] = useState([])
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
 	const [wzPrice, setWzPrice] = useState('')
@@ -51,6 +52,7 @@ export default function ProductEditScreen(props) {
 			setQuality(product.quality)
 			setCategory(product.category)
 			setImage(product.image)
+			setImages(product.images)
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
 			setWzPrice(product.wzPrice)
@@ -100,6 +102,7 @@ export default function ProductEditScreen(props) {
 				quality,
 				category,
 				image,
+				images,
 				price,
 				wsPrice,
 				wzPrice,
@@ -117,7 +120,7 @@ export default function ProductEditScreen(props) {
 	const userSignin = useSelector((state) => state.userSignin)
 	const { userInfo } = userSignin
 
-	const uploadFileHandler = async (e) => {
+	const uploadFileHandler = async (e, forImages) => {
 		const file = e.target.files[0]
 		const bodyFormData = new FormData()
 		bodyFormData.append('image', file)
@@ -129,7 +132,11 @@ export default function ProductEditScreen(props) {
 					Authorization: `Bearer ${userInfo.token}`,
 				},
 			})
-			setImage(data)
+			if (forImages) {
+				setImages([...images, data])
+			} else {
+				setImage(data)
+			}
 			setLoadingUpload(false)
 		} catch (error) {
 			setErrorUpload(error.message)
@@ -226,6 +233,32 @@ export default function ProductEditScreen(props) {
 								label='Choose Image'
 								onChange={uploadFileHandler}
 							></input>
+							{loadingUpload && <LoadingBox></LoadingBox>}
+							{errorUpload && (
+								<MessageBox variant='danger'>
+									{errorUpload}
+								</MessageBox>
+							)}
+						</div>
+
+						<div>
+							<label htmlFor='image-file'>
+								Additional Images
+							</label>
+							<div>
+								<ul>
+									{images.length === 0 && <li>No image</li>}
+									{images.map((x) => (
+										<li>{x}</li>
+									))}
+								</ul>
+								<input
+									type='file'
+									id='additional-image-file'
+									label='Choose Image'
+									onChange={(e) => uploadFileHandler(e, true)}
+								/>
+							</div>
 							{loadingUpload && <LoadingBox></LoadingBox>}
 							{errorUpload && (
 								<MessageBox variant='danger'>
