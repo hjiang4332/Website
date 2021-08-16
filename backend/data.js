@@ -45,8 +45,8 @@ const data = {
 				{ countInStock: 40, color: 'gold', size: 9 },
 				{ countInStock: 50, color: 'gold', size: 10 },
 			],
-		}
-        {
+		},
+		{
 			name: '2 - Heart Ring',
 			quality: 'Gold Filled',
 			category: 'Ring',

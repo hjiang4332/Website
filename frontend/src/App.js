@@ -101,6 +101,12 @@ function App() {
 							<i className='fa fa-bars'></i>
 						</button>
 
+						<img
+							src='../public/images/logo.jpg'
+							className='small'
+							alt='logo'
+						/>
+
 						<Link className='brand' to='/'>
 							Classy Jewelry
 						</Link>
