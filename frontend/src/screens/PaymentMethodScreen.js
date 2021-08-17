@@ -33,36 +33,32 @@ export default function PaymentMethodScreen(props) {
 				</div>
 
 				<div>
-					<div>
-						<input
-							type='radio'
-							id='ship'
-							value='Ship'
-							name='paymentMethod'
-							required
-							checked
-							onChange={(e) => setPaymentMethod(e.target.value)}
-						/>
-						<label htmlFor='ship'>
-							<Trans i18nKey='shipMyOrder' />
-						</label>
-					</div>
+					<input
+						type='radio'
+						id='ship'
+						value='Ship'
+						name='paymentMethod'
+						required
+						checked
+						onChange={(e) => setPaymentMethod(e.target.value)}
+					/>
+					<label htmlFor='ship'>
+						<Trans i18nKey='shipMyOrder' />
+					</label>
 				</div>
 
 				<div>
-					<div>
-						<input
-							type='radio'
-							id='pickup'
-							value='Pick up at Store'
-							name='paymentMethod'
-							required
-							onChange={(e) => setPaymentMethod(e.target.value)}
-						/>
-						<label htmlFor='pickup'>
-							<Trans i18nKey='pickUpAtStore' />
-						</label>
-					</div>
+					<input
+						type='radio'
+						id='pickup'
+						value='Pick up at Store'
+						name='paymentMethod'
+						required
+						onChange={(e) => setPaymentMethod(e.target.value)}
+					/>
+					<label htmlFor='pickup'>
+						<Trans i18nKey='pickUpAtStore' />
+					</label>
 				</div>
 
 				<div>

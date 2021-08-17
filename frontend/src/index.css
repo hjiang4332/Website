@@ -70,6 +70,10 @@ div .policy {
 	background-color: #808080;
 }
 
+.fullWidth {
+	width: 100%;
+}
+
 /* Layout */
 .grid-container {
 	display: grid;

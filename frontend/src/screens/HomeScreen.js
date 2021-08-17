@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Product from '../components/Product'
 import LoadingBox from '../components/LoadingBox'
@@ -10,10 +10,13 @@ import { Link, useParams } from 'react-router-dom'
 export default function HomeScreen() {
 	const { pageNumber = 1 } = useParams()
 
-	const dispatch = useDispatch()
 	const productList = useSelector((state) => state.productList)
 	const { loading, error, products, page, pages } = productList
 
+	//choosing which products to load
+	const [query, setQuery] = useState('available')
+
+	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(listProducts({ pageNumber }))
 	}, [dispatch, pageNumber])
@@ -26,6 +29,36 @@ export default function HomeScreen() {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<>
+					<div>
+						<form className='row center'>
+							<div>
+								<input
+									type='radio'
+									id='available'
+									value='available'
+									name='query'
+									required
+									checked
+									onChange={(e) => setQuery(e.target.value)}
+								/>
+								<label htmlFor='ship'>Available items</label>
+							</div>
+
+							<div>
+								<input
+									type='radio'
+									id='all'
+									value='all'
+									name='query'
+									required
+									onChange={(e) => setQuery(e.target.value)}
+								/>
+								<label htmlFor='pickup'>All items</label>
+							</div>
+						</form>
+						{console.log(query)}
+					</div>
+
 					<div className='row center'>
 						{products.map(
 							(product) =>
