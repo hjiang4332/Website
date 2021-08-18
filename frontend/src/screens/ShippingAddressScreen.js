@@ -20,8 +20,9 @@ export default function ShippingAddressScreen(props) {
 	const [fullName, setFullName] = useState(shippingAddress.fullName)
 	const [address, setAddress] = useState(shippingAddress.address)
 	const [city, setCity] = useState(shippingAddress.city)
-	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
+	const [state, setState] = useState(shippingAddress.state)
 	const [country, setCountry] = useState(shippingAddress.country)
+	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
 
 	const dispatch = useDispatch()
 
@@ -32,8 +33,9 @@ export default function ShippingAddressScreen(props) {
 				fullName,
 				address,
 				city,
-				postalCode,
+				state,
 				country,
+				postalCode,
 			})
 		)
 		props.history.push('/payment')
@@ -89,6 +91,20 @@ export default function ShippingAddressScreen(props) {
 						id='city'
 						placeholder='Enter your city'
 						value={city}
+						onChange={(e) => setCity(e.target.value)}
+						required
+					/>
+				</div>
+
+				<div>
+					<label htmlFor='state'>
+						<Trans i18nKey='state' />
+					</label>
+					<input
+						type='text'
+						id='state'
+						placeholder='Enter your state'
+						value={state}
 						onChange={(e) => setCity(e.target.value)}
 						required
 					/>

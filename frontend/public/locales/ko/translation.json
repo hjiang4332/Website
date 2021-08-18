@@ -69,6 +69,7 @@
 	"fullName": "전체 이름",
 	"city": "도시",
 	"country": "나라",
+	"state": "State",
 	"postalCode": "우편번호",
 	"continue": "계속하다",
 

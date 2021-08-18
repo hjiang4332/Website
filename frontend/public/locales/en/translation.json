@@ -69,6 +69,7 @@
 	"fullName": "Full Name",
 	"city": "City",
 	"country": "Country",
+    "state": "State",
 	"postalCode": "Postal Code",
 	"continue": "Continue",
 

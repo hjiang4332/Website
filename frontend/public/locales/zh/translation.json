@@ -69,6 +69,7 @@
 	"fullName": "全名",
 	"city": "城市",
 	"country": "国家",
+	"state": "State",
 	"postalCode": "邮政编码",
 	"continue": "继续",
 

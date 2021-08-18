@@ -116,8 +116,9 @@ export default function OrderScreen(props) {
 									</strong>{' '}
 									{order.shippingAddress.address},
 									{order.shippingAddress.city},{' '}
-									{order.shippingAddress.postalCode},
-									{order.shippingAddress.country}
+									{order.shippingAddress.state},
+									{order.shippingAddress.country},
+									{order.shippingAddress.postalCode}
 								</p>
 
 								{order.isDelivered ? (
