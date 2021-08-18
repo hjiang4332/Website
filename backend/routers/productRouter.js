@@ -118,7 +118,7 @@ productRouter.post(
 			wsPrice: 0,
 			costPrice: 0,
 			countInStock: 0,
-			description: '',
+			description: ' ',
 			customizations: [],
 		})
 
