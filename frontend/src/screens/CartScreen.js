@@ -200,13 +200,14 @@ export default function CartScreen(props) {
 								type='button'
 								onClick={checkoutHandler}
 								className='primary block'
-								disabled={
-									cartItems.length === 0 ||
-									cartItems.reduce(
-										(a, c) => a + c.wsPrice * c.qty,
-										0
-									) < 100
-								}
+								// disabled={
+								// 	cartItems.length === 0 ||
+								// 	cartItems.reduce(
+								// 		(a, c) => a + c.wsPrice * c.qty,
+								// 		0
+								// 	) < 100
+								// }
+								disabled={cartItems.length === 0}
 							>
 								<Trans i18nKey='proceedToCheckout' /> ($100{' '}
 								<Trans i18nKey='minimum' />)

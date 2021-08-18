@@ -216,10 +216,11 @@ export default function PlaceOrderScreen(props) {
 									type='button'
 									onClick={placeOrderHandler}
 									className='primary block'
-									disabled={
-										cart.cartItems.length === 0 ||
-										cart.itemsPrice.toFixed(2) < 100
-									}
+									// disabled={
+									// 	cart.cartItems.length === 0 ||
+									// 	cart.itemsPrice.toFixed(2) < 100
+									// }
+									disabled={cart.cartItems.length === 0}
 								>
 									<Trans i18nKey='saveOrderAndGoToPayment' />
 								</button>
