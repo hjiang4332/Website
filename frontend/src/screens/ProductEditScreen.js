@@ -317,7 +317,7 @@ export default function ProductEditScreen(props) {
 							<input
 								id='customizationsString'
 								type='text'
-								placeholder='Enter customization: color, size, countInStock'
+								placeholder='Enter customization: style, size, countInStock'
 								value={customizationsString}
 								onChange={(e) => {
 									setCustomizationsString(e.target.value)
