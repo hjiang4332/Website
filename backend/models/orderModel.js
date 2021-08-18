@@ -9,7 +9,7 @@ const orderSchema = new mongoose.Schema(
 				image: { type: String, required: true },
 				price: { type: Number, required: true },
 				wsPrice: { type: Number, required: true },
-				wzPrice: { type: Number, required: true },
+				costPrice: { type: Number, required: true },
 				onSale: { type: Boolean },
 				customizations: [
 					{

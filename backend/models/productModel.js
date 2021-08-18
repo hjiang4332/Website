@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema(
 		images: [String],
 		price: { type: Number, required: true },
 		wsPrice: { type: Number, required: true },
-		wzPrice: { type: Number, required: true },
+		costPrice: { type: Number, required: true },
 		onSale: { type: Boolean },
 		countInStock: { type: Number, required: true },
 		customizations: [

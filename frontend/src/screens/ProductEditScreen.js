@@ -16,7 +16,7 @@ export default function ProductEditScreen(props) {
 	const [images, setImages] = useState([])
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
-	const [wzPrice, setWzPrice] = useState('')
+	const [costPrice, setWzPrice] = useState('')
 	const [onSale, setOnSale] = useState(false)
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
@@ -55,7 +55,7 @@ export default function ProductEditScreen(props) {
 			setImages(product.images)
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
-			setWzPrice(product.wzPrice)
+			setWzPrice(product.costPrice)
 			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
@@ -105,7 +105,7 @@ export default function ProductEditScreen(props) {
 				images,
 				price,
 				wsPrice,
-				wzPrice,
+				costPrice,
 				onSale,
 				countInStock,
 				description,
@@ -300,12 +300,12 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='wzPrice'>WZ Price</label>
+							<label htmlFor='costPrice'>WZ Price</label>
 							<input
-								id='wzPrice'
+								id='costPrice'
 								type='text'
 								placeholder='Enter Wz price'
-								value={wzPrice}
+								value={costPrice}
 								onChange={(e) => setWzPrice(e.target.value)}
 							/>
 						</div>

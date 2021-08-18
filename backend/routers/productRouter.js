@@ -116,7 +116,7 @@ productRouter.post(
 			image: '/images/p1.jpg',
 			price: 0,
 			wsPrice: 0,
-			wzPrice: 0,
+			costPrice: 0,
 			countInStock: 0,
 			description: 'sample description',
 			customizations: [],
@@ -144,7 +144,7 @@ productRouter.put(
 			product.images = req.body.images
 			product.price = req.body.price
 			product.wsPrice = req.body.wsPrice
-			product.wzPrice = req.body.wzPrice
+			product.costPrice = req.body.costPrice
 			product.onSale = req.body.onSale
 			product.countInStock = req.body.countInStock
 			product.description = req.body.description

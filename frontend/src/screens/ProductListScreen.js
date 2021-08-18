@@ -122,7 +122,7 @@ export default function ProductListScreen(props) {
 									<td>{product.countInStock}</td>
 									<td>${product.price}</td>
 									<td>${product.wsPrice}</td>
-									<td>${product.wzPrice}</td>
+									<td>${product.costPrice}</td>
 									<td>{product.onSale ? 'YES' : 'NO'}</td>
 									<td>
 										{product.customizations.length > 0 ? (
