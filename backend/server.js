@@ -3,7 +3,6 @@ import { Server } from 'socket.io'
 
 import express from 'express'
 import mongoose from 'mongoose'
-import dotenv from 'dotenv'
 import path from 'path'
 import config from './config.js'
 
