@@ -16,7 +16,7 @@ export default function ProductEditScreen(props) {
 	const [images, setImages] = useState([])
 	const [price, setPrice] = useState('')
 	const [wsPrice, setWsPrice] = useState('')
-	const [costPrice, setWzPrice] = useState('')
+	const [costPrice, setCostPrice] = useState('')
 	const [onSale, setOnSale] = useState(false)
 	const [countInStock, setCountInStock] = useState('')
 	const [description, setDescription] = useState('')
@@ -55,7 +55,7 @@ export default function ProductEditScreen(props) {
 			setImages(product.images)
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
-			setWzPrice(product.costPrice)
+			setCostPrice(product.CostPrice)
 			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
@@ -64,7 +64,7 @@ export default function ProductEditScreen(props) {
 					? product.customizations
 							.map(
 								(item) =>
-									item.style +
+									item.color +
 									' ' +
 									item.size +
 									' ' +
@@ -86,11 +86,11 @@ export default function ProductEditScreen(props) {
 				item++
 			) {
 				let singleCustomization = customizationsString.split(',')[item]
-				let style = singleCustomization.split(' ')[0]
+				let color = singleCustomization.split(' ')[0]
 				let size = singleCustomization.split(' ')[1]
 				let countInStock = singleCustomization.split(' ')[2]
 
-				let custom = { style, size, countInStock }
+				let custom = { color, size, countInStock }
 				customizations.push(custom)
 			}
 		}
@@ -300,13 +300,13 @@ export default function ProductEditScreen(props) {
 						</div>
 
 						<div>
-							<label htmlFor='costPrice'>WZ Price</label>
+							<label htmlFor='costPrice'>Wz Price</label>
 							<input
 								id='costPrice'
 								type='text'
 								placeholder='Enter Wz price'
 								value={costPrice}
-								onChange={(e) => setWzPrice(e.target.value)}
+								onChange={(e) => setCostPrice(e.target.value)}
 							/>
 						</div>
 
@@ -317,7 +317,7 @@ export default function ProductEditScreen(props) {
 							<input
 								id='customizationsString'
 								type='text'
-								placeholder='Enter customization: style, size, countInStock'
+								placeholder='Enter customization: color, size, countInStock'
 								value={customizationsString}
 								onChange={(e) => {
 									setCustomizationsString(e.target.value)
