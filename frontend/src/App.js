@@ -101,11 +101,13 @@ function App() {
 							<i className='fa fa-bars'></i>
 						</button>
 
-						<img
-							src='../public/images/logo.jpg'
-							className='small'
-							alt='logo'
-						/>
+						{/*TODO LOGO
+                            <img
+                                src='../public/images/logo.jpg'
+                                className='small'
+                                alt='logo'
+                            />
+                        */}
 
 						<Link className='brand' to='/'>
 							Classy Jewelry
@@ -120,11 +122,6 @@ function App() {
 						></Route>
 					</div>
 
-					<div className='social-widget'>
-						<a href='https://www.instagram.com/classyjewelryws/'>
-							<i className='fa fa-instagram' aria-hidden='true' />
-						</a>
-					</div>
 					<div>
 						<div className='dropdown'>
 							<Link to='#admin'>
@@ -448,6 +445,15 @@ function App() {
 								<i className='fa fa-lock' aria-hidden='true' />
 								<Trans i18nKey='secureOnlinePayments' />
 							</p>
+
+							<div className='social-widget'>
+								<a href='https://www.instagram.com/classyjewelryws/'>
+									<i
+										className='fa fa-instagram'
+										aria-hidden='true'
+									/>
+								</a>
+							</div>
 						</div>
 					</div>
 

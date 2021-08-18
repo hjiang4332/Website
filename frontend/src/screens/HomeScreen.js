@@ -29,7 +29,8 @@ export default function HomeScreen() {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<>
-					<div>
+					{/* TODO SORT
+                    <div>
 						<form className='row center'>
 							<div>
 								<input
@@ -72,6 +73,7 @@ export default function HomeScreen() {
 						</form>
 						{console.log(query)}
 					</div>
+                    */}
 
 					<div className='row center'>
 						{products.map(
