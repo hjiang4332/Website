@@ -115,9 +115,8 @@ export default function OrderScreen(props) {
 										<Trans i18nKey='address' />:{' '}
 									</strong>{' '}
 									{order.shippingAddress.address},
-									{order.shippingAddress.city},{' '}
+									{order.shippingAddress.city},
 									{order.shippingAddress.state},
-									{order.shippingAddress.country},
 									{order.shippingAddress.postalCode}
 								</p>
 

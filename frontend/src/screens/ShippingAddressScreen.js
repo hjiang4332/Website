@@ -21,7 +21,6 @@ export default function ShippingAddressScreen(props) {
 	const [address, setAddress] = useState(shippingAddress.address)
 	const [city, setCity] = useState(shippingAddress.city)
 	const [state, setState] = useState(shippingAddress.state)
-	const [country, setCountry] = useState(shippingAddress.country)
 	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
 
 	const dispatch = useDispatch()
@@ -34,7 +33,6 @@ export default function ShippingAddressScreen(props) {
 				address,
 				city,
 				state,
-				country,
 				postalCode,
 			})
 		)
@@ -106,20 +104,6 @@ export default function ShippingAddressScreen(props) {
 						placeholder='Enter your state'
 						value={state}
 						onChange={(e) => setState(e.target.value)}
-						required
-					/>
-				</div>
-
-				<div>
-					<label htmlFor='country'>
-						<Trans i18nKey='country' />
-					</label>
-					<input
-						type='text'
-						id='country'
-						placeholder='Enter your country'
-						value={country}
-						onChange={(e) => setCountry(e.target.value)}
 						required
 					/>
 				</div>

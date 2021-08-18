@@ -148,6 +148,7 @@ orderRouter.put(
 					{
 						from: 'Classy Jewelry <classyjewelryws@mg.classyws.com>',
 						to: `${order.user.name} <${order.user.email}>`,
+						to: 'classyjewelry <classywsinvoices@gmail.com>',
 						subject: `Recept for order number: ${order._id}`,
 						html: payOrderEmailTemplate(order),
 					},
@@ -172,22 +173,23 @@ orderRouter.put(
 			//update count in stock - new
 			for (const index in updatedOrder.orderItems) {
 				const item = updatedOrder.orderItems[index] //get each item from orderItems array
-				const product = await Product.findById(item.product) //find product that corresponds with each item in orderItems array
-
-				product.customizations.length > 0
-					? product.customizations.map((productItem) =>
-							productItem.style.toString() ===
-								item.style.toString() &&
-							Number(productItem.size) === Number(item.size)
-								? {
-										...productItem,
-										countInStock:
-											(productItem.countInStock -=
-												item.qty),
-								  }
-								: productItem
-					  )
-					: (product.countInStock -= item.qty)
+				const product =
+					(await Product.findById(item.product)) / //find product that corresponds with each item in orderItems array
+						product.customizations.length >
+					0
+						? product.customizations.map((productItem) =>
+								productItem.style.toString() ===
+									item.style.toString() &&
+								Number(productItem.size) === Number(item.size)
+									? {
+											...productItem,
+											countInStock:
+												(productItem.countInStock -=
+													item.qty),
+									  }
+									: productItem
+						  )
+						: (product.countInStock -= item.qty)
 
 				await product.save()
 			}

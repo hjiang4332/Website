@@ -44,7 +44,7 @@ export default function PaymentMethodScreen(props) {
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
 						<label htmlFor='ship'>
-							<Trans i18nKey='shipMyOrder' />
+							<Trans i18nKey='shipMyOrder' /> ($100 minimum, +$10)
 						</label>
 					</div>
 				</div>
@@ -60,7 +60,7 @@ export default function PaymentMethodScreen(props) {
 							onChange={(e) => setPaymentMethod(e.target.value)}
 						/>
 						<label htmlFor='pickup'>
-							<Trans i18nKey='pickUpAtStore' />
+							<Trans i18nKey='pickUpAtStore' /> ($50 minimum)
 						</label>
 					</div>
 				</div>
