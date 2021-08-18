@@ -69,7 +69,7 @@
 	"fullName": "Full Name",
 	"city": "City",
 	"country": "Country",
-    "state": "State",
+	"state": "State",
 	"postalCode": "Postal Code",
 	"continue": "Continue",
 
@@ -80,7 +80,7 @@
 	"shipping": "Shipping",
 	"name": "Name",
 	"order": "Order",
-	"style": "Color",
+	"style": "Style",
 	"size": "Size",
 	"orderSummary": "Order Summary",
 	"cardFee": "Card Fee",

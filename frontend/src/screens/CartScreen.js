@@ -87,7 +87,7 @@ export default function CartScreen(props) {
 									{item.style === '0' ||
 										(item.style !== '' && (
 											<span>
-												{'Color: ' + item.style}
+												{'Style: ' + item.style}
 											</span>
 										))}
 
