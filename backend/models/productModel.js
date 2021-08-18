@@ -14,7 +14,7 @@ const productSchema = new mongoose.Schema(
 		countInStock: { type: Number, required: true },
 		customizations: [
 			{
-				color: { type: String },
+				style: { type: String },
 				size: { type: Number },
 				countInStock: { type: Number },
 			},

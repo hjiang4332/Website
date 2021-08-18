@@ -13,7 +13,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 			const itemExists = state.cartItems.find(
 				(x) =>
 					x.product === item.product &&
-					x.color === item.color &&
+					x.style === item.style &&
 					x.size === item.size
 			)
 
@@ -22,7 +22,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 					...state,
 					cartItems: state.cartItems.map((x) =>
 						x.product === itemExists.product &&
-						x.color === itemExists.color &&
+						x.style === itemExists.style &&
 						x.size === itemExists.size
 							? item
 							: x
@@ -34,7 +34,7 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
 		case CART_REMOVE_ITEM:
 			const item2 = action.payload
 			const itemRemoved = state.cartItems.find(
-				(x) => x.color === item2.color && x.size === item2.size
+				(x) => x.style === item2.style && x.size === item2.size
 			)
 			return {
 				...state,

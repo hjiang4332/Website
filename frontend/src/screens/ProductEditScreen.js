@@ -64,7 +64,7 @@ export default function ProductEditScreen(props) {
 					? product.customizations
 							.map(
 								(item) =>
-									item.color +
+									item.style +
 									' ' +
 									item.size +
 									' ' +
@@ -86,11 +86,11 @@ export default function ProductEditScreen(props) {
 				item++
 			) {
 				let singleCustomization = customizationsString.split(',')[item]
-				let color = singleCustomization.split(' ')[0]
+				let style = singleCustomization.split(' ')[0]
 				let size = singleCustomization.split(' ')[1]
 				let countInStock = singleCustomization.split(' ')[2]
 
-				let custom = { color, size, countInStock }
+				let custom = { style, size, countInStock }
 				customizations.push(custom)
 			}
 		}
@@ -312,12 +312,12 @@ export default function ProductEditScreen(props) {
 
 						<div>
 							<label htmlFor='customizationsString'>
-								CustomizationsString: color size countInStock,
+								CustomizationsString: style size countInStock,
 							</label>
 							<input
 								id='customizationsString'
 								type='text'
-								placeholder='Enter customization: color, size, countInStock'
+								placeholder='Enter customization: style, size, countInStock'
 								value={customizationsString}
 								onChange={(e) => {
 									setCustomizationsString(e.target.value)

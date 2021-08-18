@@ -164,7 +164,7 @@ export default function OrderScreen(props) {
 										<li
 											key={
 												item.product +
-												item.color +
+												item.style +
 												item.size
 											}
 										>
@@ -191,10 +191,10 @@ export default function OrderScreen(props) {
 													</Link>
 												</div>
 
-												{item.color !== '0' ? (
+												{item.style !== '0' ? (
 													<div>
-														<Trans i18nKey='color' />
-														: {item.color}
+														<Trans i18nKey='style' />
+														: {item.style}
 													</div>
 												) : (
 													<div />

@@ -13,12 +13,12 @@ const orderSchema = new mongoose.Schema(
 				onSale: { type: Boolean },
 				customizations: [
 					{
-						color: { type: String },
+						style: { type: String },
 						size: { type: Number },
 						countInStock: { type: Number },
 					},
 				],
-				color: { type: String },
+				style: { type: String },
 				size: { type: Number },
 				product: {
 					type: mongoose.Schema.Types.ObjectId,

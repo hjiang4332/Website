@@ -26,7 +26,7 @@ export default function ProductScreen(props) {
 
 	//radio buttons for customizations
 	const [size, setSize] = useState(0)
-	const [color, setColor] = useState('0')
+	const [style, setColor] = useState('0')
 	const [countInStock, setCountInStock] = useState(0)
 	const [qty, setQty] = useState(1)
 
@@ -48,7 +48,7 @@ export default function ProductScreen(props) {
 
 			const initialColor = customizations
 				.slice(0, 1)
-				.map((item) => item.color)
+				.map((item) => item.style)
 			setColor(initialColor[0])
 
 			setCountInStock(
@@ -73,30 +73,30 @@ export default function ProductScreen(props) {
 
 		//fill colorOptions
 		customizations
-			.map((p) => p.color)
+			.map((p) => p.style)
 			.filter((v, i, a) => a.indexOf(v) === i)
-			.map((color) =>
+			.map((style) =>
 				colorOptions.push({
-					label: color,
-					value: color,
+					label: style,
+					value: style,
 				})
 			)
 	}
 
-	//get count in stock based off of select values (size and color)
+	//get count in stock based off of select values (size and style)
 	useEffect(() => {
 		if (typeof customizations !== 'undefined') {
 			customizations
 				.filter(
 					(item) =>
 						item.size.toString() === size.toString() &&
-						item.color.toString() === color.toString()
+						item.style.toString() === style.toString()
 				)
 				.map((filteredItem) =>
 					setCountInStock(filteredItem.countInStock)
 				)
 		}
-	}, [customizations, size, color])
+	}, [customizations, size, style])
 
 	//fill countInStock
 	useEffect(() => {
@@ -105,7 +105,7 @@ export default function ProductScreen(props) {
 
 	const addToCartHandler = () => {
 		props.history.push(
-			`/cart/${productId}?qty=${qty}&color=${color}&size=${size}`
+			`/cart/${productId}?qty=${qty}&style=${style}&size=${size}`
 		)
 	}
 
@@ -172,7 +172,7 @@ export default function ProductScreen(props) {
 												.slice(0, 1)
 												.map((item) => (
 													<span key={item._id}>
-														{item.color === '0' ? (
+														{item.style === '0' ? (
 															<br />
 														) : (
 															'Colors:  '
@@ -181,8 +181,8 @@ export default function ProductScreen(props) {
 												))}
 											{customizations
 												.map((item) =>
-													item.color !== '0'
-														? item.color + ' '
+													item.style !== '0'
+														? item.style + ' '
 														: ''
 												)
 												.filter(
@@ -308,9 +308,9 @@ export default function ProductScreen(props) {
 												</select>
 											)}
 
-											{color !== '0' && (
+											{style !== '0' && (
 												<select
-													value={color}
+													value={style}
 													onChange={(e) =>
 														setColor(e.target.value)
 													}

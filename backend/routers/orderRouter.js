@@ -176,8 +176,8 @@ orderRouter.put(
 
 				product.customizations.length > 0
 					? product.customizations.map((productItem) =>
-							productItem.color.toString() ===
-								item.color.toString() &&
+							productItem.style.toString() ===
+								item.style.toString() &&
 							Number(productItem.size) === Number(item.size)
 								? {
 										...productItem,
