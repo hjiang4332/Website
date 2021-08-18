@@ -34,6 +34,18 @@ export default function HomeScreen() {
 							<div>
 								<input
 									type='radio'
+									id='sale'
+									value='sale'
+									name='query'
+									required
+									onChange={(e) => setQuery(e.target.value)}
+								/>
+								<label htmlFor='sale'>Sale items</label>
+							</div>
+
+							<div>
+								<input
+									type='radio'
 									id='available'
 									value='available'
 									name='query'
@@ -41,7 +53,9 @@ export default function HomeScreen() {
 									checked
 									onChange={(e) => setQuery(e.target.value)}
 								/>
-								<label htmlFor='ship'>Available items</label>
+								<label htmlFor='available'>
+									Available items
+								</label>
 							</div>
 
 							<div>
@@ -53,7 +67,7 @@ export default function HomeScreen() {
 									required
 									onChange={(e) => setQuery(e.target.value)}
 								/>
-								<label htmlFor='pickup'>All items</label>
+								<label htmlFor='all'>All items</label>
 							</div>
 						</form>
 						{console.log(query)}
