@@ -105,7 +105,7 @@ export default function ShippingAddressScreen(props) {
 						id='state'
 						placeholder='Enter your state'
 						value={state}
-						onChange={(e) => setCity(e.target.value)}
+						onChange={(e) => setState(e.target.value)}
 						required
 					/>
 				</div>
