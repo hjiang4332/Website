@@ -51,7 +51,9 @@ export default function RegisterScreen(props) {
 					></input>
 				</div>
 				<div>
-					<label htmlFor='email'>Email address</label>
+					<label htmlFor='email'>
+						Email address (Order recepts will be sent to this email)
+					</label>
 					<input
 						type='email'
 						id='email'
