@@ -55,7 +55,7 @@ export default function ProductEditScreen(props) {
 			setImages(product.images)
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
-			setCostPrice(product.CostPrice)
+			setCostPrice(product.costPrice)
 			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
@@ -64,7 +64,7 @@ export default function ProductEditScreen(props) {
 					? product.customizations
 							.map(
 								(item) =>
-									item.color +
+									item.style +
 									' ' +
 									item.size +
 									' ' +
@@ -86,11 +86,11 @@ export default function ProductEditScreen(props) {
 				item++
 			) {
 				let singleCustomization = customizationsString.split(',')[item]
-				let color = singleCustomization.split(' ')[0]
+				let style = singleCustomization.split(' ')[0]
 				let size = singleCustomization.split(' ')[1]
 				let countInStock = singleCustomization.split(' ')[2]
 
-				let custom = { color, size, countInStock }
+				let custom = { style, size, countInStock }
 				customizations.push(custom)
 			}
 		}

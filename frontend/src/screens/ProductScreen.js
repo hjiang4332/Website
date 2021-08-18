@@ -89,7 +89,7 @@ export default function ProductScreen(props) {
 			customizations
 				.filter(
 					(item) =>
-						item.size === size &&
+						item.size.toString() === size.toString() &&
 						item.style.toString() === style.toString()
 				)
 				.map((filteredItem) =>
