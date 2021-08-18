@@ -4,6 +4,10 @@ import Faq from '../components/Faq.js'
 export default function FaqScreen() {
 	const faqData = [
 		{
+			question: 'Errors / invalid tokens',
+			answer: 'For any errors, please email classyjewelryws@gmail.com with a image of the error. Fix: try to refreshing the page. For token errors, log off and log in back to your account',
+		},
+		{
 			question: 'Picking up an order',
 			answer: 'Please message text us the day before you come so we can bring the package from the warehouse to our store. For a smoother experience, please have the order email opened up and tell us your name and order number so we can give you your package. Please come to the store within 1 month of the order, orders after a month will be shipped, shipping fees apply.',
 		},
