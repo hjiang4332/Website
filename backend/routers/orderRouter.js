@@ -148,7 +148,6 @@ orderRouter.put(
 					{
 						from: 'Classy Jewelry <classyjewelryws@mg.classyws.com>',
 						to: `${order.user.name} <${order.user.email}>`,
-						to: 'classyjewelry <classywsinvoices@gmail.com>',
 						subject: `Recept for order number: ${order._id}`,
 						html: payOrderEmailTemplate(order),
 					},
@@ -190,16 +189,15 @@ orderRouter.put(
 									: productItem
 						  )
 						: (product.countInStock -= item.qty)
-
 				await product.save()
 			}
 
-			const user = await User.findById(req.params.user)
-			if (user) {
-				user.numOrders += 1
-				user.totalSpent += req.params.totalPrice
-				await user.save()
-			}
+			// const user = await User.findById(req.params.user)
+			// if (user) {
+			// 	user.numOrders += 1
+			// 	user.totalSpent += req.params.totalPrice
+			// 	await user.save()
+			// }
 
 			res.send({ message: 'Order Paid', order: updatedOrder })
 		} else {
