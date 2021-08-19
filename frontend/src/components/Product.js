@@ -49,7 +49,18 @@ export default function Product(props) {
 								.filter(
 									(value, index, self) =>
 										self.indexOf(value) === index
-								)}
+								).length > 5
+								? 'A lot'
+								: product.customizations
+										.map((item) =>
+											item.style !== '0'
+												? item.style + ' '
+												: ''
+										)
+										.filter(
+											(value, index, self) =>
+												self.indexOf(value) === index
+										)}
 						</span>
 					) : (
 						<br />
