@@ -102,7 +102,7 @@ function App() {
 						</button>
 
 						<img
-							src='../public/images/logo.jpg'
+							src='../public/logo.jpg'
 							className='small'
 							alt='logo'
 						/>
