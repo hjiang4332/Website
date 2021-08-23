@@ -76,7 +76,8 @@ export default function HomeScreen() {
                     */}
 
 					<div className='row center'>
-						{products.map(
+						Currently Under Maintenance
+						{/*{products.map(
 							(product) =>
 								product.countInStock !== 0 && (
 									<Product
@@ -84,7 +85,7 @@ export default function HomeScreen() {
 										product={product}
 									/>
 								)
-						)}
+						)}*/}
 					</div>
 
 					<div className='row center pagination'>
