@@ -88,7 +88,7 @@ export default function PlaceOrderScreen(props) {
 										<li
 											key={
 												item.product +
-												item.style +
+												item.color +
 												item.size
 											}
 										>
@@ -114,10 +114,10 @@ export default function PlaceOrderScreen(props) {
 													</Link>
 												</div>
 
-												{item.style !== '0' && (
+												{item.color !== '0' && (
 													<div>
-														<Trans i18nKey='style' />
-														: {item.style}
+														<Trans i18nKey='color' />
+														: {item.color}
 													</div>
 												)}
 												{item.size !== 0 && (

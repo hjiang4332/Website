@@ -66,12 +66,8 @@ export const payOrderEmailTemplate = (order) => {
   <thead>
   <tr>
   <td><strong>Product</strong></td>
-  <td><strong>${
-		item.style ? (item.style != 0 ? item.style : '') : ''
-  }</strong></td>
-  <td><strong>${
-		item.size ? (item.size != 0 ? item.size : '') : ''
-  }</strong></td>
+  <td><strong>Color</strong></td>
+  <td><strong>Size</strong></td>
   <td><strong>Quantity</strong></td>
   <td><strong align="right">Price</strong></td>
   </thead>
@@ -81,7 +77,7 @@ export const payOrderEmailTemplate = (order) => {
 			(item) => `
     <tr>
     <td>${item.name}</td>
-    <td>${item.style ? item.style : ''}</td>
+    <td>${item.color ? item.color : ''}</td>
     <td>${item.size ? item.size : ''}</td>
     <td align="center">${item.qty}</td>
     <td align="right"> $${item.wsPrice.toFixed(2)}</td>

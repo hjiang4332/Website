@@ -17,15 +17,15 @@ export default function CartScreen(props) {
 
 	let params = new URLSearchParams(document.location.search.substring(1))
 	let qty = params.get('qty') ? Number(params.get('qty')) : 1
-	let style = params.get('style') ? params.get('style') : '0'
+	let color = params.get('color') ? params.get('color') : '0'
 	let size = params.get('size') ? Number(params.get('size')) : 0
 
 	const dispatch = useDispatch()
 	useEffect(() => {
 		if (productId) {
-			dispatch(addToCart(productId, qty, style, size))
+			dispatch(addToCart(productId, qty, color, size))
 		}
-	}, [dispatch, productId, qty, style, size])
+	}, [dispatch, productId, qty, color, size])
 
 	//redirect users back to home after adding to cart
 	/*const location = useLocation()
@@ -38,8 +38,8 @@ export default function CartScreen(props) {
 		props.history.push('/')
 	}*/
 
-	const removeFromCartHandler = (id, style, size) => {
-		dispatch(removeFromCart(id, style, size))
+	const removeFromCartHandler = (id, color, size) => {
+		dispatch(removeFromCart(id, color, size))
 	}
 
 	const checkoutHandler = () => {
@@ -61,7 +61,7 @@ export default function CartScreen(props) {
 				) : (
 					<ul>
 						{cartItems.map((item) => (
-							<li key={item.product + item.style + item.size}>
+							<li key={item.product + item.color + item.size}>
 								<div className='row'>
 									<div>
 										<img
@@ -84,10 +84,10 @@ export default function CartScreen(props) {
 										</Link>
 									</div>
 
-									{item.style === '0' ||
-										(item.style !== '' && (
+									{item.color === '0' ||
+										(item.color !== '' && (
 											<span>
-												{'Color: ' + item.style}
+												{'Color: ' + item.color}
 											</span>
 										))}
 
@@ -103,7 +103,7 @@ export default function CartScreen(props) {
 													addToCart(
 														item.product,
 														Number(e.target.value),
-														item.style,
+														item.color,
 														item.size
 													)
 												)
@@ -148,7 +148,7 @@ export default function CartScreen(props) {
 											onClick={() =>
 												removeFromCartHandler(
 													item.product,
-													item.style,
+													item.color,
 													item.size
 												)
 											}

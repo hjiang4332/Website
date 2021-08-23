@@ -312,12 +312,12 @@ export default function ProductEditScreen(props) {
 
 						<div>
 							<label htmlFor='customizationsString'>
-								CustomizationsString: style size countInStock,
+								CustomizationsString: color size countInStock,
 							</label>
 							<input
 								id='customizationsString'
 								type='text'
-								placeholder='Enter customization: style, size, countInStock'
+								placeholder='Enter customization: color, size, countInStock'
 								value={customizationsString}
 								onChange={(e) => {
 									setCustomizationsString(e.target.value)

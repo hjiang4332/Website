@@ -39,12 +39,12 @@ export default function Product(props) {
 						<span>
 							{product.customizations.slice(0, 1).map((item) => (
 								<span key={item._id}>
-									{item.style === '0' ? <br /> : 'Colors:  '}
+									{item.color === '0' ? <br /> : 'Colors:  '}
 								</span>
 							))}
 							{product.customizations
 								.map((item) =>
-									item.style !== '0' ? item.style + ' ' : ''
+									item.color !== '0' ? item.color + ' ' : ''
 								)
 								.filter(
 									(value, index, self) =>
