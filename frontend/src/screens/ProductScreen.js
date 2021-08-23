@@ -26,12 +26,12 @@ export default function ProductScreen(props) {
 
 	//radio buttons for customizations
 	const [size, setSize] = useState(0)
-	const [style, setStyle] = useState('0')
+	const [style, setColor] = useState('0')
 	const [countInStock, setCountInStock] = useState(0)
 	const [qty, setQty] = useState(1)
 
 	const sizeOptions = []
-	const styleOptions = []
+	const colorOptions = []
 
 	const [hasCustomizations, setHasCustomizations] = useState(false)
 
@@ -46,10 +46,10 @@ export default function ProductScreen(props) {
 			setHasCustomizations(true)
 			setSize(Number(customizations.slice(0, 1).map((item) => item.size)))
 
-			const initialStyle = customizations
+			const initialColor = customizations
 				.slice(0, 1)
 				.map((item) => item.style)
-			setStyle(initialStyle[0])
+			setColor(initialColor[0])
 
 			setCountInStock(
 				Number(
@@ -71,12 +71,12 @@ export default function ProductScreen(props) {
 				})
 			)
 
-		//fill styleOptions
+		//fill colorOptions
 		customizations
 			.map((p) => p.style)
 			.filter((v, i, a) => a.indexOf(v) === i)
 			.map((style) =>
-				styleOptions.push({
+				colorOptions.push({
 					label: style,
 					value: style,
 				})
@@ -89,7 +89,7 @@ export default function ProductScreen(props) {
 			customizations
 				.filter(
 					(item) =>
-						item.size === size &&
+						item.size.toString() === size.toString() &&
 						item.style.toString() === style.toString()
 				)
 				.map((filteredItem) =>
@@ -175,7 +175,7 @@ export default function ProductScreen(props) {
 														{item.style === '0' ? (
 															<br />
 														) : (
-															'Style:  '
+															'Colors:  '
 														)}
 													</span>
 												))}
@@ -312,10 +312,10 @@ export default function ProductScreen(props) {
 												<select
 													value={style}
 													onChange={(e) =>
-														setStyle(e.target.value)
+														setColor(e.target.value)
 													}
 												>
-													{styleOptions.map((x) => (
+													{colorOptions.map((x) => (
 														<option
 															key={x.value}
 															value={x.value}

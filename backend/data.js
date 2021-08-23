@@ -30,7 +30,7 @@ const data = {
 			wsPrice: 2.5,
 			costPrice: 2,
 			countInStock: 100,
-			style: 'silver, gold',
+			colors: 'silver, gold',
 			sizes: '6, 7, 8, 9, 10',
 			description: 'high quality product',
 			customizations: [
@@ -55,7 +55,7 @@ const data = {
 			wsPrice: 2.5,
 			costPrice: 2,
 			countInStock: 100,
-			style: 'silver, gold',
+			colors: 'silver, gold',
 			sizes: '6, 7, 8, 9, 10',
 			description: 'high quality product',
 			customizations: [
@@ -80,7 +80,7 @@ const data = {
 			wsPrice: 2.5,
 			costPrice: 2,
 			countInStock: 100,
-			style: 'silver, gold',
+			colors: 'silver, gold',
 			sizes: '6, 7, 8, 9, 10',
 			description: 'high quality product',
 			customizations: [
@@ -105,7 +105,7 @@ const data = {
 			wsPrice: 2.5,
 			costPrice: 2,
 			countInStock: 100,
-			style: 'silver, gold',
+			colors: 'silver, gold',
 			sizes: '6, 7, 8, 9, 10',
 			description: 'high quality product',
 			customizations: [
@@ -130,7 +130,7 @@ const data = {
 			wsPrice: 6,
 			costPrice: 6,
 			countInStock: 100,
-			style: 'silver, gold',
+			colors: 'silver, gold',
 			description: 'high quality product',
 			customizations: [
 				{ countInStock: 50, style: 'silver', size: 0 },
