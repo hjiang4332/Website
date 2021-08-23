@@ -113,7 +113,7 @@ productRouter.post(
 			name: 'sample name ' + Date.now(),
 			quality: 'Gold Filled',
 			category: 'sample category',
-			image: '/images/p1.jpg',
+			image: '/logo.jpg',
 			price: 5,
 			wsPrice: 2,
 			costPrice: 2,

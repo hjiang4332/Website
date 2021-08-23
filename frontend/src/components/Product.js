@@ -53,8 +53,8 @@ export default function Product(props) {
 								? 'A lot'
 								: product.customizations
 										.map((item) =>
-											item.style !== '0'
-												? item.style + ' '
+											item.color !== '0'
+												? item.color + ' '
 												: ''
 										)
 										.filter(

@@ -201,11 +201,12 @@ export default function CartScreen(props) {
 								onClick={checkoutHandler}
 								className='primary block'
 								disabled={
-									cartItems.length === 0 ||
+									cartItems.length === 0
+									/*||
 									cartItems.reduce(
 										(a, c) => a + c.wsPrice * c.qty,
 										0
-									) < 50
+									) < 50*/
 								}
 							>
 								<Trans i18nKey='proceedToCheckout' /> ($50-100{' '}
