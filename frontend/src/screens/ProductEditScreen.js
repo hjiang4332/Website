@@ -55,7 +55,7 @@ export default function ProductEditScreen(props) {
 			setImages(product.images)
 			setPrice(product.price)
 			setWsPrice(product.wsPrice)
-			setCostPrice(product.CostPrice)
+			setCostPrice(product.costPrice)
 			setOnSale(product.onSale)
 			setCountInStock(product.countInStock)
 			setDescription(product.description)
