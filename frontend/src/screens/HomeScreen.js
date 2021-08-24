@@ -29,52 +29,6 @@ export default function HomeScreen() {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<>
-					{/* TODO SORT
-                    <div>
-						<form className='row center'>
-							<div>
-								<input
-									type='radio'
-									id='sale'
-									value='sale'
-									name='query'
-									required
-									onChange={(e) => setQuery(e.target.value)}
-								/>
-								<label htmlFor='sale'>Sale items</label>
-							</div>
-
-							<div>
-								<input
-									type='radio'
-									id='available'
-									value='available'
-									name='query'
-									required
-									checked
-									onChange={(e) => setQuery(e.target.value)}
-								/>
-								<label htmlFor='available'>
-									Available items
-								</label>
-							</div>
-
-							<div>
-								<input
-									type='radio'
-									id='all'
-									value='all'
-									name='query'
-									required
-									onChange={(e) => setQuery(e.target.value)}
-								/>
-								<label htmlFor='all'>All items</label>
-							</div>
-						</form>
-						{console.log(query)}
-					</div>
-                    */}
-
 					<div className='row center'>
 						{products.map(
 							(product) =>
