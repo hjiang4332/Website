@@ -175,7 +175,7 @@ export default function ProductScreen(props) {
 														{item.color === '0' ? (
 															<br />
 														) : (
-															'Colors:  '
+															'Styles:  '
 														)}
 													</span>
 												))}

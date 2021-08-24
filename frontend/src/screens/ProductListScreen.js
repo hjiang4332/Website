@@ -152,7 +152,7 @@ export default function ProductListScreen(props) {
 														.map((item) =>
 															item.color === 0
 																? ' '
-																: 'Colors:  '
+																: 'Styles:  '
 														)}
 													{product.customizations.map(
 														(item) =>
