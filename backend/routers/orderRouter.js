@@ -171,24 +171,6 @@ orderRouter.put(
 
 			//update count in stock - new
 			for (const index in updatedOrder.orderItems) {
-				/*const item = updatedOrder.orderItems[index] //get each item from orderItems array
-				const product = await Product.findById(item.product) //find product that corresponds with each item in orderItems array
-
-				product.customizations.length > 0
-					? product.customizations.map((productItem) =>
-                        productItem.color.toString() ===
-                            item.color.toString() &&
-                        Number(productItem.size) === Number(item.size)
-                            ? {
-                                    ...productItem,
-                                    countInStock:
-                                        (productItem.countInStock -=
-                                            item.qty),
-                                }
-                            : productItem
-					  )
-					: (product.countInStock -= item.qty)*/
-
 				const item = updatedOrder.orderItems[index] //get each item from orderItems array
 				const product = await Product.findById(item.product) //find product that corresponds with each item in orderItems array
 

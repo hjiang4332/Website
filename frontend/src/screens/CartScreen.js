@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../actions/cartActions'
@@ -19,6 +19,7 @@ export default function CartScreen(props) {
 	let qty = params.get('qty') ? Number(params.get('qty')) : 1
 	let color = params.get('color') ? params.get('color') : '0'
 	let size = params.get('size') ? Number(params.get('size')) : 0
+	//const [itemCount, setItemCount] = useState(100)
 
 	const dispatch = useDispatch()
 	useEffect(() => {
@@ -70,6 +71,7 @@ export default function CartScreen(props) {
 											className='small'
 										/>
 									</div>
+
 									<div className='min-30'>
 										<Link
 											to={{
@@ -87,7 +89,7 @@ export default function CartScreen(props) {
 									{item.color === '0' ||
 										(item.color !== '' && (
 											<span>
-												{'Color: ' + item.color}
+												{'Style: ' + item.color}
 											</span>
 										))}
 
@@ -109,9 +111,62 @@ export default function CartScreen(props) {
 												)
 											}
 										>
+											{/*
+                                            {item.customizations.length > 0
+												? item.customizations
+														.filter(
+															(item) =>
+																item.size ===
+																	size &&
+																item.color.toString() ===
+																	color.toString()
+														)
+														.map((filteredItem) => {
+															setItemCount(
+																filteredItem.countInStock
+															)
+														})
+												: setItemCount(
+														item.countInStock
+												  )}
+                                                */}
+
+											{/*}
 											{[
 												...Array(
-													item.countInStock
+													item.customizations.length >
+														0
+														? item.customizations
+																.filter(
+																	(item) =>
+																		item.size ===
+																			size &&
+																		item.color.toString() ===
+																			color.toString()
+																)
+																.map(
+																	(
+																		filteredItem
+																	) => {
+																		return filteredItem.countInStock
+																	}
+																)
+														: item.countInStock
+												).keys(),
+											].map((x) => (
+												<option
+													key={x + 1}
+													value={x + 1}
+												>
+													{x + 1}
+												</option>
+											))}
+                                            */}
+
+											{[
+												...Array(
+													//item.countInStock
+													10
 												).keys(),
 											].map((x) => (
 												<option
@@ -201,16 +256,15 @@ export default function CartScreen(props) {
 								onClick={checkoutHandler}
 								className='primary block'
 								disabled={
-									cartItems.length === 0
-									/*||
+									cartItems.length === 0 ||
 									cartItems.reduce(
 										(a, c) => a + c.wsPrice * c.qty,
 										0
-									) < 50*/
+									) < 50
 								}
 							>
-								<Trans i18nKey='proceedToCheckout' /> ($50-100{' '}
-								<Trans i18nKey='minimum' />)
+								<Trans i18nKey='proceedToCheckout' /> ($50
+								pickup, $100 ship <Trans i18nKey='minimum' />)
 							</button>
 						</li>
 					</ul>
