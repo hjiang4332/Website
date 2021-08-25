@@ -82,7 +82,7 @@
 	"color": "Color",
 	"size": "Size",
 	"orderSummary": "Order Summary",
-	"cardFee": "Card Fee",
+	"cardFee": "Card Fee (0 over $100)",
 	"saveOrderAndGoToPayment": "Save Order and Go to Payment",
 
 	"hasBeenSaved": "has been saved",

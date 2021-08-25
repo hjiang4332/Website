@@ -147,7 +147,8 @@ orderRouter.put(
 				.send(
 					{
 						from: 'Classy Jewelry <classyjewelryws@mg.classyws.com>',
-						to: `${order.user.name} <${order.user.email}>`,
+						to: `${order.user.name} <${order.user.email}>, Classy <classywsinvoices@gmail.com>`,
+						//cc: `${order.user.name} <${order.user.email}>`,
 						subject: `Recept for order number: ${order._id}`,
 						html: payOrderEmailTemplate(order),
 					},

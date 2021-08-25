@@ -26,7 +26,8 @@ export default function PlaceOrderScreen(props) {
 	)
 	cart.shippingPrice =
 		cart.paymentMethod === 'Ship My Order' ? toPrice(10) : toPrice(0)
-	cart.taxPrice = toPrice(0.03 * cart.itemsPrice)
+	cart.taxPrice =
+		cart.itemsPrice < 100 ? toPrice(0.03 * cart.itemsPrice) : toPrice(0)
 	cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
 
 	//create the order
@@ -217,11 +218,10 @@ export default function PlaceOrderScreen(props) {
 									onClick={placeOrderHandler}
 									className='primary block'
 									disabled={
-										cart.cartItems.length === 0
-										/*||
+										cart.cartItems.length === 0 ||
 										cart.paymentMethod === 'Ship My Order'
 											? cart.itemsPrice.toFixed(2) < 100
-											: cart.itemsPrice.toFixed(2) < 50*/
+											: cart.itemsPrice.toFixed(2) < 50
 									}
 								>
 									<Trans i18nKey='saveOrderAndGoToPayment' />
