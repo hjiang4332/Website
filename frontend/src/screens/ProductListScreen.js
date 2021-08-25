@@ -150,13 +150,13 @@ export default function ProductListScreen(props) {
 													{product.customizations
 														.slice(0, 1)
 														.map((item) =>
-															item.color === 0
+															item.color === '0'
 																? ' '
-																: 'Styles:  '
+																: 'Styles: '
 														)}
 													{product.customizations.map(
 														(item) =>
-															item.color !== 0
+															item.color !== '0'
 																? item.color +
 																  ' '
 																: ''
