@@ -86,7 +86,7 @@
 	"saveOrderAndGoToPayment": "주문 저장 및 결제로 이동",
 
 	"hasBeenSaved": "저장되었습니다",
-	"deliveryDate": "배송일",
+	"deliveredDate": "배송일",
 	"notDelivered": "배달되지 않음",
 	"paidDate": "유료 날짜",
 	"notPaid": "지불하지 않음",

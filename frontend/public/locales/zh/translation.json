@@ -86,7 +86,7 @@
 	"saveOrderAndGoToPayment": "保存订单并转到付款",
 
 	"hasBeenSaved": "已保存",
-	"deliveryDate": "交货日期",
+	"deliveredDate": "交货日期",
 	"notDelivered": "未交付",
 	"paidDate": "付款日期",
 	"notPaid": "未付费",

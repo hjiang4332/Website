@@ -86,7 +86,7 @@
 	"saveOrderAndGoToPayment": "Save Order and Go to Payment",
 
 	"hasBeenSaved": "has been saved",
-	"deliveryDate": "Delivery Date",
+	"deliveredDate": "Delivered Date",
 	"notDelivered": "Not Delivered",
 	"paidDate": "Paid Date",
 	"notPaid": "Not Paid",

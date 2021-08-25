@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import Product from '../components/Product'
 import LoadingBox from '../components/LoadingBox'
@@ -14,7 +14,7 @@ export default function HomeScreen() {
 	const { loading, error, products, page, pages } = productList
 
 	//choosing which products to load
-	const [query, setQuery] = useState('available')
+	//const [query, setQuery] = useState('available')
 
 	const dispatch = useDispatch()
 	useEffect(() => {

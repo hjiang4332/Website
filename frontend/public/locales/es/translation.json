@@ -86,7 +86,7 @@
 	"saveOrderAndGoToPayment": "Guardar pedido e ir al pago",
 
 	"hasBeenSaved": "Ha sido salvado",
-	"deliveryDate": "Fecha de entrega",
+	"deliveredDate": "Fecha de entrega",
 	"notDelivered": "No entregado",
 	"paidDate": "Fecha de pago",
 	"notPaid": "No pagado",

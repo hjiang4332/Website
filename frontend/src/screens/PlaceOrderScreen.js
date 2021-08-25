@@ -173,7 +173,7 @@ export default function PlaceOrderScreen(props) {
 							<li>
 								<div className='row'>
 									<div>
-										<Trans i18nKey='Items' />
+										<Trans i18nKey='items' />
 									</div>
 									<div>${cart.itemsPrice.toFixed(2)}</div>
 								</div>
