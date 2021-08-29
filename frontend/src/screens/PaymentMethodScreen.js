@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { savePaymentMethod } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
 
-import { Link } from 'react-router-dom'
+//import { Link } from 'react-router-dom'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/orderConstants'
 import LoadingBox from '../components/LoadingBox'

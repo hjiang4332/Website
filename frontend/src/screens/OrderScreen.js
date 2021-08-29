@@ -122,7 +122,7 @@ export default function OrderScreen(props) {
 
 								{order.isDelivered ? (
 									<MessageBox variant='success'>
-										<Trans i18nKey='deliveryDate' />{' '}
+										<Trans i18nKey='deliveredDate' />{' '}
 										{order.deliveredAt}
 									</MessageBox>
 								) : (
