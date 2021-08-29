@@ -9,4 +9,5 @@ export default {
 	PAYPAL_CLIENT_ID: process.env.PAYPAL_CLIENT_ID || 'sb',
 	accessKeyId: process.env.accessKeyId || 'accessKeyId',
 	secretAccessKey: process.env.secretAccessKey || 'secretAccessKey',
+	NODE_ENV: process.env.NODE_ENV || 'testing',
 }

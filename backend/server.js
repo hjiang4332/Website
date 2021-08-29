@@ -13,6 +13,15 @@ import uploadRouter from './routers/uploadRouter.js'
 
 const app = express()
 
+//HTTP To HTTPS
+if (config.NODE_ENV === 'production') {
+	app.use((req, res, next) => {
+		if (req.header('x-forwarded-proto') !== 'https')
+			res.redirect(`https://${req.header('host')}${req.url}`)
+		else next()
+	})
+}
+
 //avoids no email error from postman
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
