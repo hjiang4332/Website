@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { savePaymentMethod } from '../actions/cartActions'
 import CheckoutSteps from '../components/CheckoutSteps'
+
+import { Link } from 'react-router-dom'
+import { createOrder } from '../actions/orderActions'
+import { ORDER_CREATE_RESET } from '../constants/orderConstants'
+import LoadingBox from '../components/LoadingBox'
+import MessageBox from '../components/MessageBox'
 
 import { Trans } from 'react-i18next'
 
@@ -15,17 +21,36 @@ export default function PaymentMethodScreen(props) {
 
 	const [paymentMethod, setPaymentMethod] = useState('Ship My Order')
 
+	const orderCreate = useSelector((state) => state.orderCreate)
+	const { loading, success, error, order } = orderCreate
+
+	//calculate prices
+	const toPrice = (num) => Number(num.toFixed(2))
+	cart.itemsPrice = toPrice(
+		cart.cartItems.reduce((a, c) => a + c.wsPrice * c.qty, 0)
+	)
+	cart.shippingPrice =
+		cart.paymentMethod === 'Ship My Order' ? toPrice(10) : toPrice(0)
+	cart.taxPrice = toPrice(0.03 * cart.itemsPrice)
+	cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice
+
 	const dispatch = useDispatch()
-	const submitHandler = (e) => {
+	const placeOrderHandler = (e) => {
 		e.preventDefault()
 		dispatch(savePaymentMethod(paymentMethod))
-		props.history.push('/placeorder')
+		dispatch(createOrder({ ...cart, orderItems: cart.cartItems }))
 	}
 
+	useEffect(() => {
+		if (success) {
+			props.history.push(`/order/${order._id}`)
+			dispatch({ type: ORDER_CREATE_RESET })
+		}
+	}, [dispatch, order, props.history, success])
 	return (
 		<div>
 			<CheckoutSteps step1 step2 step3></CheckoutSteps>
-			<form className='form' onSubmit={submitHandler}>
+			<form className='form'>
 				<div>
 					<h1>
 						<Trans i18nKey='pickupMethod' />
@@ -67,10 +92,23 @@ export default function PaymentMethodScreen(props) {
 
 				<div>
 					<label />
-					<button className='primary' type='submit'>
-						<Trans i18nKey='continue' />
+					<button
+						type='button'
+						onClick={placeOrderHandler}
+						className='primary block'
+						disabled={
+							cart.cartItems.length === 0
+							/*||
+                            cart.paymentMethod === 'Ship My Order'
+                                ? cart.itemsPrice.toFixed(2) < 100
+                                : cart.itemsPrice.toFixed(2) < 50*/
+						}
+					>
+						<Trans i18nKey='saveOrderAndGoToPayment' />
 					</button>
 				</div>
+				{loading && <LoadingBox></LoadingBox>}
+				{error && <MessageBox variant='danger'>{error}</MessageBox>}
 			</form>
 		</div>
 	)
