@@ -68,7 +68,7 @@ orderRouter.get(
 	})
 )
 
-// OrderActions - > placeOrderScreen: create an order
+// OrderActions - > create an order
 orderRouter.get(
 	'/mine',
 	isAuth,
