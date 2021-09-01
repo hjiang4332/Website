@@ -16,14 +16,13 @@ export default function FaqScreen() {
 			answer: 'Costume quality: few weeks to a month Gold Plated: 6 months to a year Gold Filled: about a year Stainless Steel in silver: forever. These metrics were adjusted based off of casual wear with showering. We advise to have minimal jewelry care to maintain the color of the jewelry. Please attempt not to wash your dishes with rings on, please do not go into the water at the beach with jewelry on, as well as please do not leave your items in water or do other actions that could ruin the color of jewelry.',
 		},
 		{
-			question:
-				'In Store: Why arent these prices set, why do I have to buy 12 to get the price?',
-			answer: 'We have a wholesale business model. We make little profit per item, but selling multiple items is how we make profit. People who buy less than 12 of a select item category will be charged retail prices.',
+			question: 'Why dont I get online prices in store?',
+			answer: 'If you dont buy 12 of an item or $100 wholesale you will be charged retail prices. Online you are forced to buy the amount, but in store you can buy 1 item though they will be charged at retail price.',
 		},
 
 		{
 			question: 'Why is there a limit/minimum for card purchases?',
-			answer: 'The $30 minimum is due to the fact that we are charged .30 cents + 3% for using the terminal / PayPal. With low margins and a low amount, it isnt worth taking card.',
+			answer: 'We are charged for taking card. We can lose upwards of 50% of our profits just by taking card for some items.',
 		},
 		{
 			question: 'Can you get X for me?',

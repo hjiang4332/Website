@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import Product from '../components/Product'
 import LoadingBox from '../components/LoadingBox'
@@ -16,6 +16,11 @@ export default function HomeScreen() {
 	//choosing which products to load
 	//const [query, setQuery] = useState('available')
 
+	//get user info from redux to use to change date
+	/*const userSignin = useSelector((state) => state.userSignin)
+	const { userInfo } = userSignin
+	const [nextShipmentDate, setNextShipmentDate] = useState('')*/
+
 	const dispatch = useDispatch()
 	useEffect(() => {
 		dispatch(listProducts({ pageNumber }))
@@ -29,6 +34,27 @@ export default function HomeScreen() {
 				<MessageBox variant='danger'>{error}</MessageBox>
 			) : (
 				<>
+					{/*
+                    <div className='center'>
+						<div>Next shipment: {nextShipmentDate}</div>
+						{userInfo && userInfo.isAdmin && (
+							<form>
+								<label>
+									Date:
+									<input
+										type='text'
+										value={nextShipmentDate}
+										onChange={(e) =>
+											setNextShipmentDate(e.target.value)
+										}
+									/>
+								</label>
+								<input type='submit' value='Submit' />
+							</form>
+						)}
+					</div>
+                    */}
+
 					<div className='row center'>
 						{products.map(
 							(product) =>
