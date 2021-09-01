@@ -1,5 +1,4 @@
 import Axios from 'axios'
-import { PayPalButton } from 'react-paypal-button-v2'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -10,12 +9,23 @@ import {
 } from '../actions/orderActions'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
+
 import {
 	ORDER_DELIVER_RESET,
 	ORDER_PAY_RESET,
 } from '../constants/orderConstants'
 
 import { Trans } from 'react-i18next'
+
+//Paypal
+import { PayPalButton } from 'react-paypal-button-v2'
+//Stripe
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import CheckoutForm from '../components/stripe/CheckoutForm'
+const stripePromise = loadStripe(
+	'pk_live_51JTGB8HHhzns1Euna2vuXpf8AdfDvkfpRouZh8fnHUW12Gyp0zTLeMVP8h12v718qi5H7u4Q8LbVUM0M2bmwYVBK00VYUER3cQ'
+)
 
 export default function OrderScreen(props) {
 	const orderId = props.match.params.id
@@ -308,11 +318,18 @@ export default function OrderScreen(props) {
 												<LoadingBox></LoadingBox>
 											)}
 
+											<Elements stripe={stripePromise}>
+												<CheckoutForm />
+											</Elements>
+
+											<br />
+
 											<PayPalButton
 												amount={order.totalPrice}
 												onSuccess={
 													successPaymentHandler
 												}
+												className='PayPalButton'
 											/>
 										</>
 									)}
