@@ -24,7 +24,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import CheckoutForm from '../components/stripe/CheckoutForm'
 const stripePromise = loadStripe(
-	'pk_live_51JTGB8HHhzns1Euna2vuXpf8AdfDvkfpRouZh8fnHUW12Gyp0zTLeMVP8h12v718qi5H7u4Q8LbVUM0M2bmwYVBK00VYUER3cQ'
+	'pk_test_51JTGB8HHhzns1EunbYjDCSg0awWsMXbY1hKTGVcCp7TGF96XWqHlUAq5OvnjE0ly6BpCbLFYSzyqgDImdKhbnFKW00zogOCU3j'
 )
 
 export default function OrderScreen(props) {
